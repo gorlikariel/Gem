@@ -1,12 +1,9 @@
 import * as React from "react";
+import CenteredGrid from "./containers/CenteredGrid";
 
 class App extends React.Component {
   public render() {
-    return (
-      <div>
-        <h1>SHIT FUCK</h1>
-      </div>
-    );
+    return <CenteredGrid container={true} />;
   }
 }
 
