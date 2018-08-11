@@ -5,7 +5,8 @@ import {
   Theme,
   Typography,
   AppBar,
-  Toolbar
+  Toolbar,
+  Button
 } from "@material-ui/core";
 import * as React from "react";
 
@@ -13,7 +14,8 @@ const styles = (theme: Theme) =>
   createStyles({
     root: {
       background: "transparent",
-      boxShadow: "none"
+      boxShadow: "none",
+      flexGrow: 1
     }
   });
 
@@ -31,6 +33,9 @@ const TopNavigation = withStyles(styles)(
             <Typography variant="headline" color="primary">
               <strong>Hello Dana,</strong> <br /> We're here for you
             </Typography>
+            <div style={{ marginLeft: "auto" }}>
+              <Button color="primary">Sign Out</Button>
+            </div>
           </Toolbar>
         </AppBar>
       );
