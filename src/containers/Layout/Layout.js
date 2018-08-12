@@ -1,6 +1,7 @@
 import TopNavigation from "../TopNavigation/TopNavigation";
-import SectionA from "./SectionA";
+import SectionA from "./SectionA/SectionA";
 import React, { Component } from "react";
+import SectionB from "./SectionB/SectionB";
 
 class Layout extends Component {
   render() {
@@ -8,6 +9,7 @@ class Layout extends Component {
       <React.Fragment>
         <TopNavigation />
         <SectionA />
+        <SectionB />
       </React.Fragment>
     );
   }

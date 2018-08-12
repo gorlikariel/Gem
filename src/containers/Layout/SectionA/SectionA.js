@@ -1,13 +1,14 @@
 import React from "react";
-import { Typography } from "@material-ui/core";
-
+import { Typography, Paper } from "@material-ui/core";
+import GenericCard from "../../GenericCard/GenericCard";
 const SectionA = props => {
   return (
     <section id="section-a" className="grid">
       <div className="content-wrap">
-        <Typography variant="headline" color="primary">
-          Monthly Streak
+        <Typography variant="subheading" color="primary">
+          Pill Taken
         </Typography>
+        <GenericCard />
       </div>
     </section>
   );
