@@ -1,16 +1,11 @@
 import * as React from "react";
-import TopNavigation from "./containers/TopNavigation/TopNavigation";
-import CenteredGrid from "./containers/CenteredGrid";
+// import TopNavigation from "./containers/TopNavigation/TopNavigation";
+// import CenteredGrid from "./containers/CenteredGrid";
+import Layout from "./containers/Layout/Layout";
 
 class App extends React.Component {
   public render() {
-    return (
-      <div>
-        <TopNavigation />
-        <CenteredGrid container={true} />
-        {/*<BottomHalf/>*/}
-      </div>
-    );
+    return <Layout />;
   }
 }
 
