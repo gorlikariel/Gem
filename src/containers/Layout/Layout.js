@@ -1,16 +1,22 @@
 import TopNavigation from "../TopNavigation/TopNavigation";
-import SectionA from "./SectionA/SectionA";
 import React, { Component } from "react";
+import SectionA from "./SectionA/SectionA";
 import SectionB from "./SectionB/SectionB";
+import SectionC from "./SectionC/SectionC";
+import { MuiThemeProvider } from "@material-ui/core/styles";
+import theme from "../../UI/theme";
 
 class Layout extends Component {
   render() {
     return (
-      <React.Fragment>
+      <MuiThemeProvider theme={theme}>
         <TopNavigation />
-        <SectionA />
-        <SectionB />
-      </React.Fragment>
+        <div style={{ padding: 10 }}>
+          <SectionA />
+          <SectionB />
+          <SectionC />
+        </div>
+      </MuiThemeProvider>
     );
   }
 }

@@ -8,7 +8,7 @@ const SectionA = props => {
         <Typography variant="subheading" color="primary">
           Pill Taken
         </Typography>
-        <GenericCard />
+        <GenericCard content="pill scheduled to: 23:00pm" />
       </div>
     </section>
   );
