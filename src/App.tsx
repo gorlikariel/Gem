@@ -1,11 +1,8 @@
 import * as React from "react";
-// import TopNavigation from "./containers/TopNavigation/TopNavigation";
-// import CenteredGrid from "./containers/CenteredGrid";
-import Layout from "./containers/Layout/Layout";
-
+import { Typography } from "@material-ui/core";
 class App extends React.Component {
   public render() {
-    return <Layout />;
+    return <Typography defaultValue={"Poop"}>Hello World</Typography>;
   }
 }
 
