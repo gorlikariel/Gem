@@ -1,5 +1,4 @@
 import * as React from "react";
-// import Button from "./Button.css";
 import * as theme from "../theme/theme";
 import { Typography } from "../../../node_modules/@material-ui/core";
 import RightArrow from "../Icons/RightArrow/RightArrow";
@@ -10,7 +9,6 @@ import PillIcon from "../Icons/PillIcon/PillIcon";
 interface BasicButtonProps {
   varient: string;
   color: string;
-  // logoutButton: string;
 }
 
 const BasicButton: React.SFC<BasicButtonProps> = props => {
@@ -48,20 +46,16 @@ const BasicButton: React.SFC<BasicButtonProps> = props => {
   switch (props.varient) {
     case "accountSettings":
       buttonIcon = <AccountIcon style={styles.buttonIcon} />;
-      // buttonGradient = theme.G3;
       break;
     case "alarmSettings":
       buttonIcon = <ClockIcon style={styles.buttonIcon} />;
-      // buttonGradient = theme.G2;
       console.log(buttonGradient);
       break;
     case "pillSettings":
-      // buttonGradient = theme.PWH;
       buttonIcon = <PillIcon style={styles.buttonIcon} />;
       buttonColor = theme.PCH;
       break;
     case "logout":
-      // buttonGradient = theme.PWH;
       buttonIcon = <div style={styles.logoutButton} />;
       rightArrow = null;
       break;

@@ -1,10 +1,6 @@
 import BasicButton from "../../UI/BasicButton/BasicButton";
 import * as React from "react";
 
-// interface SettingsProps={
-
-// }
-
 class Settings extends React.Component {
   render() {
     return (
