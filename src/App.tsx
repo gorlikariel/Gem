@@ -1,8 +1,15 @@
 import * as React from "react";
-import { Typography } from "@material-ui/core";
+import Layout from "./containers/Layout/Layout";
+import { Route } from "react-router-dom";
+import Settings from "./containers/Settings/Settings";
+
 class App extends React.Component {
   public render() {
-    return <Typography defaultValue={"Poop"}>Hello World</Typography>;
+    return (
+      <Layout>
+        <Route path="/" component={Settings} />
+      </Layout>
+    );
   }
 }
 
