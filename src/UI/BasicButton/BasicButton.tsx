@@ -48,6 +48,7 @@ const BasicButton: React.SFC<BasicButtonProps> = props => {
       color: "inherit"
     }
   };
+  //Render the right button
   switch (props.varient) {
     case "accountSettings":
       buttonIcon = <AccountIcon style={styles.buttonIcon} />;

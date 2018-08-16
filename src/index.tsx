@@ -17,11 +17,11 @@ const store = createStore(
   composeWithDevTools(applyMiddleware(thunk))
 );
 const app = (
-  <Provider store={store}>
-    <BrowserRouter>
+  <BrowserRouter>
+    <Provider store={store}>
       <App />
-    </BrowserRouter>
-  </Provider>
+    </Provider>
+  </BrowserRouter>
 );
 
 ReactDOM.render(app, document.getElementById("root"));

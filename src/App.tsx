@@ -5,12 +5,14 @@ import Settings from "./containers/Settings/Settings";
 import { MuiThemeProvider } from "../node_modules/@material-ui/core";
 import theme from "./UI/theme/theme";
 import AccountSettings from "./containers/Settings/AccountSettings/AccountSettings";
+import TopNavigation from "./UI/TopNavigation/TopNavigation";
 
 class App extends React.Component {
   public render() {
     return (
       <Layout>
         <MuiThemeProvider theme={theme}>
+          <Route path="/" component={TopNavigation} />
           <Switch>
             <Route exact={true} path="/settings" component={Settings} />
             <Route

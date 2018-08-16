@@ -8,7 +8,6 @@ class Layout extends React.Component {
     return (
       <MuiThemeProvider theme={theme}>
         <div style={{ width: "100%", height: "100%" }}>
-          <TopNavigation />
           <div
             style={{
               marginRight: "24px",

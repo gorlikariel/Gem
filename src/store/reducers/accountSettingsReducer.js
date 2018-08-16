@@ -8,7 +8,7 @@ const initialState = {
         type: "text",
         label: "Name"
       },
-      value: "",
+      value: "Foo",
       touched: false,
       validation: {
         required: true,
@@ -21,7 +21,7 @@ const initialState = {
         type: "text",
         label: "Username"
       },
-      value: "",
+      value: "Bar",
       touched: false,
       validation: {
         required: true,
@@ -34,7 +34,7 @@ const initialState = {
         type: "email",
         label: "Email address"
       },
-      value: "",
+      value: "Foo@Bar.com",
       touched: false,
       validation: {
         required: true,
@@ -57,7 +57,6 @@ export default (state = initialState, action) => {
         isFormValid: action.isFormValid
       };
 
-    
     default:
       return state;
   }
