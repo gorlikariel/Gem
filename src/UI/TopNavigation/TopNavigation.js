@@ -12,31 +12,26 @@ import { connect } from "react-redux";
 import Checkmark from "../Icons/Checkmark/Checkmark";
 
 class TopNavigation extends Component {
-  goBack = () => {
-    this.props.history.push("/");
+  submitForm = navText => {
+    console.log(navText);
+  };
+  goBack = pageName => {
+    pageName === "Account Settings"
+      ? this.props.history.push("/settings")
+      : this.props.history.push("/");
   };
   //removes the '/' from pathname, replaces '-' with a space and capitalizes the first charachters
-  prettifyPathName = () =>
-    this.props.location.pathname
+  prettifyPathName = pathname =>
+    pathname
       .substr(1)
       .replace("-", " ")
       .replace(
         /\w\S*/g,
         txt => txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase()
       );
-  componentDidMount() {
-    console.log(
-      this.props.location.pathname
-        .substr(1)
-        .replace("-", " ")
-        .replace(
-          /\w\S*/g,
-          txt => txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase()
-        )
-    );
-  }
   render() {
-    let navText = this.prettifyPathName();
+    const pageName = this.prettifyPathName(this.props.location.pathname);
+    const ass = "ass";
     const styles = {
       root: {
         backgroundColor: "inherit",
@@ -47,16 +42,18 @@ class TopNavigation extends Component {
     return (
       <AppBar position="sticky" style={styles.root}>
         <Toolbar disableGutters>
-          <IconButton onClick={this.goBack}>
+          <IconButton onClick={() => this.goBack(pageName)}>
             <LeftArrow />
           </IconButton>
           <Typography variant="title" color="primary">
-            {navText}
+            {pageName}
           </Typography>
           <div style={{ marginLeft: "auto" }}>
-            <IconButton>
-              <Checkmark />
-            </IconButton>
+            {pageName === "Settings" ? null : (
+              <IconButton onClick={() => this.submitForm(ass)}>
+                <Checkmark />
+              </IconButton>
+            )}
           </div>
         </Toolbar>
       </AppBar>

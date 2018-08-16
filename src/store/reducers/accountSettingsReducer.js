@@ -53,7 +53,7 @@ export default (state = initialState, action) => {
     case actionTypes.FORM_CHANGED:
       return {
         ...state,
-        settingsForm: action.form,
+        form: action.form,
         isFormValid: action.isFormValid
       };
 

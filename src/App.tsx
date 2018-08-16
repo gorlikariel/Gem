@@ -5,6 +5,7 @@ import Settings from "./containers/Settings/Settings";
 import { MuiThemeProvider } from "../node_modules/@material-ui/core";
 import theme from "./UI/theme/theme";
 import AccountSettings from "./containers/Settings/AccountSettings/AccountSettings";
+import AlarmSettings from "./containers/Settings/AlarmSettings/AlarmSettings";
 import TopNavigation from "./UI/TopNavigation/TopNavigation";
 
 class App extends React.Component {
@@ -19,6 +20,11 @@ class App extends React.Component {
               exact={true}
               path="/account-settings"
               component={AccountSettings}
+            />
+            <Route
+              exact={true}
+              path="/alarm-settings"
+              component={AlarmSettings}
             />
           </Switch>
         </MuiThemeProvider>

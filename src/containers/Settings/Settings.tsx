@@ -12,7 +12,7 @@ class Settings extends React.Component {
         >
           Account Settings
         </BasicButton>
-        <BasicButton color="G2" varient="alarmSettings" link="">
+        <BasicButton color="G2" varient="alarmSettings" link="/alarm-settings">
           Alarm Settings
         </BasicButton>
         <BasicButton color="PG" varient="pillSettings" link="">

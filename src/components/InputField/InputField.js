@@ -21,7 +21,7 @@ const styles = theme => ({
 });
 
 const InputField = props => {
-  const { classes, type, ...otherProps } = props;
+  const { classes, type, onChange, ...otherProps } = props;
 
   return (
     <div className={classes.container}>
@@ -36,8 +36,9 @@ const InputField = props => {
           }
         }}
         InputProps={{ classes: { underline: classes.cssUnderline } }}
+        onChange={onChange}
         label={props.label}
-        value={""}
+        value={props.value}
       />
     </div>
   );

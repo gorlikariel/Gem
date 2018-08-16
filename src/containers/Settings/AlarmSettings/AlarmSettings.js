@@ -3,7 +3,7 @@ import { TextField } from "@material-ui/core";
 import { connect } from "react-redux";
 import InputField from "../../../components/InputField/InputField";
 import * as actions from "../../../store/actions/actionsIndex";
-class AccountSettings extends Component {
+class AlarmSettings extends Component {
   componentDidMount() {
     this.setState({ screenWidth: window.innerWidth + "px" });
   }
@@ -59,4 +59,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(AccountSettings);
+export default connect(mapStateToProps, mapDispatchToProps)(AlarmSettings);
