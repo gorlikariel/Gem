@@ -1,12 +1,12 @@
 import * as actionTypes from "../actions/actionTypes";
 
 const initialState = {
-  settingsForm: {
+  form: {
     name: {
       elementType: "input",
       elementConfig: {
         type: "text",
-        placeholder: "Your Name"
+        label: "Name"
       },
       value: "",
       touched: false,
@@ -19,7 +19,7 @@ const initialState = {
       elementType: "input",
       elementConfig: {
         type: "text",
-        placeholder: "Your Street"
+        label: "Username"
       },
       value: "",
       touched: false,
@@ -32,7 +32,7 @@ const initialState = {
       elementType: "input",
       elementConfig: {
         type: "email",
-        placeholder: "Your Email"
+        label: "Email address"
       },
       value: "",
       touched: false,
@@ -57,55 +57,7 @@ export default (state = initialState, action) => {
         isFormValid: action.isFormValid
       };
 
-    case actionTypes.PURCHASE_SUCCESS:
-      return {
-        ...state,
-        loading: false,
-        purchased: true
-      };
-
-    case actionTypes.PURCHASE_FAILED:
-      return {
-        ...state,
-        loading: false,
-        error: false
-      };
-
-    case actionTypes.START_PURCHASE:
-      return {
-        ...state,
-        loading: true,
-        error: false
-      };
-
-    case actionTypes.PURCHASE_INIT:
-      return {
-        ...state,
-        purchased: false
-      };
-
-    case actionTypes.START_FETCHING_ORDERS:
-      return {
-        ...state,
-        loading: true,
-        error: false
-      };
-
-    case actionTypes.FETCH_ORDERS_SUCCESS:
-      return {
-        ...state,
-        orders: action.orders,
-        loading: false,
-        error: false
-      };
-
-    case actionTypes.FETCH_ORDERS_FAILED:
-      return {
-        ...state,
-        loading: false,
-        error: true
-      };
-
+    
     default:
       return state;
   }

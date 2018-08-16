@@ -5,10 +5,13 @@ import RightArrow from "../Icons/RightArrow/RightArrow";
 import AccountIcon from "../Icons/AccountIcon/AccountIcon";
 import ClockIcon from "../Icons/ClockIcon/ClockIcon";
 import PillIcon from "../Icons/PillIcon/PillIcon";
+import { NavLink } from "react-router-dom";
 
 interface BasicButtonProps {
   varient: string;
   color: string;
+  link: string;
+  exact?: boolean;
 }
 
 const BasicButton: React.SFC<BasicButtonProps> = props => {
@@ -31,8 +34,6 @@ const BasicButton: React.SFC<BasicButtonProps> = props => {
     button: {
       height: "64px",
       borderRadius: "6px",
-      marginRight: "24px",
-      marginLeft: "24px",
       marginTop: "18px",
       boxShadow: "0 4px 14px 1px #d4dde558, 0 4px 6px -2px #8ea9c33f",
       backgroundImage: buttonGradient,
@@ -41,7 +42,11 @@ const BasicButton: React.SFC<BasicButtonProps> = props => {
       color: textColor,
       backgroundColor: buttonColor
       //-----
-    } as React.CSSProperties
+    } as React.CSSProperties,
+    navLink: {
+      textDecoration: "none",
+      color: "inherit"
+    }
   };
   switch (props.varient) {
     case "accountSettings":
@@ -49,7 +54,6 @@ const BasicButton: React.SFC<BasicButtonProps> = props => {
       break;
     case "alarmSettings":
       buttonIcon = <ClockIcon style={styles.buttonIcon} />;
-      console.log(buttonGradient);
       break;
     case "pillSettings":
       buttonIcon = <PillIcon style={styles.buttonIcon} />;
@@ -64,17 +68,19 @@ const BasicButton: React.SFC<BasicButtonProps> = props => {
       break;
   }
   return (
-    <div style={styles.button}>
-      {buttonIcon}
-      <Typography
-        style={{ paddingLeft: "12px" }}
-        variant="display3"
-        color="inherit"
-      >
-        {props.children}
-      </Typography>
-      <div style={{ marginLeft: "auto" }}>{rightArrow}</div>
-    </div>
+    <NavLink to={props.link} exact={props.exact} style={styles.navLink}>
+      <div style={styles.button}>
+        {buttonIcon}
+        <Typography
+          style={{ paddingLeft: "12px" }}
+          variant="display3"
+          color="inherit"
+        >
+          {props.children}
+        </Typography>
+        <div style={{ marginLeft: "auto" }}>{rightArrow}</div>
+      </div>
+    </NavLink>
   );
 };
 

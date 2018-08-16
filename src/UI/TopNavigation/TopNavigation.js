@@ -13,7 +13,7 @@ class TopNavigation extends Component {
   render() {
     const styles = {
       root: {
-        backgroundColor: "#fdfdfd",
+        backgroundColor: "inherit",
         boxShadow: "0 0 0 0"
       }
     };

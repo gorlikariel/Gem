@@ -1,15 +1,15 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import App from "./App";
-import settingsReducer from "./store/reducers/settingsReducer";
 import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import { createStore, combineReducers, applyMiddleware } from "redux";
 import { composeWithDevTools } from "redux-devtools-extension";
 import thunk from "redux-thunk";
+import accountSettingsReducer from "./store/reducers/accountSettingsReducer";
 
 const rootReducer = combineReducers({
-  settings: settingsReducer
+  accountSettings: accountSettingsReducer
 });
 
 const store = createStore(
