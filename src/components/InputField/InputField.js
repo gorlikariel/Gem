@@ -1,7 +1,7 @@
 import * as theme from "../../UI/theme/theme";
 import * as React from "react";
 import { withStyles } from "@material-ui/core/styles";
-import { FormControl, TextField, InputLabel, Input } from "@material-ui/core";
+import { TextField } from "@material-ui/core";
 const C3 = theme.C3;
 const styles = theme => ({
   container: {
@@ -20,6 +20,13 @@ const styles = theme => ({
   }
 });
 
+// type Props = {
+//   // classes: Object;
+//   type: string;
+//   onChange : React.FormEvent;
+
+// };
+// const InputField: React.SFC<Props> = ({type: type, }) => {
 const InputField = props => {
   const { classes, type, onChange, ...otherProps } = props;
 

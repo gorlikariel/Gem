@@ -55,7 +55,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     onInputChangedHandler: (event, inputId) =>
-      dispatch(actions.updateForm(event, inputId))
+      dispatch(actions.updateAccountSettings(event, inputId))
   };
 };
 

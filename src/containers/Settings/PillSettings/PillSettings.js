@@ -1,14 +1,9 @@
 import React, { Component } from "react";
 import { TextField } from "@material-ui/core";
 import { connect } from "react-redux";
-import InputField from "../../../components/InputField/InputField";
 import * as actions from "../../../store/actions/actionsIndex";
-class AlarmSettings extends Component {
-  componentDidMount() {
-    this.setState({ screenWidth: window.innerWidth + "px" });
-  }
-  state = { screenWidth: null };
-
+import InputField from "../../../components/InputField/InputField";
+class PillSettings extends Component {
   render() {
     const styles = {
       text: {
@@ -48,15 +43,15 @@ class AlarmSettings extends Component {
 }
 const mapStateToProps = state => {
   return {
-    form: state.alarmSettings.form
+    form: state.pillSettings.form
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
     onInputChangedHandler: (event, inputId) =>
-      dispatch(actions.updateAlarmSettings(event, inputId))
+      dispatch(actions.updatePillSettings(event, inputId))
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(AlarmSettings);
+export default connect(mapStateToProps, mapDispatchToProps)(PillSettings);

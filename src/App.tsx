@@ -7,6 +7,7 @@ import theme from "./UI/theme/theme";
 import AccountSettings from "./containers/Settings/AccountSettings/AccountSettings";
 import AlarmSettings from "./containers/Settings/AlarmSettings/AlarmSettings";
 import TopNavigation from "./UI/TopNavigation/TopNavigation";
+import PillSettings from "./containers/Settings/PillSettings/PillSettings";
 
 class App extends React.Component {
   public render() {
@@ -25,6 +26,11 @@ class App extends React.Component {
               exact={true}
               path="/alarm-settings"
               component={AlarmSettings}
+            />
+            <Route
+              exact={true}
+              path="/pill-settings"
+              component={PillSettings}
             />
           </Switch>
         </MuiThemeProvider>

@@ -16,7 +16,7 @@ class TopNavigation extends Component {
     console.log(navText);
   };
   goBack = pageName => {
-    pageName === "Account Settings"
+    pageName === "Account Settings" || "Alarm Settings" || "Pill Settings"
       ? this.props.history.push("/settings")
       : this.props.history.push("/");
   };

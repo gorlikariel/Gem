@@ -2,7 +2,7 @@ import * as actionTypes from "./actionTypes";
 import { newForm, formValidity } from "./formUtility";
 export const formChanged = (form, isFormValid) => {
   return {
-    type: actionTypes.FORM_CHANGED,
+    type: actionTypes.ALARM_SETTINGS_CHANGED,
     form: form,
     isFormValid: isFormValid
   };
@@ -13,7 +13,7 @@ export const updateForm = (event, inputIdentifier) => {
     const form = newForm(
       event,
       inputIdentifier,
-      prevState().accountSettings.form
+      prevState().alarmSettings.form
     );
     const isFormValid = formValidity(form);
     dispatch(formChanged(form, isFormValid));

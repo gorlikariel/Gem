@@ -2,39 +2,26 @@ import * as actionTypes from "../actions/actionTypes";
 
 const initialState = {
   form: {
-    name: {
+    pillsInPack: {
       elementType: "input",
       elementConfig: {
-        type: "text",
-        label: "Name"
+        type: "number",
+        label: "Pills in pack"
       },
-      value: "Foo",
+      value: "21",
       touched: false,
       validation: {
         required: true,
         valid: false
       }
     },
-    userName: {
+    amountOfPacks: {
       elementType: "input",
       elementConfig: {
-        type: "text",
-        label: "Username"
+        type: "number",
+        label: "Amount of packs"
       },
-      value: "Bar",
-      touched: false,
-      validation: {
-        required: true,
-        valid: false
-      }
-    },
-    email: {
-      elementType: "input",
-      elementConfig: {
-        type: "email",
-        label: "Email address"
-      },
-      value: "Foo@Bar.com",
+      value: "2",
       touched: false,
       validation: {
         required: true,
@@ -42,6 +29,7 @@ const initialState = {
       }
     }
   },
+  notifyWhenPillsRunOut: false,
   isFormValid: false,
   loading: false,
   submitted: false,
@@ -50,7 +38,7 @@ const initialState = {
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case actionTypes.ACCOUNT_SETTINGS_CHANGED:
+    case actionTypes.PILL_SETTINGS_CHANGED:
       return {
         ...state,
         form: action.form,
