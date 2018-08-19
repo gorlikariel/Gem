@@ -8,7 +8,6 @@ import AccountSettings from "./containers/Settings/AccountSettings/AccountSettin
 import AlarmSettings from "./containers/Settings/AlarmSettings/AlarmSettings";
 import TopNavigation from "./UI/TopNavigation/TopNavigation";
 import PillSettings from "./containers/Settings/PillSettings/PillSettings";
-
 class App extends React.Component {
   public render() {
     return (

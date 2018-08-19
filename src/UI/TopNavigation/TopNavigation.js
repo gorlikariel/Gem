@@ -10,10 +10,13 @@ import LeftArrow from "../Icons/LeftArrow/LeftArrow";
 import theme from "../theme/theme";
 import { connect } from "react-redux";
 import Checkmark from "../Icons/Checkmark/Checkmark";
+import blueMarble from "../../axios/axiosInstance";
+import * as actions from "../../store/actions/actionsIndex";
 
 class TopNavigation extends Component {
   submitForm = navText => {
     console.log(navText);
+    this.props.updatePillSettings(this.props.pillSettings);
   };
   goBack = pageName => {
     pageName === "Account Settings" || "Alarm Settings" || "Pill Settings"
@@ -63,13 +66,16 @@ class TopNavigation extends Component {
 
 const mapStateToProps = state => {
   return {
-    form: state.accountSettings.form
+    accountSettings: state.accountSettings.form,
+    alarmSettings: state.alarmSettings.form,
+    pillSettings: state.pillSettings.form
   };
 };
 
 const mapDispatchToProps = dispatch => {
-  return {};
+  return {
+    updatePillSettings: form => dispatch(actions.postPillSettings(form))
+  };
 };
 
-// export default connect(mapStateToProps, mapDispatchToProps)(TopNavigation);
-export default TopNavigation;
+export default connect(mapStateToProps, mapDispatchToProps)(TopNavigation);
