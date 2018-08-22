@@ -32,6 +32,7 @@ const BasicButton: React.SFC<BasicButtonProps> = props => {
       paddingLeft: "20px"
     },
     button: {
+      width: "100%",
       height: "64px",
       borderRadius: "6px",
       marginTop: "18px",

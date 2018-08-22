@@ -10,7 +10,6 @@ export const newForm = (event, inputIdentifier, Form) => {
     touched: true,
     value: event.target.value
   };
-  console.log(updatedFormElement);
   //   updatedFormElement.touched = true;
   //   updatedFormElement.value = event.target.value;
   updatedFormElement.validation.valid = checkValidity(

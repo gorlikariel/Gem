@@ -12,16 +12,19 @@ import { connect } from "react-redux";
 import Checkmark from "../Icons/Checkmark/Checkmark";
 import blueMarble from "../../axios/axiosInstance";
 import * as actions from "../../store/actions/actionsIndex";
+import CogwheelIcon from "../Icons/CogwheelIcon/CogwheelIcon";
 
 class TopNavigation extends Component {
+  goToSettings = () => {
+    this.props.history.push("/settings");
+  };
   submitForm = navText => {
-    console.log(navText);
     this.props.updatePillSettings(this.props.pillSettings);
   };
   goBack = pageName => {
-    pageName === "Account Settings" || "Alarm Settings" || "Pill Settings"
-      ? this.props.history.push("/settings")
-      : this.props.history.push("/");
+    pageName === "Settings"
+      ? this.props.history.push("/")
+      : this.props.history.push("/settings");
   };
   //removes the '/' from pathname, replaces '-' with a space and capitalizes the first charachters
   prettifyPathName = pathname =>
@@ -33,7 +36,19 @@ class TopNavigation extends Component {
         txt => txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase()
       );
   render() {
+    const leftArrow = (
+      <IconButton onClick={() => this.goBack(pageName)}>
+        <LeftArrow />
+      </IconButton>
+    );
+    const submitButton = (
+      <IconButton onClick={() => this.submitForm(ass)}>
+        <Checkmark />
+      </IconButton>
+    );
+
     const pageName = this.prettifyPathName(this.props.location.pathname);
+
     const ass = "ass";
     const styles = {
       root: {
@@ -45,18 +60,17 @@ class TopNavigation extends Component {
     return (
       <AppBar position="sticky" style={styles.root}>
         <Toolbar disableGutters>
-          <IconButton onClick={() => this.goBack(pageName)}>
-            <LeftArrow />
-          </IconButton>
+          {pageName !== "" ? leftArrow : null}
           <Typography variant="title" color="primary">
             {pageName}
           </Typography>
           <div style={{ marginLeft: "auto" }}>
-            {pageName === "Settings" ? null : (
-              <IconButton onClick={() => this.submitForm(ass)}>
-                <Checkmark />
+            {pageName === "Settings" || pageName === "" ? null : submitButton}
+            {pageName === "" ? (
+              <IconButton onClick={() => this.goToSettings()}>
+                <CogwheelIcon />
               </IconButton>
-            )}
+            ) : null}
           </div>
         </Toolbar>
       </AppBar>

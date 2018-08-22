@@ -6,15 +6,19 @@ import { MuiThemeProvider } from "../node_modules/@material-ui/core";
 import theme from "./UI/theme/theme";
 import AccountSettings from "./containers/Settings/AccountSettings/AccountSettings";
 import AlarmSettings from "./containers/Settings/AlarmSettings/AlarmSettings";
-import TopNavigation from "./UI/TopNavigation/TopNavigation";
 import PillSettings from "./containers/Settings/PillSettings/PillSettings";
+import TopNavigation from "./UI/TopNavigation/TopNavigation";
+import MainPage from "./containers/MainPage/MainPage";
 class App extends React.Component {
   public render() {
     return (
       <Layout>
         <MuiThemeProvider theme={theme}>
           <Route path="/" component={TopNavigation} />
+          
           <Switch>
+          <Route exact={true} path="/" component={MainPage} />
+
             <Route exact={true} path="/settings" component={Settings} />
             <Route
               exact={true}

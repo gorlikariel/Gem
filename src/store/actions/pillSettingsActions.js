@@ -24,7 +24,7 @@ export const postPillSettings = form => {
       amountOfPacks: form.amountOfPacks.value
     };
     blueMarble
-      .post("/settings.json", updatedSettings)
+      .post("/settings/pill.json", updatedSettings)
       .then(res => console.log(res.data.name))
       .catch(error => console.log(error));
   };

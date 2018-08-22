@@ -31,6 +31,23 @@ const theme = createMuiTheme({
         fontSize: "16px",
         fontWeight: 500,
         letterSpacing: "0.0300rem"
+      },
+      display4: {
+        fontSize: "23px",
+        fontWeight: "600",
+        letterSpacing: "1.6px",
+        fontFamily: ["-apple-system", " BlinkMacSystemFont", "helvetica"]
+      },
+      subheading: {
+        fontSize: "15px",
+        fontWeight: 300,
+        letterSpacing: "0.2px",
+        fontFamily: ["-apple-system", " BlinkMacSystemFont", "helvetica"]
+      }
+    },
+    MuiBottomNavigationAction: {
+      selected: {
+        borderBottom: "4px solid #8399fb"
       }
     }
   }

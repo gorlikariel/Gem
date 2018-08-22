@@ -1,10 +1,11 @@
 import BasicButton from "../../UI/BasicButton/BasicButton";
 import * as React from "react";
+// import LogoutModal from "../../UI/Modal/LogoutModal";
 
 class Settings extends React.Component {
   render() {
     return (
-      <div style={{ marginTop: 10 }}>
+      <div id="this" style={{ marginTop: 10 }}>
         <BasicButton
           color="G3"
           varient="accountSettings"

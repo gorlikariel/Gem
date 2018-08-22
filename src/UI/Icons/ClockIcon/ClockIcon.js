@@ -1,16 +1,7 @@
 import React from "react";
-import { withStyles } from "@material-ui/core/styles";
 import SvgIcon from "@material-ui/core/SvgIcon";
 
-const styles = theme => ({
-  root: {
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "flex-end"
-  }
-});
-
-function ClockIcon(props) {
+const ClockIcon = props => {
   return (
     <SvgIcon {...props}>
       <path
@@ -20,6 +11,6 @@ function ClockIcon(props) {
       /> />
     </SvgIcon>
   );
-}
+};
 
-export default withStyles(styles)(ClockIcon);
+export default ClockIcon;
