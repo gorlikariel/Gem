@@ -8,7 +8,7 @@ const initialState = {
         type: "text",
         label: "Name"
       },
-      value: "Foo",
+      value: "",
       touched: false,
       validation: {
         required: true,
@@ -21,7 +21,7 @@ const initialState = {
         type: "text",
         label: "Username"
       },
-      value: "Bar",
+      value: "",
       touched: false,
       validation: {
         required: true,
@@ -32,9 +32,9 @@ const initialState = {
       elementType: "input",
       elementConfig: {
         type: "email",
-        label: "Email address"
+        label: "Email"
       },
-      value: "Foo@Bar.com",
+      value: "",
       touched: false,
       validation: {
         required: true,
@@ -53,8 +53,44 @@ export default (state = initialState, action) => {
     case actionTypes.ACCOUNT_SETTINGS_CHANGED:
       return {
         ...state,
-        form: action.form,
         isFormValid: action.isFormValid
+      };
+
+    case actionTypes.INIT_ACCOUNT_SETTINGS:
+      return {
+        ...state,
+        form: {
+          ...state.form,
+          name: {
+            ...state.form.name,
+            elementConfig: { ...state.form.name.elementConfig },
+            validation: { ...state.form.name.validation },
+            value: action.settings.name
+          },
+          userName: {
+            ...state.form.userName,
+            elementConfig: { ...state.form.userName.elementConfig },
+            validation: { ...state.form.userName.validation },
+            value: action.settings.username
+          },
+          email: {
+            ...state.form.email,
+            elementConfig: { ...state.form.email.elementConfig },
+            validation: { ...state.form.email.validation },
+            value: action.settings.email
+          }
+        },
+        loading: false
+      };
+    case actionTypes.SUBMIT_ACCOUNT_SETTINGS:
+      return {
+        ...state,
+        loading: false
+      };
+    case actionTypes.LOADING_ACCOUNT_SETTINGS:
+      return {
+        ...state,
+        loading: true
       };
 
     default:

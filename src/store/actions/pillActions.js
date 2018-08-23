@@ -18,7 +18,7 @@ export const tryTakingPill = () => {
     dispatch(loading());
     database
       .ref("dailyPill/taken")
-      .set("true")
+      .set(true)
       .then(res => dispatch(pillTaken()))
       .catch(err => console.log(err));
   };

@@ -3,9 +3,10 @@ import { TextField } from "@material-ui/core";
 import { connect } from "react-redux";
 import InputField from "../../../components/InputField/InputField";
 import * as actions from "../../../store/actions/actionsIndex";
+import HashLoader from "react-spinners/HashLoader";
 class AccountSettings extends Component {
   componentDidMount() {
-    this.setState({ screenWidth: window.innerWidth + "px" });
+    this.props.onInitAccountSettings();
   }
   state = { screenWidth: null };
 
@@ -22,40 +23,60 @@ class AccountSettings extends Component {
         config: this.props.form[key]
       });
     }
-    let form = formElementsArray.map(formElement => (
-      <InputField
-        id={formElement.id}
-        key={formElement.id}
-        label={formElement.config.elementConfig.label}
-        type={formElement.config.elementConfig.type}
-        style={styles[formElement.config.elementConfig.type]}
-        value={formElement.config.value}
-        margin="normal"
-        onChange={event =>
-          this.props.onInputChangedHandler(event, formElement.id)
-        }
-      />
-    ));
+    let form = this.props.loading ? null : (
+      <form noValidate autoComplete="off">
+        {formElementsArray.map(formElement => (
+          <InputField
+            id={formElement.id}
+            key={formElement.id}
+            label={formElement.config.elementConfig.label}
+            type={formElement.config.elementConfig.type}
+            style={styles[formElement.config.elementConfig.type]}
+            value={formElement.config.value}
+            margin="normal"
+            onChange={event =>
+              this.props.onInputChangedHandler(event, formElement.id)
+            }
+          />
+        ))}
+      </form>
+    );
     return (
       <React.Fragment>
-        <form noValidate autoComplete="off">
-          {form}
-        </form>
-        {/*this.state.screenWidth ? <hr width={this.state.screenWidth} /> : null*/}
+        {this.props.loading ? (
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              marginTop: "100px"
+            }}
+          >
+            <HashLoader
+              sizeUnit={"px"}
+              size={50}
+              color={"#757177"}
+              loading={this.props.loading}
+            />
+          </div>
+        ) : (
+          form
+        )}
       </React.Fragment>
     );
   }
 }
 const mapStateToProps = state => {
   return {
-    form: state.accountSettings.form
+    form: state.accountSettings.form,
+    loading: state.accountSettings.loading
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
     onInputChangedHandler: (event, inputId) =>
-      dispatch(actions.updateAccountSettings(event, inputId))
+      dispatch(actions.updateAccountSettings(event, inputId)),
+    onInitAccountSettings: () => dispatch(actions.initAccountSettings())
   };
 };
 

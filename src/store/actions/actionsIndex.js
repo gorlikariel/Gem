@@ -1,4 +1,7 @@
-export { updateForm as updateAccountSettings } from "./accountSettingsActions";
+export {
+  updateForm as updateAccountSettings,
+  initAccountSettings
+} from "./accountSettingsActions";
 export { updateForm as updateAlarmSettings } from "./alarmSettingsActions";
 export {
   updateForm as updatePillSettings,
