@@ -7,7 +7,7 @@ import HomeIcon from "../Icons/HomeIcon/HomeIcon";
 import QuestionMark from "../Icons/QuestionMark/QuestionMark";
 import * as theme from "../theme/theme";
 import { withRouter } from "react-router-dom";
-
+// TODO bottom nav isn't responsive (should stretch on wider screens) and there's a weird space in the left corner
 const styles = {
   root: {
     width: "100%",

@@ -4,3 +4,4 @@ export {
   updateForm as updatePillSettings,
   postPillSettings
 } from "./pillSettingsActions";
+export { tryTakingPill, initPillButton } from "./pillActions";

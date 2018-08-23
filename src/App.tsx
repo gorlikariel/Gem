@@ -9,15 +9,16 @@ import AlarmSettings from "./containers/Settings/AlarmSettings/AlarmSettings";
 import PillSettings from "./containers/Settings/PillSettings/PillSettings";
 import TopNavigation from "./UI/TopNavigation/TopNavigation";
 import MainPage from "./containers/MainPage/MainPage";
+
 class App extends React.Component {
   public render() {
     return (
       <Layout>
         <MuiThemeProvider theme={theme}>
           <Route path="/" component={TopNavigation} />
-          
+
           <Switch>
-          <Route exact={true} path="/" component={MainPage} />
+            <Route exact={true} path="/" component={MainPage} />
 
             <Route exact={true} path="/settings" component={Settings} />
             <Route

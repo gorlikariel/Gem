@@ -1,5 +1,3 @@
-import * as firebase from "firebase";
-const database = firebase.database();
 // const testUpdate = () => {
 //   const updates = {};
 //   updates["/settings" + "-LKIGU8q5PK4_Htqbt1q"] = {
@@ -12,3 +10,6 @@ const database = firebase.database();
 //     .update(updates);
 // };
 // testUpdate();
+const addZero = min => (min < 10 ? "0" + min : min);
+const d = new Date();
+export const HOUR_STAMP = addZero(d.getHours()) + ":" + addZero(d.getMinutes());
