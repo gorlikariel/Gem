@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { TextField } from "@material-ui/core";
 import { connect } from "react-redux";
 import InputField from "../../../components/InputField/InputField";
+// import { Prompt } from "react-router";
+// USE PROMPT, ITS TOO COOL TO IGNORE
 import * as actions from "../../../store/actions/actionsIndex";
 class AlarmSettings extends Component {
   componentDidMount() {
@@ -10,6 +12,7 @@ class AlarmSettings extends Component {
   state = { screenWidth: null };
 
   render() {
+    // console.log(this.props.match.params);
     const styles = {
       text: {
         width: "100%"

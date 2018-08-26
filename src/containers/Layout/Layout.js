@@ -1,6 +1,6 @@
 import * as React from "react";
 import TopNavigation from "../../UI/TopNavigation/TopNavigation";
-import { MuiThemeProvider } from "../../../node_modules/@material-ui/core";
+import { MuiThemeProvider } from "@material-ui/core";
 import theme from "../../UI/theme/theme";
 import BodyBackgroundColor from "react-body-backgroundcolor";
 import * as pallete from "../../UI/theme/theme";

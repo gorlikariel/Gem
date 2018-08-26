@@ -31,3 +31,4 @@ const app = (
 );
 
 ReactDOM.render(app, document.getElementById("root"));
+//init store in another file 

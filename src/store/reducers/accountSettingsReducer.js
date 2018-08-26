@@ -42,6 +42,7 @@ const initialState = {
       }
     }
   },
+  initialized: false,
   isFormValid: false,
   loading: false,
   submitted: false,
@@ -80,7 +81,8 @@ export default (state = initialState, action) => {
             value: action.settings.email
           }
         },
-        loading: false
+        loading: false,
+        initialized: true
       };
     case actionTypes.SUBMIT_ACCOUNT_SETTINGS:
       return {

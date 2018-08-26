@@ -3,11 +3,11 @@ import { TextField } from "@material-ui/core";
 import { connect } from "react-redux";
 import InputField from "../../../components/InputField/InputField";
 import * as actions from "../../../store/actions/actionsIndex";
-import HashLoader from "react-spinners/HashLoader";
+import CircleLoader from "react-spinners/CircleLoader";
 class AccountSettings extends Component {
-  componentDidMount() {
-    this.props.onInitAccountSettings();
-  }
+  // componentDidMount() {
+  //   this.props.onInitAccountSettings();
+  // }
   state = { screenWidth: null };
 
   render() {
@@ -51,7 +51,7 @@ class AccountSettings extends Component {
               marginTop: "100px"
             }}
           >
-            <HashLoader
+            <CircleLoader
               sizeUnit={"px"}
               size={50}
               color={"#757177"}
@@ -75,8 +75,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     onInputChangedHandler: (event, inputId) =>
-      dispatch(actions.updateAccountSettings(event, inputId)),
-    onInitAccountSettings: () => dispatch(actions.initAccountSettings())
+      dispatch(actions.updateAccountSettings(event, inputId))
   };
 };
 

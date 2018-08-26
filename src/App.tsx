@@ -9,7 +9,7 @@ import AlarmSettings from "./containers/Settings/AlarmSettings/AlarmSettings";
 import PillSettings from "./containers/Settings/PillSettings/PillSettings";
 import TopNavigation from "./UI/TopNavigation/TopNavigation";
 import MainPage from "./containers/MainPage/MainPage";
-
+//remove muithemeprovider from here or from layout
 class App extends React.Component {
   public render() {
     return (

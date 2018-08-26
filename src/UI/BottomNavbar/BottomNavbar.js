@@ -34,7 +34,7 @@ class BottomNavbar extends React.Component {
         break;
     }
   };
-
+  //change values to strings and export them to a different file
   render() {
     const { classes } = this.props;
     const { value } = this.state;

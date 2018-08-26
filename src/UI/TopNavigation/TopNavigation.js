@@ -21,12 +21,14 @@ class TopNavigation extends Component {
   submitForm = navText => {
     this.props.updatePillSettings(this.props.pillSettings);
   };
-  goBack = pageName => {
-    pageName === "Settings"
-      ? this.props.history.push("/")
-      : this.props.history.push("/settings");
-  };
+  //change it to stack based history push
+  // goBack = pageName => {
+  //   pageName === "Settings"
+  //     ? this.props.history.push("/")
+  //     : this.props.history.push("/settings");
+  // };
   //removes the '/' from pathname, replaces '-' with a space and capitalizes the first charachters
+  //change it please
   prettifyPathName = pathname =>
     pathname
       .substr(1)
@@ -36,8 +38,9 @@ class TopNavigation extends Component {
         txt => txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase()
       );
   render() {
+    console.log(this.props);
     const leftArrow = (
-      <IconButton onClick={() => this.goBack(pageName)}>
+      <IconButton onClick={() => this.props.history.goBack()}>
         <LeftArrow />
       </IconButton>
     );
