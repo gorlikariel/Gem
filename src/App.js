@@ -11,15 +11,14 @@ import TopNavigation from "./UI/TopNavigation/TopNavigation";
 import MainPage from "./containers/MainPage/MainPage";
 //remove muithemeprovider from here or from layout
 class App extends React.Component {
-  public render() {
+  render() {
     return (
-      <Layout>
-        <MuiThemeProvider theme={theme}>
+      <MuiThemeProvider theme={theme}>
+        <Layout>
           <Route path="/" component={TopNavigation} />
 
           <Switch>
             <Route exact={true} path="/" component={MainPage} />
-
             <Route exact={true} path="/settings" component={Settings} />
             <Route
               exact={true}
@@ -37,8 +36,8 @@ class App extends React.Component {
               component={PillSettings}
             />
           </Switch>
-        </MuiThemeProvider>
-      </Layout>
+        </Layout>
+      </MuiThemeProvider>
     );
   }
 }

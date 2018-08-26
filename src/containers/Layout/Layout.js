@@ -1,15 +1,13 @@
 import * as React from "react";
 import TopNavigation from "../../UI/TopNavigation/TopNavigation";
-import { MuiThemeProvider } from "@material-ui/core";
-import theme from "../../UI/theme/theme";
 import BodyBackgroundColor from "react-body-backgroundcolor";
-import * as pallete from "../../UI/theme/theme";
 import BottomNavbar from "../../UI/BottomNavbar/BottomNavbar";
+import * as theme from "../../UI/theme/theme";
 class Layout extends React.Component {
   render() {
     return (
-      <MuiThemeProvider theme={theme}>
-        <BodyBackgroundColor backgroundColor={pallete.PWL}>
+      <React.Fragment>
+        <BodyBackgroundColor backgroundColor={theme.PWL}>
           <div
             style={{
               width: "100%",
@@ -27,7 +25,7 @@ class Layout extends React.Component {
           </div>
         </BodyBackgroundColor>
         <BottomNavbar />
-      </MuiThemeProvider>
+      </React.Fragment>
     );
   }
 }

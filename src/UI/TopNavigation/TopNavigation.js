@@ -13,46 +13,40 @@ import Checkmark from "../Icons/Checkmark/Checkmark";
 import blueMarble from "../../axios/axiosInstance";
 import * as actions from "../../store/actions/actionsIndex";
 import CogwheelIcon from "../Icons/CogwheelIcon/CogwheelIcon";
+import { Link } from "react-router-dom";
 
 class TopNavigation extends Component {
-  goToSettings = () => {
-    this.props.history.push("/settings");
-  };
   submitForm = navText => {
     this.props.updatePillSettings(this.props.pillSettings);
   };
-  //change it to stack based history push
-  // goBack = pageName => {
-  //   pageName === "Settings"
-  //     ? this.props.history.push("/")
-  //     : this.props.history.push("/settings");
-  // };
-  //removes the '/' from pathname, replaces '-' with a space and capitalizes the first charachters
-  //change it please
-  prettifyPathName = pathname =>
-    pathname
-      .substr(1)
-      .replace("-", " ")
-      .replace(
-        /\w\S*/g,
-        txt => txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase()
-      );
   render() {
-    console.log(this.props);
     const leftArrow = (
       <IconButton onClick={() => this.props.history.goBack()}>
         <LeftArrow />
       </IconButton>
     );
     const submitButton = (
-      <IconButton onClick={() => this.submitForm(ass)}>
+      <IconButton onClick={() => this.submitForm("POOP")}>
         <Checkmark />
       </IconButton>
     );
-
-    const pageName = this.prettifyPathName(this.props.location.pathname);
-
-    const ass = "ass";
+    const settingsIcon = (
+      <Link
+        to={{
+          pathname: "/settings",
+          state: {
+            showLeftArrow: true,
+            showSubmit: false,
+            title: "Settings"
+          }
+        }}
+      >
+        <IconButton>
+          <CogwheelIcon />
+        </IconButton>
+      </Link>
+    );
+    const { showLeftArrow, showSubmit, title } = this.props.location.state;
     const styles = {
       root: {
         backgroundColor: "inherit",
@@ -63,17 +57,13 @@ class TopNavigation extends Component {
     return (
       <AppBar position="sticky" style={styles.root}>
         <Toolbar disableGutters>
-          {pageName !== "" ? leftArrow : null}
+          {showLeftArrow ? leftArrow : null}
           <Typography variant="title" color="primary">
-            {pageName}
+            {title}
           </Typography>
           <div style={{ marginLeft: "auto" }}>
-            {pageName === "Settings" || pageName === "" ? null : submitButton}
-            {pageName === "" ? (
-              <IconButton onClick={() => this.goToSettings()}>
-                <CogwheelIcon />
-              </IconButton>
-            ) : null}
+            {showSubmit ? submitButton : null}
+            {title === "" ? settingsIcon : null}
           </div>
         </Toolbar>
       </AppBar>

@@ -1,5 +1,4 @@
 import React from "react";
-import WideButton from "../BasicButton/WideButton";
 import * as theme from "../theme/theme";
 import AccountIcon from "../Icons/AccountIcon/AccountIcon";
 import { Typography } from "@material-ui/core";
@@ -7,6 +6,7 @@ import RightArrow from "../Icons/RightArrow/RightArrow";
 import { Link } from "react-router-dom";
 import ClockIcon from "../Icons/ClockIcon/ClockIcon";
 import PillIcon from "../Icons/PillIcon/PillIcon";
+import WideButton from "../WideButton/WideButton";
 
 const SettingsButtons = props => {
   let rightArrow = <RightArrow style={{ paddingRight: "12px" }} />;
@@ -25,7 +25,17 @@ const SettingsButtons = props => {
   };
   return (
     <div>
-      <Link style={{ textDecoration: "none" }} to="/account-settings">
+      <Link
+        style={{ textDecoration: "none" }}
+        to={{
+          pathname: "/account-settings",
+          state: {
+            showLeftArrow: true,
+            showSubmit: true,
+            title: "Account Settings"
+          }
+        }}
+      >
         <WideButton bgColor="G3" color={theme.PWH}>
           <AccountIcon style={styles.buttonIcon} />
           <Typography
@@ -38,7 +48,17 @@ const SettingsButtons = props => {
           <div style={{ marginLeft: "auto" }}>{rightArrow}</div>
         </WideButton>
       </Link>
-      <Link style={{ textDecoration: "none" }} to="/alarm-settings">
+      <Link
+        style={{ textDecoration: "none" }}
+        to={{
+          pathname: "/alarm-settings",
+          state: {
+            showLeftArrow: true,
+            showSubmit: true,
+            title: "Alarm Settings"
+          }
+        }}
+      >
         <WideButton bgColor="G2" color={theme.PWH}>
           <ClockIcon style={styles.buttonIcon} />
           <Typography
@@ -51,7 +71,17 @@ const SettingsButtons = props => {
           <div style={{ marginLeft: "auto" }}>{rightArrow}</div>
         </WideButton>
       </Link>
-      <Link style={{ textDecoration: "none" }} to="/pill-settings">
+      <Link
+        style={{ textDecoration: "none" }}
+        to={{
+          pathname: "/pill-settings",
+          state: {
+            showLeftArrow: true,
+            showSubmit: true,
+            title: "Pill Settings"
+          }
+        }}
+      >
         <WideButton bgColor="PG" color={theme.PWH}>
           <PillIcon style={styles.buttonIcon} />
           <Typography

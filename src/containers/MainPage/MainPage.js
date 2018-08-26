@@ -4,6 +4,7 @@ import BounceLoader from "react-spinners/BounceLoader";
 import * as actions from "../../store/actions/actionsIndex";
 import { connect } from "react-redux";
 import firebase from "../../firebase";
+import * as theme from "../../UI/theme/theme";
 class MainPage extends Component {
   componentDidMount() {
     this.props.onInitPage();
@@ -14,7 +15,7 @@ class MainPage extends Component {
         // className={override}
         sizeUnit={"px"}
         size={264}
-        color={"#757177"}
+        color={theme.C3}
         loading={this.props.loading}
       />
     ) : (

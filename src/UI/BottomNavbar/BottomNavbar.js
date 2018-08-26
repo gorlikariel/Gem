@@ -7,6 +7,7 @@ import HomeIcon from "../Icons/HomeIcon/HomeIcon";
 import QuestionMark from "../Icons/QuestionMark/QuestionMark";
 import * as theme from "../theme/theme";
 import { withRouter } from "react-router-dom";
+const HOME_BUTTON = 1;
 // TODO bottom nav isn't responsive (should stretch on wider screens) and there's a weird space in the left corner
 const styles = {
   root: {
@@ -19,15 +20,21 @@ const styles = {
 
 class BottomNavbar extends React.Component {
   state = {
-    value: null,
-    redirect: null
+    value: null
   };
 
   handleChange = (event, value) => {
     this.setState({ value });
     switch (value) {
-      case 1:
-        this.props.history.push("/");
+      case HOME_BUTTON:
+        this.props.history.push({
+          pathname: "/",
+          state: {
+            showLeftArrow: false,
+            showSubmit: false,
+            title: ""
+          }
+        });
         break;
 
       default:

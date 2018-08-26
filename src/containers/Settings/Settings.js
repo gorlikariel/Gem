@@ -12,14 +12,22 @@ class Settings extends React.Component {
   render() {
     const settingsButtons = <SettingsButtons username={this.props.username} />;
     const loader = (
-      <ClipLoader
-        sizeUnit={"px"}
-        size={50}
-        color={"#757177"}
-        loading={this.props.loading}
-      />
+      <div
+        style={{
+          position: "absolute",
+          top: "50%",
+          left: "50%",
+          transform: "translate(-50%,-50%)"
+        }}
+      >
+        <ClipLoader
+          sizeUnit={"px"}
+          size={50}
+          color={"#757177"}
+          loading={this.props.loading}
+        />
+      </div>
     );
-    const location = { pathname: "/alarm-settings", state: { testing: true } };
     console.log(this.props);
     return (
       <div id="this" style={{ marginTop: 10 }}>
