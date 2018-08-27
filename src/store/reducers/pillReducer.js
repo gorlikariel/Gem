@@ -3,7 +3,7 @@ import * as util from "../../firebaseUtil/firebaseUtil";
 
 const initialState = {
   taken: false,
-  hourOfTaking: "00:00",
+  hourOfTaking: "",
   loading: false
 };
 
@@ -14,6 +14,13 @@ export default (state = initialState, action) => {
         ...state,
         taken: true,
         hourOfTaking: util.HOUR_STAMP,
+        loading: false
+      };
+    case actionTypes.UNDO_PILL:
+      return {
+        ...state,
+        taken: false,
+        hourOfTaking: "",
         loading: false
       };
     case actionTypes.LOADING_PILL_BUTTON:

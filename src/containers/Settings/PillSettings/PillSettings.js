@@ -4,6 +4,16 @@ import { connect } from "react-redux";
 import * as actions from "../../../store/actions/actionsIndex";
 import InputField from "../../../components/InputField/InputField";
 class PillSettings extends Component {
+  componentDidMount() {
+    const topNavbarConfig = {
+      showLeftArrow: true,
+      showSubmit: false,
+      showSettingsIcon: false,
+      title: "Pill Settings"
+    };
+    this.props.onInitPage(topNavbarConfig);
+  }
+
   render() {
     const styles = {
       text: {
@@ -32,12 +42,12 @@ class PillSettings extends Component {
       />
     ));
     return (
-      <React.Fragment>
+      <div style={{ marginTop: 80 }}>
         <form noValidate autoComplete="off">
           {form}
         </form>
         {/*this.state.screenWidth ? <hr width={this.state.screenWidth} /> : null*/}
-      </React.Fragment>
+      </div>
     );
   }
 }
@@ -50,7 +60,9 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     onInputChangedHandler: (event, inputId) =>
-      dispatch(actions.updatePillSettings(event, inputId))
+      dispatch(actions.updatePillSettings(event, inputId)),
+    onInitPage: navBarConfig =>
+      dispatch(actions.setTopNavigationState(navBarConfig))
   };
 };
 

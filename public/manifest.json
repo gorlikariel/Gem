@@ -1,51 +1,109 @@
 {
-  "name": "Blue Marble",
-  "short_name": "BlueMarble",
-  "theme_color": "#c659dd",
-  "background_color": "#dd50e4",
+  "name": "Gem",
+  "short_name": "Gem",
+  "theme_color": "#ffffff",
+  "background_color": "#ffffff",
   "display": "standalone",
   "scope": "/",
-  "start_url": "/",
+  "start_url": "https://bluemarble-a4f07.firebaseapp.com/",
   "icons": [
     {
-      "src": "/images/icon-72x72.png",
-      "type": "image/png",
-      "sizes": "72x72"
+      "src": "/images/716cfcd4-0914-a258-f9af-5e7a85bca338.webPlatform.png",
+      "sizes": "44x44",
+      "type": "image/png"
     },
     {
-      "src": "/images/icon-96x96.png",
-      "type": "image/png",
-      "sizes": "96x96"
+      "src": "/images/8b420be0-3275-9df3-4e6b-5992c693f61e.webPlatform.png",
+      "sizes": "48x48",
+      "type": "image/png"
     },
     {
-      "src": "/images/icon-128x128.png",
-      "type": "image/png",
-      "sizes": "128x128"
+      "src": "/images/c7cc9b78-9593-4040-8ae4-df87167f0113.webPlatform.png",
+      "sizes": "1240x600",
+      "type": "image/png"
     },
     {
-      "src": "/images/icon-144x144.png",
-      "type": "image/png",
-      "sizes": "144x144"
+      "src": "/images/fef800e1-d105-ee67-1d02-4641bfc2d1f4.webPlatform.png",
+      "sizes": "300x300",
+      "type": "image/png"
     },
     {
-      "src": "/images/icon-152x152.png",
-      "type": "image/png",
-      "sizes": "152x152"
+      "src": "/images/4e8d7aa7-f5ed-be4d-b76a-6942a07c6d18.webPlatform.png",
+      "sizes": "150x150",
+      "type": "image/png"
     },
     {
-      "src": "/images/icon-192x192.png",
-      "type": "image/png",
-      "sizes": "192x192"
+      "src": "/images/f8ff0297-4d68-cfe6-eb88-55f38764cc18.webPlatform.png",
+      "sizes": "88x88",
+      "type": "image/png"
     },
     {
-      "src": "/images/icon-384x384.png",
-      "type": "image/png",
-      "sizes": "384x384"
+      "src": "/images/f3c62c28-4efc-1b21-9770-09901eebad51.webPlatform.png",
+      "sizes": "24x24",
+      "type": "image/png"
     },
     {
-      "src": "/images/icon-512x512.png",
-      "type": "image/png",
-      "sizes": "512x512"
+      "src": "/images/6318eccc-4935-ad6a-d924-3e5b1d0598ea.webPlatform.png",
+      "sizes": "50x50",
+      "type": "image/png"
+    },
+    {
+      "src": "/images/2a619f50-0b7c-d5a0-cc8e-e1188a86e9fc.webPlatform.png",
+      "sizes": "620x300",
+      "type": "image/png"
+    },
+    {
+      "src": "/images/67aefbce-1864-9bb8-de27-98c3a1c44437.webPlatform.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/images/5ccb6930-caaf-0d9a-5475-d8359cababe3.webPlatform.png",
+      "sizes": "144x144",
+      "type": "image/png"
+    },
+    {
+      "src": "/images/be4291d8-dbc6-5e44-700d-3d8eb3707ada.webPlatform.png",
+      "sizes": "96x96",
+      "type": "image/png"
+    },
+    {
+      "src": "/images/438dbefa-ee3c-b1f1-efa0-6e6a25589338.webPlatform.png",
+      "sizes": "72x72",
+      "type": "image/png"
+    },
+    {
+      "src": "/images/ca6488c7-fe9f-6c54-c12b-7314995a3ba5.webPlatform.png",
+      "sizes": "36x36",
+      "type": "image/png"
+    },
+    {
+      "src": "/images/ios/ios-appicon-1024-1024.png",
+      "sizes": "1024x1024",
+      "type": "image/png"
+    },
+    {
+      "src": "/images/3a73a274-6b74-e2a1-a4a2-d63399c60a03.webPlatform.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    },
+    {
+      "src": "/images/5df8fcd6-9656-0f44-c00a-439bab377069.webPlatform.png",
+      "sizes": "152x152",
+      "type": "image/png"
+    },
+    {
+      "src": "/images/69251104-55b1-8efb-4029-ad45b3d1a125.webPlatform.png",
+      "sizes": "120x120",
+      "type": "image/png"
+    },
+    {
+      "src": "/images/a78af353-097a-7368-e313-48a10f967860.webPlatform.png",
+      "sizes": "76x76",
+      "type": "image/png"
     }
-  ]
+  ],
+  "lang": "english",
+  "orientation": "portrait-primary",
+  "description": "Never miss your pill, ever again"
 }

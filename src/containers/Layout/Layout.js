@@ -10,18 +10,11 @@ class Layout extends React.Component {
         <BodyBackgroundColor backgroundColor={theme.PWL}>
           <div
             style={{
-              width: "100%",
-              height: "100%"
+              marginRight: "20px",
+              marginLeft: "20px"
             }}
           >
-            <div
-              style={{
-                marginRight: "24px",
-                marginLeft: "24px"
-              }}
-            >
-              {this.props.children}
-            </div>
+            {this.props.children}
           </div>
         </BodyBackgroundColor>
         <BottomNavbar />

@@ -11,6 +11,7 @@ export const PWH = "#ffffff";
 export const PWL = "#fafafa";
 export const G2 = "linear-gradient(to right, #66bbf7, #6696fb)";
 export const G3 = "linear-gradient(to right, #77b4e4, #4ce49e)";
+export const BLK = "black";
 const theme = createMuiTheme({
   palette: {
     primary: {
@@ -46,8 +47,17 @@ const theme = createMuiTheme({
       }
     },
     MuiBottomNavigationAction: {
+      wrapper: {
+        flex: "flex-basis"
+      },
       selected: {
         borderBottom: "4px solid #8399fb"
+      }
+    },
+    MuiToolbar: {
+      root: {
+        paddingRight: "24px",
+        paddingLeft: "24px"
       }
     }
   }

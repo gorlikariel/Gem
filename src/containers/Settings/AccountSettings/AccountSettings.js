@@ -5,9 +5,15 @@ import InputField from "../../../components/InputField/InputField";
 import * as actions from "../../../store/actions/actionsIndex";
 import CircleLoader from "react-spinners/CircleLoader";
 class AccountSettings extends Component {
-  // componentDidMount() {
-  //   this.props.onInitAccountSettings();
-  // }
+  componentDidMount() {
+    const topNavbarConfig = {
+      showLeftArrow: true,
+      showSubmit: false,
+      showSettingsIcon: false,
+      title: "Account Settings"
+    };
+    this.props.onInitPage(topNavbarConfig);
+  }
   state = { screenWidth: null };
 
   render() {
@@ -42,7 +48,7 @@ class AccountSettings extends Component {
       </form>
     );
     return (
-      <React.Fragment>
+      <div style={{ marginTop: 80 }}>
         {this.props.loading ? (
           <div
             style={{
@@ -61,7 +67,7 @@ class AccountSettings extends Component {
         ) : (
           form
         )}
-      </React.Fragment>
+      </div>
     );
   }
 }
@@ -75,7 +81,9 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     onInputChangedHandler: (event, inputId) =>
-      dispatch(actions.updateAccountSettings(event, inputId))
+      dispatch(actions.updateAccountSettings(event, inputId)),
+    onInitPage: navBarConfig =>
+      dispatch(actions.setTopNavigationState(navBarConfig))
   };
 };
 

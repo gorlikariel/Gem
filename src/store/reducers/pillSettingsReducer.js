@@ -29,6 +29,7 @@ const initialState = {
       }
     }
   },
+  initialized: false,
   notifyWhenPillsRunOut: false,
   isFormValid: false,
   loading: false,
@@ -43,6 +44,39 @@ export default (state = initialState, action) => {
         ...state,
         form: action.form,
         isFormValid: action.isFormValid
+      };
+
+    case actionTypes.INIT_PILL_SETTINGS:
+      return {
+        ...state,
+        form: {
+          ...state.form,
+          pillsInPack: {
+            ...state.form.pillsInPack,
+            elementConfig: { ...state.form.pillsInPack.elementConfig },
+            validation: { ...state.form.pillsInPack.validation },
+            value: action.settings.pillsinpack
+          },
+          amountOfPacks: {
+            ...state.form.amountOfPacks,
+            elementConfig: { ...state.form.amountOfPacks.elementConfig },
+            validation: { ...state.form.amountOfPacks.validation },
+            value: action.settings.amountofpacks
+          }
+        },
+        notifyWhenPillsRunOut: action.settings.notifymewhenpillsrunout,
+        loading: false,
+        initialized: true
+      };
+    case actionTypes.SUBMIT_PILL_SETTINGS:
+      return {
+        ...state,
+        loading: false
+      };
+    case actionTypes.LOADING_PILL_SETTINGS:
+      return {
+        ...state,
+        loading: true
       };
 
     default:

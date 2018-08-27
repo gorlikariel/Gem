@@ -1,20 +1,23 @@
-import * as React from "react";
-import * as ReactDOM from "react-dom";
 import App from "./App";
-import { BrowserRouter } from "react-router-dom";
-import { Provider } from "react-redux";
-import { createStore, combineReducers, applyMiddleware } from "redux";
-import { composeWithDevTools } from "redux-devtools-extension";
+import * as React from "react";
 import reduxThunk from "redux-thunk";
-import accountSettingsReducer from "./store/reducers/accountSettingsReducer";
-import alarmSettingsReducer from "./store/reducers/alarmSettingsReducer";
-import pillSettingsReducer from "./store/reducers/pillSettingsReducer";
+import * as ReactDOM from "react-dom";
+import { Provider } from "react-redux";
+import { BrowserRouter } from "react-router-dom";
 import pillReducer from "./store/reducers/pillReducer";
+import { composeWithDevTools } from "redux-devtools-extension";
+import { createStore, combineReducers, applyMiddleware } from "redux";
+import pillSettingsReducer from "./store/reducers/pillSettingsReducer";
+import alarmSettingsReducer from "./store/reducers/alarmSettingsReducer";
+import navigationStateReducer from "./store/reducers/navigationStateReducer";
+import accountSettingsReducer from "./store/reducers/accountSettingsReducer";
+
 const rootReducer = combineReducers({
   accountSettings: accountSettingsReducer,
   alarmSettings: alarmSettingsReducer,
   pillSettings: pillSettingsReducer,
-  pill: pillReducer
+  pill: pillReducer,
+  topNavigation: navigationStateReducer
 });
 
 const store = createStore(

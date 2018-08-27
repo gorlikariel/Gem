@@ -7,6 +7,14 @@ import InputField from "../../../components/InputField/InputField";
 import * as actions from "../../../store/actions/actionsIndex";
 class AlarmSettings extends Component {
   componentDidMount() {
+    const topNavbarConfig = {
+      showLeftArrow: true,
+      showSubmit: false,
+      showSettingsIcon: false,
+      title: "Alarm Settings"
+    };
+    this.props.onInitPage(topNavbarConfig);
+
     this.setState({ screenWidth: window.innerWidth + "px" });
   }
   state = { screenWidth: null };
@@ -40,12 +48,12 @@ class AlarmSettings extends Component {
       />
     ));
     return (
-      <React.Fragment>
+      <div style={{ marginTop: 80 }}>
         <form noValidate autoComplete="off">
           {form}
         </form>
         {/*this.state.screenWidth ? <hr width={this.state.screenWidth} /> : null*/}
-      </React.Fragment>
+      </div>
     );
   }
 }
@@ -58,7 +66,9 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     onInputChangedHandler: (event, inputId) =>
-      dispatch(actions.updateAlarmSettings(event, inputId))
+      dispatch(actions.updateAlarmSettings(event, inputId)),
+    onInitPage: navBarConfig =>
+      dispatch(actions.setTopNavigationState(navBarConfig))
   };
 };
 

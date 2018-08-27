@@ -7,19 +7,26 @@ import firebase from "../../firebase";
 import * as theme from "../../UI/theme/theme";
 class MainPage extends Component {
   componentDidMount() {
-    this.props.onInitPage();
+    const topNavbarConfig = {
+      showLeftArrow: false,
+      showSubmit: false,
+      showSettingsIcon: true,
+      title: ""
+    };
+    this.props.onInitPage(topNavbarConfig);
+    this.props.initialized ? null : this.props.loadSettings();
   }
   render() {
-    const mainButton = this.props.loading ? (
+    const { loading, taken, pillHour, onTakePill, onUndoPill } = this.props;
+    const mainButton = loading ? (
       <BounceLoader
-        // className={override}
         sizeUnit={"px"}
         size={264}
         color={theme.C3}
-        loading={this.props.loading}
+        loading={loading}
       />
     ) : (
-      <MainButton />
+      <MainButton hour={pillHour} />
     );
     const styles = {
       button: {
@@ -30,22 +37,40 @@ class MainPage extends Component {
       }
     };
     return (
-      <div style={styles.button} onClick={this.props.onTakePill}>
+      <div style={styles.button} onClick={taken ? onUndoPill : onTakePill}>
         {mainButton}
       </div>
     );
   }
 }
+
+//------------------------------------------------------------------------------------
+
 const mapStateToProps = state => {
   return {
-    loading: state.pill.loading
+    loading: state.pill.loading,
+    pillHour: state.alarmSettings.form.pillHour.value,
+    taken: state.pill.taken,
+    initialized:
+      state.accountSettings.initialized &&
+      state.alarmSettings.initialized &&
+      state.pillSettings.initialized
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
     onTakePill: () => dispatch(actions.tryTakingPill()),
-    onInitPage: () => dispatch(actions.initPillButton())
+    onUndoPill: () => dispatch(actions.tryUndoPill()),
+    onInitPage: navBarConfig => {
+      dispatch(actions.setTopNavigationState(navBarConfig));
+    },
+    loadSettings: () => {
+      dispatch(actions.initPillButton());
+      dispatch(actions.initAccountSettings());
+      dispatch(actions.initAlarmSettings());
+      dispatch(actions.initPillSettings());
+    }
   };
 };
 

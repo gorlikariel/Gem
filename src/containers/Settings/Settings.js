@@ -6,9 +6,14 @@ import ClipLoader from "react-spinners/ClipLoader";
 
 class Settings extends React.Component {
   componentDidMount() {
-    this.props.initialized ? null : this.props.onInitAccountSettings();
+    const topNavbarConfig = {
+      showLeftArrow: true,
+      showSubmit: false,
+      showSettingsIcon: false,
+      title: "Settings"
+    };
+    this.props.onInitPage(topNavbarConfig);
   }
-
   render() {
     const settingsButtons = <SettingsButtons username={this.props.username} />;
     const loader = (
@@ -30,7 +35,7 @@ class Settings extends React.Component {
     );
     console.log(this.props);
     return (
-      <div id="this" style={{ marginTop: 10 }}>
+      <div id="this" style={{ marginTop: "118px", width: "100%" }}>
         {this.props.loading ? loader : settingsButtons}
       </div>
     );
@@ -39,14 +44,14 @@ class Settings extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    username: state.accountSettings.form.userName.value,
-    loading: state.accountSettings.loading,
-    initialized: state.accountSettings.initialized
+    username: state.accountSettings.form.userName.value
   };
 };
+
 const mapDispatchToProps = dispatch => {
   return {
-    onInitAccountSettings: () => dispatch(actions.initAccountSettings())
+    onInitPage: navBarConfig =>
+      dispatch(actions.setTopNavigationState(navBarConfig))
   };
 };
 

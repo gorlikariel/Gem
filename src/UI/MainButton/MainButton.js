@@ -16,8 +16,8 @@ class MainButton extends Component {
         width: " 264px",
         height: "264px",
         borderRadius: "50%",
-
-        boxShadow: "0 4px 14px 1px #d4dde558, 0 4px 6px -2px #8ea9c33f"
+        boxShadow:
+          "0 10px 10px 0 #0000000c, 0 15px 15px 0 #00000019, 0 8px 8px 0 #0000000d, 0 0 10px 5px #0000000c"
       },
       poop: {
         notTaken: {
@@ -35,7 +35,7 @@ class MainButton extends Component {
         }
       }
     };
-    let taken = this.props.taken;
+    let { taken, hour, loading } = this.props;
     const mainButton = (
       <div
         id="child"
@@ -50,14 +50,14 @@ class MainButton extends Component {
         </Typography>
         <Typography color="inherit" variant="subheading" align="center">
           {`${taken ? "next pill" : ""} scheduled for `} {taken ? <br /> : null}
-          {`${taken ? "tommorow at" : ""} ${"23:00"}`}
+          {`${taken ? "tommorow at" : ""} ${hour}`}
         </Typography>
         <Typography color="inherit" variant="display4" align="center">
           ⚡4
         </Typography>
       </div>
     );
-    return this.props.loading ? null : mainButton;
+    return loading ? null : mainButton;
   }
 }
 

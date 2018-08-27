@@ -8,7 +8,7 @@ const initialState = {
         type: "time",
         label: "Pill hour"
       },
-      value: "18:00",
+      value: "",
       touched: false,
       validation: {
         required: true,
@@ -21,7 +21,7 @@ const initialState = {
         type: "text",
         label: "Snooze every"
       },
-      value: "5 Minutes",
+      value: "",
       touched: false,
       validation: {
         required: true,
@@ -29,6 +29,7 @@ const initialState = {
       }
     }
   },
+  initialized: false,
   isFormValid: false,
   loading: false,
   submitted: false,
@@ -42,6 +43,38 @@ export default (state = initialState, action) => {
         ...state,
         form: action.form,
         isFormValid: action.isFormValid
+      };
+
+    case actionTypes.INIT_ALARM_SETTINGS:
+      return {
+        ...state,
+        form: {
+          ...state.form,
+          pillHour: {
+            ...state.form.pillHour,
+            elementConfig: { ...state.form.pillHour.elementConfig },
+            validation: { ...state.form.pillHour.validation },
+            value: action.settings.pillhour
+          },
+          snoozeEvery: {
+            ...state.form.snoozeEvery,
+            elementConfig: { ...state.form.snoozeEvery.elementConfig },
+            validation: { ...state.form.snoozeEvery.validation },
+            value: `${action.settings.snoozeevry} Minutes`
+          }
+        },
+        loading: false,
+        initialized: true
+      };
+    case actionTypes.SUBMIT_ALARM_SETTINGS:
+      return {
+        ...state,
+        loading: false
+      };
+    case actionTypes.LOADING_ALARM_SETTINGS:
+      return {
+        ...state,
+        loading: true
       };
 
     default:

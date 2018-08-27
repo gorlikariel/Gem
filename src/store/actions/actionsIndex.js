@@ -2,9 +2,13 @@ export {
   updateForm as updateAccountSettings,
   initAccountSettings
 } from "./accountSettingsActions";
-export { updateForm as updateAlarmSettings } from "./alarmSettingsActions";
+export {
+  updateForm as updateAlarmSettings,
+  initAlarmSettings
+} from "./alarmSettingsActions";
 export {
   updateForm as updatePillSettings,
-  postPillSettings
+  initPillSettings
 } from "./pillSettingsActions";
-export { tryTakingPill, initPillButton } from "./pillActions";
+export { tryTakingPill, initPillButton, tryUndoPill } from "./pillActions";
+export { setTopNavigationState } from "./navigationStateActions";

@@ -1,6 +1,7 @@
 import * as actionTypes from "./actionTypes";
 import { newForm, formValidity } from "./formUtility";
-import blueMarble from "../../axios/axiosInstance";
+import firebase from "../../firebase";
+const database = firebase.database();
 export const formChanged = (form, isFormValid) => {
   return {
     type: actionTypes.PILL_SETTINGS_CHANGED,
@@ -17,15 +18,33 @@ export const updateForm = (event, inputIdentifier) => {
   };
 };
 
-export const postPillSettings = form => {
+export const loading = () => {
+  return {
+    type: actionTypes.LOADING_PILL_SETTINGS
+  };
+};
+export const pillSettingsSubmitted = () => {
+  return {
+    type: actionTypes.SUBMIT_PILL_SETTINGS
+  };
+};
+export const setPillSettings = pillSettings => {
+  return {
+    type: actionTypes.INIT_PILL_SETTINGS,
+    settings: pillSettings
+  };
+};
+export const initPillSettings = () => {
   return dispatch => {
-    const updatedSettings = {
-      pillsInPack: form.pillsInPack.value,
-      amountOfPacks: form.amountOfPacks.value
-    };
-    blueMarble
-      .post("/settings/pill.json", updatedSettings)
-      .then(res => console.log(res.data.name))
-      .catch(error => console.log(error));
+    dispatch(loading());
+    database
+      .ref()
+      .child("settings/pill")
+      .once("value")
+      .then(res => {
+        const settings = { ...res.val() };
+        dispatch(setPillSettings(settings));
+      })
+      .catch(err => console.log(err));
   };
 };
