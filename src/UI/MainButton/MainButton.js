@@ -52,7 +52,7 @@ class MainButton extends Component {
           {`${taken ? "next pill" : ""} scheduled for `} {taken ? <br /> : null}
           {`${taken ? "tommorow at" : ""} ${hour}`}
         </Typography>
-        <Typography color="inherit" variant="display4" align="center">
+        <Typography color="inherit" variant="display4">
           ⚡4
         </Typography>
       </div>

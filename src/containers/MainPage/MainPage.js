@@ -5,6 +5,7 @@ import * as actions from "../../store/actions/actionsIndex";
 import { connect } from "react-redux";
 import firebase from "../../firebase";
 import * as theme from "../../UI/theme/theme";
+import ConfirmationDialog from "../../UI/ConfirmationDialog/ConfirmationDialog";
 class MainPage extends Component {
   componentDidMount() {
     const topNavbarConfig = {
@@ -16,6 +17,16 @@ class MainPage extends Component {
     this.props.onInitPage(topNavbarConfig);
     this.props.initialized ? null : this.props.loadSettings();
   }
+  state = {
+    open: false
+  };
+  openDialog = () => {
+    this.state.open ? null : this.setState({ open: true });
+  };
+  onClose = () => {
+    this.setState({ open: false });
+  };
+
   render() {
     const { loading, taken, pillHour, onTakePill, onUndoPill } = this.props;
     const mainButton = loading ? (
@@ -36,9 +47,22 @@ class MainPage extends Component {
         transform: "translate(-50%,-50%)"
       }
     };
+
     return (
-      <div style={styles.button} onClick={taken ? onUndoPill : onTakePill}>
+      <div
+        style={styles.button}
+        onClick={taken && !loading ? this.openDialog : onTakePill}
+      >
         {mainButton}
+        <ConfirmationDialog
+          open={this.state.open}
+          onAgree={() => {
+            this.onClose();
+            onUndoPill();
+          }}
+          onClose={this.onClose}
+          message="Are you sure you want to undo?"
+        />
       </div>
     );
   }
