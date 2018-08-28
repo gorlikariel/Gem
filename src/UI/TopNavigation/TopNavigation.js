@@ -45,8 +45,7 @@ class TopNavigation extends Component {
         marginTop: "25px"
       }
     };
-    console.log(this.props.title);
-    return (
+    const topNavigationComponent = (
       <AppBar position="fixed" style={styles.root}>
         <Toolbar disableGutters>
           {showLeftArrow ? leftArrow : null}
@@ -60,6 +59,9 @@ class TopNavigation extends Component {
         </Toolbar>
       </AppBar>
     );
+    return title || showLeftArrow || showSettingsIcon
+      ? topNavigationComponent
+      : null;
   }
 }
 

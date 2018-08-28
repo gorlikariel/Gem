@@ -22,12 +22,20 @@ const theme = createMuiTheme({
       main: "#0044ff",
       contrastText: "#ffcc00"
     },
-    ass: {
-      main: PCL
+    textPrimary: {
+      main: PWH,
+      light: PWH
     }
   },
   overrides: {
     MuiTypography: {
+      display1: {
+        fontSize: "46px",
+        fontWeight: "bold",
+        letterSpacing: "normal",
+        fontFamily: ["-apple-system", " BlinkMacSystemFont", "roboto"],
+        color: BLK
+      },
       display3: {
         fontSize: "16px",
         fontWeight: 500,

@@ -9,14 +9,15 @@ import AlarmSettings from "./containers/Settings/AlarmSettings/AlarmSettings";
 import PillSettings from "./containers/Settings/PillSettings/PillSettings";
 import TopNavigation from "./UI/TopNavigation/TopNavigation";
 import MainPage from "./containers/MainPage/MainPage";
+import SisuMain from "./containers/Sisu/SisuMain";
 
 class App extends React.Component {
   render() {
     return (
       <MuiThemeProvider theme={theme}>
+        <Route path="/sisu-main" component={SisuMain} />
+        <Route path="/" component={TopNavigation} />
         <Layout>
-          <Route path="/" component={TopNavigation} />
-
           <Switch>
             <Route exact={true} path="/" component={MainPage} />
             <Route exact={true} path="/settings" component={Settings} />

@@ -2,10 +2,10 @@ import * as actionTypes from "../actions/actionTypes";
 import * as util from "../../firebaseUtil/firebaseUtil";
 
 const initialState = {
-  showLeftArrow: false,
-  showSubmit: false,
-  showSettingsIcon: false,
-  title: ""
+  showLeftArrow: null,
+  showSubmit: null,
+  showSettingsIcon: null,
+  title: null
 };
 
 export default (state = initialState, action) => {

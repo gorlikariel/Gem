@@ -12,6 +12,8 @@
 # misc
 .firebaserc
 .firebase.json
+/firebase
+/src/firebase.js
 .DS_Store
 .env.local
 .env.development.local
