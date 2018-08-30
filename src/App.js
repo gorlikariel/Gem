@@ -10,6 +10,7 @@ import PillSettings from "./containers/Settings/PillSettings/PillSettings";
 import TopNavigation from "./UI/TopNavigation/TopNavigation";
 import MainPage from "./containers/MainPage/MainPage";
 import SisuMain from "./containers/Sisu/SisuMain";
+import Register from "./containers/Sisu/Register";
 
 class App extends React.Component {
   render() {
@@ -36,6 +37,7 @@ class App extends React.Component {
               path="/pill-settings"
               component={PillSettings}
             />
+            <Route path="/register" component={Register} />
           </Switch>
         </Layout>
       </MuiThemeProvider>

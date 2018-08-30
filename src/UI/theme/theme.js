@@ -30,11 +30,12 @@ const theme = createMuiTheme({
   overrides: {
     MuiTypography: {
       display1: {
-        fontSize: "46px",
-        fontWeight: "bold",
-        letterSpacing: "normal",
+        fontWeight: "normal",
+        fontSize: "1.875rem",
+        letterSpacing: "1px",
         fontFamily: ["-apple-system", " BlinkMacSystemFont", "roboto"],
-        color: BLK
+        color: C1,
+        lineHeight: 1.13
       },
       display3: {
         fontSize: "16px",

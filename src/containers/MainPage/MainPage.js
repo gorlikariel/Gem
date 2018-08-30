@@ -5,16 +5,11 @@ import * as actions from "../../store/actions/actionsIndex";
 import { connect } from "react-redux";
 import firebase from "../../firebase";
 import * as theme from "../../UI/theme/theme";
+import * as topNavConfig from "../../store/actions/topNavigationConfigs";
 import ConfirmationDialog from "../../UI/ConfirmationDialog/ConfirmationDialog";
 class MainPage extends Component {
   componentDidMount() {
-    const topNavbarConfig = {
-      showLeftArrow: false,
-      showSubmit: false,
-      showSettingsIcon: true,
-      title: ""
-    };
-    this.props.onInitPage(topNavbarConfig);
+    this.props.onInitPage(topNavConfig.MAIN_PAGE_TOP_NAVIGATION);
     this.props.initialized ? null : this.props.loadSettings();
   }
   state = {
@@ -68,7 +63,7 @@ class MainPage extends Component {
   }
 }
 
-//------------------------------------------------------------------------------------
+//------------------------------------------------------------------------------------R -- E -- D -- U -- X -- -- T -- I -- M -- E
 
 const mapStateToProps = state => {
   return {

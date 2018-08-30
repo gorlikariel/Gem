@@ -4,15 +4,10 @@ import { connect } from "react-redux";
 import InputField from "../../../components/InputField/InputField";
 import * as actions from "../../../store/actions/actionsIndex";
 import CircleLoader from "react-spinners/CircleLoader";
+import * as topNavConfig from "../../../store/actions/topNavigationConfigs";
 class AccountSettings extends Component {
   componentDidMount() {
-    const topNavbarConfig = {
-      showLeftArrow: true,
-      showSubmit: false,
-      showSettingsIcon: false,
-      title: "Account Settings"
-    };
-    this.props.onInitPage(topNavbarConfig);
+    this.props.onInitPage(topNavConfig.ACCOUNT_SETTINGS_TOP_NAVIGATION);
   }
   state = { screenWidth: null };
 

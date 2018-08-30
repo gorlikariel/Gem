@@ -3,15 +3,11 @@ import { TextField } from "@material-ui/core";
 import { connect } from "react-redux";
 import * as actions from "../../../store/actions/actionsIndex";
 import InputField from "../../../components/InputField/InputField";
+import * as topNavConfig from "../../../store/actions/topNavigationConfigs";
+
 class PillSettings extends Component {
   componentDidMount() {
-    const topNavbarConfig = {
-      showLeftArrow: true,
-      showSubmit: false,
-      showSettingsIcon: false,
-      title: "Pill Settings"
-    };
-    this.props.onInitPage(topNavbarConfig);
+    this.props.onInitPage(topNavConfig.PILL_SETTINGS_TOP_NAVIGATION);
   }
 
   render() {

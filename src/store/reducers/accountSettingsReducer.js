@@ -54,6 +54,7 @@ export default (state = initialState, action) => {
     case actionTypes.ACCOUNT_SETTINGS_CHANGED:
       return {
         ...state,
+        form: action.form,
         isFormValid: action.isFormValid
       };
 

@@ -8,6 +8,7 @@ import PillIcon from "../../Icons/PillIcon/PillIcon";
 import * as theme from "../../theme/theme";
 import RightArrow from "../../Icons/RightArrow/RightArrow";
 const SettingsButton = props => {
+  const { bgColor, color, to, children, icon } = props;
   const clicked = () => {
     console.log("FUUUCK");
   };
@@ -32,18 +33,18 @@ const SettingsButton = props => {
   };
 
   return (
-    <Link style={{ textDecoration: "none" }} to={props.to}>
-      <WideButton bgColor={props.bgColor} color={theme[props.color]}>
-        {icons[props.icon]}
+    <Link style={{ textDecoration: "none" }} to={to}>
+      <WideButton bgColor={theme[bgColor]} color={theme[color]}>
+        {icons[icon]}
         <Typography
-          style={{ paddingLeft: props.to === "/" ? "54px" : "12px" }}
+          style={{ paddingLeft: to === "/" ? "54px" : "12px" }}
           variant="display3"
           color="inherit"
         >
-          {props.children}
+          {children}
         </Typography>
         <div style={{ marginLeft: "auto" }}>
-          {props.to === "/" ? null : rightArrow}
+          {to === "/" ? null : rightArrow}
         </div>
       </WideButton>
     </Link>

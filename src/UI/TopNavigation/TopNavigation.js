@@ -20,8 +20,19 @@ class TopNavigation extends Component {
     this.props.updatePillSettings(this.props.pillSettings);
   };
   render() {
+    const {
+      title,
+      showLeftArrow,
+      showSubmit,
+      showSettingsIcon,
+      backOnClick
+    } = this.props;
     const leftArrow = (
-      <IconButton onClick={() => this.props.history.goBack()}>
+      <IconButton
+        onClick={() => {
+          backOnClick ? backOnClick() : this.props.history.goBack();
+        }}
+      >
         <LeftArrow />
       </IconButton>
     );
@@ -37,7 +48,6 @@ class TopNavigation extends Component {
         </IconButton>
       </Link>
     );
-    const { title, showLeftArrow, showSubmit, showSettingsIcon } = this.props;
     const styles = {
       root: {
         backgroundColor: "inherit",
@@ -73,7 +83,8 @@ const mapStateToProps = state => {
     title: state.topNavigation.title,
     showLeftArrow: state.topNavigation.showLeftArrow,
     showSubmit: state.topNavigation.showSubmit,
-    showSettingsIcon: state.topNavigation.showSettingsIcon
+    showSettingsIcon: state.topNavigation.showSettingsIcon,
+    backOnClick: state.topNavigation.backOnClick
   };
 };
 

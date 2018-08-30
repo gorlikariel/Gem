@@ -2,18 +2,12 @@ import React, { Component } from "react";
 import { TextField } from "@material-ui/core";
 import { connect } from "react-redux";
 import InputField from "../../../components/InputField/InputField";
-// import { Prompt } from "react-router";
-// USE PROMPT, ITS TOO COOL TO IGNORE
 import * as actions from "../../../store/actions/actionsIndex";
+import * as topNavConfig from "../../../store/actions/topNavigationConfigs";
+
 class AlarmSettings extends Component {
   componentDidMount() {
-    const topNavbarConfig = {
-      showLeftArrow: true,
-      showSubmit: false,
-      showSettingsIcon: false,
-      title: "Alarm Settings"
-    };
-    this.props.onInitPage(topNavbarConfig);
+    this.props.onInitPage(topNavConfig.ALARM_SETTINGS_TOP_NAVIGATION);
 
     this.setState({ screenWidth: window.innerWidth + "px" });
   }

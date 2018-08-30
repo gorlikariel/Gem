@@ -3,16 +3,11 @@ import SettingsButtons from "../../UI/SettingsButtons/SettingsButtons";
 import { connect } from "react-redux";
 import * as actions from "../../store/actions/actionsIndex";
 import ClipLoader from "react-spinners/ClipLoader";
+import * as topNavConfig from "../../store/actions/topNavigationConfigs";
 
 class Settings extends React.Component {
   componentDidMount() {
-    const topNavbarConfig = {
-      showLeftArrow: true,
-      showSubmit: false,
-      showSettingsIcon: false,
-      title: "Settings"
-    };
-    this.props.onInitPage(topNavbarConfig);
+    this.props.onInitPage(topNavConfig.SETTINGS_TOP_NAVIGATION);
   }
   render() {
     const settingsButtons = <SettingsButtons username={this.props.username} />;

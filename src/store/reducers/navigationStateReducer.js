@@ -5,7 +5,8 @@ const initialState = {
   showLeftArrow: null,
   showSubmit: null,
   showSettingsIcon: null,
-  title: null
+  title: null,
+  backOnClick: null
 };
 
 export default (state = initialState, action) => {
@@ -16,7 +17,8 @@ export default (state = initialState, action) => {
         showLeftArrow: action.config.showLeftArrow,
         showSubmit: action.config.showSubmit,
         showSettingsIcon: action.config.showSettingsIcon,
-        title: action.config.title
+        title: action.config.title,
+        backOnClick: action.config.backOnClick
       };
 
     default:

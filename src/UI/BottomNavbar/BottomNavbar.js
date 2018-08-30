@@ -11,8 +11,11 @@ const HOME_BUTTON = 1;
 // TODO bottom nav isn't responsive (should stretch on wider screens) and there's a weird space in the left corner
 const styles = {
   root: {
+    marginRight: "20px",
     width: "100%",
     bottom: 0,
+    right: 0,
+    left: 0,
     position: "fixed",
     backgroundColor: "inherit"
   }
