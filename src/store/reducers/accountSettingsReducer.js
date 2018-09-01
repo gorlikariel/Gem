@@ -40,6 +40,19 @@ const initialState = {
         required: true,
         valid: false
       }
+    },
+    password: {
+      elementType: "input",
+      elementConfig: {
+        type: "password",
+        label: "Password"
+      },
+      value: "",
+      touched: false,
+      validation: {
+        required: true,
+        valid: false
+      }
     }
   },
   initialized: false,

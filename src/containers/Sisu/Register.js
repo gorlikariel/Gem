@@ -3,9 +3,9 @@ import { TextField, Typography } from "@material-ui/core";
 import { connect } from "react-redux";
 import * as actions from "../../store/actions/actionsIndex";
 import InputField from "../../components/InputField/InputField";
-import SisuButton from "../../UI/SisuButtons/SisuButton";
 import * as topNavConfig from "../../store/actions/topNavigationConfigs";
 import { withRouter } from "react-router";
+import SisuButton from "../../components/SisuButtons/SisuButton";
 
 class Register extends Component {
   componentDidMount() {

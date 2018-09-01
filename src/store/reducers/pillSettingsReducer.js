@@ -8,7 +8,7 @@ const initialState = {
         type: "number",
         label: "Pills in pack"
       },
-      value: "28",
+      value: "",
       touched: false,
       validation: {
         required: true,
@@ -21,7 +21,7 @@ const initialState = {
         type: "number",
         label: "Amount of packs"
       },
-      value: "2",
+      value: "",
       touched: false,
       validation: {
         required: true,

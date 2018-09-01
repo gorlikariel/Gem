@@ -1,9 +1,9 @@
 import * as React from "react";
-import SettingsButtons from "../../UI/SettingsButtons/SettingsButtons";
 import { connect } from "react-redux";
 import * as actions from "../../store/actions/actionsIndex";
 import ClipLoader from "react-spinners/ClipLoader";
 import * as topNavConfig from "../../store/actions/topNavigationConfigs";
+import SettingsButtons from "../../components/SettingsButtons/SettingsButtons";
 
 class Settings extends React.Component {
   componentDidMount() {

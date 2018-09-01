@@ -1,12 +1,12 @@
 import React, { Component } from "react";
-import MainButton from "../../UI/MainButton/MainButton";
 import BounceLoader from "react-spinners/BounceLoader";
 import * as actions from "../../store/actions/actionsIndex";
 import { connect } from "react-redux";
 import firebase from "../../firebase";
-import * as theme from "../../UI/theme/theme";
 import * as topNavConfig from "../../store/actions/topNavigationConfigs";
-import ConfirmationDialog from "../../UI/ConfirmationDialog/ConfirmationDialog";
+import theme from "../../styleguide/theme";
+import ConfirmationDialog from "../../components/ConfirmationDialog/ConfirmationDialog";
+import MainButton from "../../components/MainButton/MainButton";
 class MainPage extends Component {
   componentDidMount() {
     this.props.onInitPage(topNavConfig.MAIN_PAGE_TOP_NAVIGATION);

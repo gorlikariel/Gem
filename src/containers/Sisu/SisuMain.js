@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import { Typography } from "@material-ui/core";
-import GemIcon from "../../UI/Icons/GemIcon/GemIcon.png";
-import WideButton from "../../UI/WideButton/WideButton";
-import * as theme from "../../UI/theme/theme";
+import GemIcon from "../../Icons/GemIcon/GemIcon.png";
 import { Link } from "react-router-dom";
-import SisuButton from "../../UI/SisuButtons/SisuButton";
+import WideButton from "../../components/WideButton/WideButton";
+import theme from "../../styleguide/theme";
+import SisuButton from "../../components/SisuButtons/SisuButton";
 const styles = {
   root: {
     marginTop: "70px",

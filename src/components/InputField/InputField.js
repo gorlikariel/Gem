@@ -1,5 +1,5 @@
-import * as theme from "../../UI/theme/theme";
 import * as React from "react";
+import * as theme from "../../styleguide/theme";
 import { withStyles } from "@material-ui/core/styles";
 import { TextField } from "@material-ui/core";
 const C3 = theme.C3;

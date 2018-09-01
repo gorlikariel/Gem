@@ -1,8 +1,8 @@
 import * as React from "react";
-import TopNavigation from "../../UI/TopNavigation/TopNavigation";
 import BodyBackgroundColor from "react-body-backgroundcolor";
-import BottomNavbar from "../../UI/BottomNavbar/BottomNavbar";
-import * as theme from "../../UI/theme/theme";
+import BottomNavbar from "../../components/BottomNavbar/BottomNavbar";
+import * as theme from "../../styleguide/theme";
+import TopNavigation from "../../components/TopNavigation/TopNavigation";
 class Layout extends React.Component {
   render() {
     return (

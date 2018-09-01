@@ -45,3 +45,9 @@ export const REGISTER_TOP_NAVIGATION_INITIAL = {
   showSettingsIcon: false,
   title: "Register"
 };
+export const LOGIN_TOP_NAVIGATION = {
+  showLeftArrow: true,
+  showSubmit: false,
+  showSettingsIcon: false,
+  title: "Log in"
+};

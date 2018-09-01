@@ -2,15 +2,16 @@ import * as React from "react";
 import Layout from "./containers/Layout/Layout";
 import { Route, Switch } from "react-router-dom";
 import Settings from "./containers/Settings/Settings";
-import { MuiThemeProvider } from "../node_modules/@material-ui/core";
-import theme from "./UI/theme/theme";
 import AccountSettings from "./containers/Settings/AccountSettings/AccountSettings";
 import AlarmSettings from "./containers/Settings/AlarmSettings/AlarmSettings";
 import PillSettings from "./containers/Settings/PillSettings/PillSettings";
-import TopNavigation from "./UI/TopNavigation/TopNavigation";
 import MainPage from "./containers/MainPage/MainPage";
 import SisuMain from "./containers/Sisu/SisuMain";
 import Register from "./containers/Sisu/Register";
+import Login from "./containers/Sisu/Login";
+import TopNavigation from "./components/TopNavigation/TopNavigation";
+import theme from "./styleguide/theme";
+import { MuiThemeProvider } from "@material-ui/core";
 
 class App extends React.Component {
   render() {
@@ -38,6 +39,7 @@ class App extends React.Component {
               component={PillSettings}
             />
             <Route path="/register" component={Register} />
+            <Route path="/login" component={Login} />
           </Switch>
         </Layout>
       </MuiThemeProvider>
