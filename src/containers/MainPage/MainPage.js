@@ -7,6 +7,7 @@ import * as topNavConfig from "../../store/actions/topNavigationConfigs";
 import theme from "../../styleguide/theme";
 import ConfirmationDialog from "../../components/ConfirmationDialog/ConfirmationDialog";
 import MainButton from "../../components/MainButton/MainButton";
+import { ButtonBase } from "@material-ui/core";
 class MainPage extends Component {
   componentDidMount() {
     this.props.onInitPage(topNavConfig.MAIN_PAGE_TOP_NAVIGATION);
@@ -32,7 +33,10 @@ class MainPage extends Component {
         loading={loading}
       />
     ) : (
-      <MainButton hour={pillHour} />
+      <MainButton
+        onClick={taken && !loading ? this.openDialog : onTakePill}
+        hour={pillHour}
+      />
     );
     const styles = {
       button: {

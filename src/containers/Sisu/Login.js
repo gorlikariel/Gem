@@ -12,8 +12,8 @@ class Login extends Component {
   componentDidMount() {
     this.props.onInitPage(topNavConfig.LOGIN_TOP_NAVIGATION);
   }
-  state = {
-    isValid: false
+  login = () => {
+    console.log(this.props.email);
   };
   render() {
     const initialState = {
@@ -21,11 +21,12 @@ class Login extends Component {
         email: this.props.email,
         password: this.props.password
       },
-      isFormValid: false,
       loading: false,
       submitted: false,
       error: false
     };
+    const isFormValid =
+      this.props.email.validation.valid && this.props.password.validation.valid;
 
     const styles = {
       text: {
@@ -53,7 +54,7 @@ class Login extends Component {
         }
       />
     ));
-    const isValid = this.state.isValid ? "" : "greyed";
+    const isValid = isFormValid ? "" : "greyed";
     return (
       <div style={{ marginTop: 80 }}>
         <div style={{ marginBottom: "30px" }}>
@@ -71,7 +72,7 @@ class Login extends Component {
             {form}
           </form>
         </div>
-        <SisuButton onClick={this.handleNext} width="100%" variant={isValid}>
+        <SisuButton onClick={this.login} width="100%" variant={isValid}>
           Login
         </SisuButton>
         <div style={{ padding: "20px" }}>
@@ -103,10 +104,11 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     onInputChangedHandler: (event, inputId) =>
-      dispatch(actions.updatePillSettings(event, inputId)),
+      dispatch(actions.updateAccountSettings(event, inputId)),
     onInitPage: navBarConfig =>
       dispatch(actions.setTopNavigationState(navBarConfig)),
-    onAuth: () => dispatch(actions.auth(email, password))
+    onAuth: (email, password, isSignup) =>
+      dispatch(actions.auth(email, password, isSignup))
   };
 };
 

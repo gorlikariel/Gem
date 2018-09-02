@@ -1,4 +1,5 @@
 import * as React from "react";
+import { ButtonBase } from "@material-ui/core";
 type Props = {
   onClick?(e: React.MouseEvent<HTMLElement>): void;
   color?: string;
@@ -34,8 +35,10 @@ const WideButton: React.SFC<Props> = ({
     }
   };
   return (
-    <div onClick={onClick} style={styles.button}>
-      {children}
+    <div>
+      <ButtonBase onClick={onClick} style={styles.button}>
+        {children}
+      </ButtonBase>
     </div>
   );
 };

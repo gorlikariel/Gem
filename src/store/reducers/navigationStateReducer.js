@@ -1,5 +1,5 @@
 import * as actionTypes from "../actions/actionTypes";
-import * as util from "../../firebaseUtil/firebaseUtil";
+import * as util from "../../util/firebaseUtil";
 
 const initialState = {
   showLeftArrow: null,

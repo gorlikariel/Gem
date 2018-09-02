@@ -37,7 +37,8 @@ class MainButton extends Component {
     };
     let { taken, hour, loading } = this.props;
     const mainButton = (
-      <div
+      <ButtonBase
+        onClick={this.props.onClick}
         id="child"
         style={Object.assign(
           {},
@@ -55,7 +56,7 @@ class MainButton extends Component {
         <Typography color="inherit" variant="display4">
           ⚡4
         </Typography>
-      </div>
+      </ButtonBase>
     );
     return loading ? null : mainButton;
   }

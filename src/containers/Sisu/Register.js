@@ -6,6 +6,7 @@ import InputField from "../../components/InputField/InputField";
 import * as topNavConfig from "../../store/actions/topNavigationConfigs";
 import { withRouter } from "react-router";
 import SisuButton from "../../components/SisuButtons/SisuButton";
+import * as registerUtil from "../../util/registerPageUtil";
 
 class Register extends Component {
   componentDidMount() {
@@ -13,24 +14,6 @@ class Register extends Component {
   }
   state = {
     stepNum: 0,
-    steps: [
-      { title: "What's your email?", action: "updateAccountSettings" },
-      { title: "Create a Password", action: "updateAccountSettings" },
-      { title: "What's your name?", action: "updateAccountSettings" },
-      {
-        title: "How many pills do you have in a pack?",
-        action: "updatePillSettings"
-      },
-      { title: "How many packs do you have?", action: "updatePillSettings" },
-      {
-        title: "What time do you wish to be alarmed?",
-        action: "updateAlarmSettings"
-      },
-      {
-        title: "How often should the alarm go off?",
-        action: "updateAlarmSettings"
-      }
-    ],
     isValid: false,
     values: []
   };
@@ -60,8 +43,7 @@ class Register extends Component {
   // ------------------------------------------------------
   submitForm = event => {
     event.preventDefault();
-    // console.log(this.state.values);
-    this.props.onAuth(this.state.values[0], this.state.values[1]);
+    this.props.onAuth(this.state.values[0], this.state.values[1], true);
   };
   render() {
     const initialState = {
@@ -106,16 +88,17 @@ class Register extends Component {
           this.props.onInputChangedHandler(
             event,
             formElement.id,
-            this.state.steps[this.state.stepNum].action
+            registerUtil.REGISTER_STEPS[this.state.stepNum].action
           )
         }
       />
     ));
-    const currentTitle = this.state.steps[this.state.stepNum].title;
+    const currentTitle = registerUtil.REGISTER_STEPS[this.state.stepNum].title;
     const currentFieldValue =
       formElementsArray[this.state.stepNum].config.value;
     const isValid = this.state.isValid ? "" : "greyed";
-    const isLastStep = this.state.stepNum === this.state.steps.length - 1;
+    const isLastStep =
+      this.state.stepNum === registerUtil.REGISTER_STEPS.length - 1;
     return (
       <div style={{ marginTop: 80 }}>
         <div style={{ marginBottom: "30px" }}>
@@ -173,7 +156,8 @@ const mapDispatchToProps = dispatch => {
       dispatch(actions[action](event, inputId)),
     onInitPage: navBarConfig =>
       dispatch(actions.setTopNavigationState(navBarConfig)),
-    onAuth: (email, password) => dispatch(actions.auth(email, password))
+    onAuth: (email, password, isSignup) =>
+      dispatch(actions.auth(email, password, isSignup))
   };
 };
 
