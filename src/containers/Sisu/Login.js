@@ -14,6 +14,7 @@ class Login extends Component {
   }
   login = () => {
     console.log(this.props.email);
+    this.props.onAuth(this.props.email.value, this.props.password.value, false);
   };
   render() {
     const initialState = {
@@ -54,7 +55,6 @@ class Login extends Component {
         }
       />
     ));
-    const isValid = isFormValid ? "" : "greyed";
     return (
       <div style={{ marginTop: 80 }}>
         <div style={{ marginBottom: "30px" }}>
@@ -72,7 +72,12 @@ class Login extends Component {
             {form}
           </form>
         </div>
-        <SisuButton onClick={this.login} width="100%" variant={isValid}>
+        <SisuButton
+          disabled={isFormValid ? false : true}
+          onClick={this.login}
+          width="100%"
+          variant={isFormValid ? "purple" : "greyed"}
+        >
           Login
         </SisuButton>
         <div style={{ padding: "20px" }}>

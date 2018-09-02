@@ -9,13 +9,15 @@ type Props = {
   to?: string | null;
   children: React.ReactNode;
   width: string;
+  disabled?: boolean;
 };
 const SisuButton: React.SFC<Props> = ({
   onClick,
   children,
   to,
   variant,
-  width
+  width,
+  disabled
 }) => {
   let bgColor = theme.PG;
   let color = theme.PWH;
@@ -32,6 +34,7 @@ const SisuButton: React.SFC<Props> = ({
       color={color}
       backgroundColor={backgroundColor}
       height="50px"
+      disabled={disabled}
     >
       <div style={{ display: "flex", alignItems: "center" }}>
         <Typography

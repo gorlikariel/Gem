@@ -23,7 +23,7 @@ const styles = {
 
 class BottomNavbar extends React.Component {
   state = {
-    value: null
+    value: HOME_BUTTON
   };
 
   handleChange = (event, value) => {

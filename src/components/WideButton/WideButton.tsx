@@ -6,6 +6,7 @@ type Props = {
   width?: string;
   height?: string;
   bgColor: string;
+  disabled?: boolean;
   backgroundColor?: string;
   children: React.ReactNode;
 };
@@ -17,7 +18,8 @@ const WideButton: React.SFC<Props> = ({
   width,
   height,
   bgColor,
-  backgroundColor
+  backgroundColor,
+  disabled
 }) => {
   const styles = {
     button: {
@@ -36,7 +38,7 @@ const WideButton: React.SFC<Props> = ({
   };
   return (
     <div>
-      <ButtonBase onClick={onClick} style={styles.button}>
+      <ButtonBase disabled={disabled} onClick={onClick} style={styles.button}>
         {children}
       </ButtonBase>
     </div>

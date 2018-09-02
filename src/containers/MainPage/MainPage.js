@@ -8,6 +8,7 @@ import theme from "../../styleguide/theme";
 import ConfirmationDialog from "../../components/ConfirmationDialog/ConfirmationDialog";
 import MainButton from "../../components/MainButton/MainButton";
 import { ButtonBase } from "@material-ui/core";
+// DO THIS : add transition to button after being clicked
 class MainPage extends Component {
   componentDidMount() {
     this.props.onInitPage(topNavConfig.MAIN_PAGE_TOP_NAVIGATION);

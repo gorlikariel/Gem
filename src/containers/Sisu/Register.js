@@ -96,7 +96,6 @@ class Register extends Component {
     const currentTitle = registerUtil.REGISTER_STEPS[this.state.stepNum].title;
     const currentFieldValue =
       formElementsArray[this.state.stepNum].config.value;
-    const isValid = this.state.isValid ? "" : "greyed";
     const isLastStep =
       this.state.stepNum === registerUtil.REGISTER_STEPS.length - 1;
     return (
@@ -127,7 +126,7 @@ class Register extends Component {
               : () => this.handleNext(currentFieldValue)
           }
           width="100%"
-          variant={isValid}
+          variant={!this.state.isValid ? "greyed" : null}
         >
           {isLastStep ? "Finish" : "Next"}
         </SisuButton>
