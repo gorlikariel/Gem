@@ -18,7 +18,11 @@ class ConfirmationDialog extends React.Component {
   render() {
     return (
       <div>
-        <Dialog open={this.props.open} onClose={this.handleAgree}>
+        <Dialog
+          open={this.props.open}
+          onClose={this.handleAgree}
+          disableBackdropClick
+        >
           <DialogTitle>{this.props.message}</DialogTitle>
           <DialogActions>
             <Button onClick={this.handleClose} color="primary">
