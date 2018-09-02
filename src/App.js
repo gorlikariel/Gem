@@ -12,6 +12,7 @@ import Login from "./containers/Sisu/Login";
 import TopNavigation from "./components/TopNavigation/TopNavigation";
 import theme from "./styleguide/theme";
 import { MuiThemeProvider } from "@material-ui/core";
+import BottomNavbar from "./components/BottomNavbar/BottomNavbar";
 
 class App extends React.Component {
   render() {
@@ -42,6 +43,7 @@ class App extends React.Component {
             <Route path="/login" component={Login} />
           </Switch>
         </Layout>
+        <Route exact path="/" component={BottomNavbar} />
       </MuiThemeProvider>
     );
   }

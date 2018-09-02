@@ -1,6 +1,5 @@
 import * as React from "react";
 import BodyBackgroundColor from "react-body-backgroundcolor";
-import BottomNavbar from "../../components/BottomNavbar/BottomNavbar";
 import * as theme from "../../styleguide/theme";
 import TopNavigation from "../../components/TopNavigation/TopNavigation";
 class Layout extends React.Component {
@@ -17,7 +16,6 @@ class Layout extends React.Component {
             {this.props.children}
           </div>
         </BodyBackgroundColor>
-        <BottomNavbar />
       </React.Fragment>
     );
   }
