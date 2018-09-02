@@ -21,6 +21,8 @@ export const authFailed = error => {
 };
 
 export const auth = (email, password) => {
+  console.log(email);
+  console.log(password);
   return dispatch => {
     dispatch(authStart());
   };

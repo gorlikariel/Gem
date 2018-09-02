@@ -20,10 +20,6 @@ const SettingsButton = props => {
     logoutButton: {
       width: "24px",
       paddingLeft: "20px"
-    },
-    navLink: {
-      textDecoration: "none",
-      color: "inherit"
     }
   };
   const icons = {

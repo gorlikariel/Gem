@@ -6,6 +6,7 @@ import QuestionMark from "../../Icons/QuestionMark/QuestionMark";
 import HomeIcon from "../../Icons/HomeIcon/HomeIcon";
 import StatisticsIcon from "../../Icons/StatisticsIcon/StatisticsIcon";
 import { BottomNavigation, BottomNavigationAction } from "@material-ui/core";
+
 const HOME_BUTTON = 1;
 // TODO bottom nav isn't responsive (should stretch on wider screens) and there's a weird space in the left corner
 const styles = {

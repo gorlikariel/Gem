@@ -1,5 +1,4 @@
 export const newForm = (event, inputIdentifier, Form) => {
-  console.log(Form[inputIdentifier]);
   const updatedForm = {
     ...Form
   };

@@ -28,7 +28,6 @@ class Settings extends React.Component {
         />
       </div>
     );
-    console.log(this.props);
     return (
       <div id="this" style={{ marginTop: "118px", width: "100%" }}>
         {this.props.loading ? loader : settingsButtons}

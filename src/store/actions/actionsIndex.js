@@ -12,3 +12,4 @@ export {
 } from "./pillSettingsActions";
 export { tryTakingPill, initPillButton, tryUndoPill } from "./pillActions";
 export { setTopNavigationState } from "./navigationStateActions";
+export { auth } from "./auth";

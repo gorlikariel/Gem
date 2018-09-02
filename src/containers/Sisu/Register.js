@@ -14,22 +14,35 @@ class Register extends Component {
   state = {
     stepNum: 0,
     steps: [
-      "What's your email?",
-      "What's your name?",
-      "How many pills do you have in a pack?",
-      "How many packs do you have?",
-      "What time do you wish to be alarmed?",
-      "How often should the alarm go off?"
+      { title: "What's your email?", action: "updateAccountSettings" },
+      { title: "Create a Password", action: "updateAccountSettings" },
+      { title: "What's your name?", action: "updateAccountSettings" },
+      {
+        title: "How many pills do you have in a pack?",
+        action: "updatePillSettings"
+      },
+      { title: "How many packs do you have?", action: "updatePillSettings" },
+      {
+        title: "What time do you wish to be alarmed?",
+        action: "updateAlarmSettings"
+      },
+      {
+        title: "How often should the alarm go off?",
+        action: "updateAlarmSettings"
+      }
     ],
-    isValid: false
+    isValid: false,
+    values: []
   };
+  // ------------------------------------------------------
   goBack = () => {
     this.state.stepNum === 0 ? this.props.history.goBack() : null;
     this.setState(prevState => ({
       stepNum: prevState.stepNum + -1
     }));
   };
-  handleNext = () => {
+  // ------------------------------------------------------
+  handleNext = value => {
     this.state.stepNum === 0
       ? this.props.onInitPage({
           showLeftArrow: true,
@@ -39,15 +52,22 @@ class Register extends Component {
           backOnClick: () => this.goBack()
         })
       : null;
-
     this.setState(prevState => ({
-      stepNum: prevState.stepNum + 1
+      stepNum: prevState.stepNum + 1,
+      values: prevState.values.concat(value)
     }));
+  };
+  // ------------------------------------------------------
+  submitForm = event => {
+    event.preventDefault();
+    // console.log(this.state.values);
+    this.props.onAuth(this.state.values[0], this.state.values[1]);
   };
   render() {
     const initialState = {
       form: {
         email: this.props.email,
+        password: this.props.password,
         name: this.props.name,
         pillsInPack: this.props.pillsInPack,
         amountOfPacks: this.props.amountOfPacks,
@@ -83,17 +103,27 @@ class Register extends Component {
         value={formElement.config.value}
         margin="normal"
         onChange={event =>
-          this.props.onInputChangedHandler(event, formElement.id)
+          this.props.onInputChangedHandler(
+            event,
+            formElement.id,
+            this.state.steps[this.state.stepNum].action
+          )
         }
       />
     ));
-    const currentTitle = this.state.steps[this.state.stepNum];
+    const currentTitle = this.state.steps[this.state.stepNum].title;
+    const currentFieldValue =
+      formElementsArray[this.state.stepNum].config.value;
     const isValid = this.state.isValid ? "" : "greyed";
     const isLastStep = this.state.stepNum === this.state.steps.length - 1;
     return (
       <div style={{ marginTop: 80 }}>
         <div style={{ marginBottom: "30px" }}>
-          <form noValidate autoComplete="off">
+          <form
+            noValidate
+            autoComplete="off"
+            onSubmit={() => this.submitForm()}
+          >
             <div
               style={{
                 paddingTop: "20px",
@@ -107,7 +137,15 @@ class Register extends Component {
             {form[this.state.stepNum]}
           </form>
         </div>
-        <SisuButton onClick={this.handleNext} width="100%" variant={isValid}>
+        <SisuButton
+          onClick={
+            isLastStep
+              ? this.submitForm
+              : () => this.handleNext(currentFieldValue)
+          }
+          width="100%"
+          variant={isValid}
+        >
           {isLastStep ? "Finish" : "Next"}
         </SisuButton>
       </div>
@@ -120,6 +158,7 @@ class Register extends Component {
 const mapStateToProps = state => {
   return {
     email: state.accountSettings.form.email,
+    password: state.accountSettings.form.password,
     name: state.accountSettings.form.name,
     pillsInPack: state.pillSettings.form.pillsInPack,
     amountOfPacks: state.pillSettings.form.amountOfPacks,
@@ -130,10 +169,11 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onInputChangedHandler: (event, inputId) =>
-      dispatch(actions.updatePillSettings(event, inputId)),
+    onInputChangedHandler: (event, inputId, action) =>
+      dispatch(actions[action](event, inputId)),
     onInitPage: navBarConfig =>
-      dispatch(actions.setTopNavigationState(navBarConfig))
+      dispatch(actions.setTopNavigationState(navBarConfig)),
+    onAuth: (email, password) => dispatch(actions.auth(email, password))
   };
 };
 
