@@ -35,7 +35,7 @@ class MainButton extends Component {
         }
       }
     };
-    let { taken, hour, loading } = this.props;
+    let { taken, hour, loading } = this.props;  
     const mainButton = (
       <ButtonBase
         onClick={this.props.onClick}
