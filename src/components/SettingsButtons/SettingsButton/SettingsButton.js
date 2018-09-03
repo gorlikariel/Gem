@@ -30,7 +30,11 @@ const SettingsButton = props => {
 
   return (
     <Link style={{ textDecoration: "none" }} to={to}>
-      <WideButton bgColor={theme[bgColor]} color={theme[color]}>
+      <WideButton
+        onClick={props.onClick}
+        bgColor={theme[bgColor]}
+        color={theme[color]}
+      >
         {icons[icon]}
         <Typography
           style={{ paddingLeft: to === "/" ? "54px" : "12px" }}

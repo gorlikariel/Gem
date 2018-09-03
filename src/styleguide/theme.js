@@ -2,7 +2,7 @@ import { createMuiTheme } from "@material-ui/core/styles";
 export const C1 = "#314354";
 export const C2 = "#8ea9c3";
 export const C3 = "#adc3d9";
-export const C4 = "#f6f6f6";
+export const C4 = "#e2edf9";
 export const SO = "#00000066";
 export const PG = "linear-gradient(to right, #7c9dfb, #a388fa)";
 export const PCH = "#a388fa";

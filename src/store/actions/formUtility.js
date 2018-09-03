@@ -4,13 +4,9 @@ export const newForm = (event, inputIdentifier, Form) => {
   };
   const updatedFormElement = {
     ...updatedForm[inputIdentifier],
-    // elementConfig: { ...updatedForm[inputIdentifier].elementConfig },
-    // validation: { ...updatedForm[inputIdentifier].validation },
     touched: true,
     value: event.target.value
   };
-  //   updatedFormElement.touched = true;
-  //   updatedFormElement.value = event.target.value;
   updatedFormElement.validation.valid = checkValidity(
     updatedFormElement.value,
     updatedFormElement.validation

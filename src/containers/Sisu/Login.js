@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { TextField, Typography } from "@material-ui/core";
 import { connect } from "react-redux";
 import * as actions from "../../store/actions/actionsIndex";
+import ClipLoader from "react-spinners/ClipLoader";
 import InputField from "../../components/InputField/InputField";
 import * as topNavConfig from "../../store/actions/topNavigationConfigs";
 import SisuButton from "../../components/SisuButtons/SisuButton";
@@ -12,10 +13,17 @@ class Login extends Component {
     this.props.onInitPage(topNavConfig.LOGIN_TOP_NAVIGATION);
   }
   login = () => {
-    console.log(this.props.email);
     this.props.onAuth(this.props.email.value, this.props.password.value, false);
   };
   render() {
+    const errorMessage = this.props.error ? (
+      <div style={{ paddingTop: "10px", paddingBottom: "10px" }}>
+        <Typography variant="subheading" color="error" align="center">
+          {this.props.error.message}
+        </Typography>
+      </div>
+    ) : null;
+
     const initialState = {
       form: {
         email: this.props.email,
@@ -27,9 +35,6 @@ class Login extends Component {
     };
     const isFormValid =
       this.props.email.validation.valid && this.props.password.validation.valid;
-    console.log(
-      this.props.email.validation.valid && this.props.password.validation.valid
-    );
     const styles = {
       text: {
         width: "100%"
@@ -56,7 +61,16 @@ class Login extends Component {
         }
       />
     ));
-
+    const loader = (
+      <div>
+        <ClipLoader
+          sizeUnit={"px"}
+          size={25}
+          color={"inherit"}
+          loading={this.props.loading}
+        />
+      </div>
+    );
     return (
       <div style={{ marginTop: 80 }}>
         <div style={{ marginBottom: "30px" }}>
@@ -80,9 +94,10 @@ class Login extends Component {
           width="100%"
           buttonType={isFormValid ? "purple" : "greyed"}
         >
-          Login
+          {this.props.loading ? loader : "Login"}
         </SisuButton>
         <div style={{ padding: "20px" }}>
+          {errorMessage}
           <Typography variant="subheading" color="primary" align="center">
             New user?
             <Link
@@ -104,7 +119,9 @@ class Login extends Component {
 const mapStateToProps = state => {
   return {
     email: state.accountSettings.form.email,
-    password: state.accountSettings.form.password
+    password: state.accountSettings.form.password,
+    loading: state.auth.loading,
+    error: state.auth.error
   };
 };
 

@@ -26,7 +26,12 @@ const SettingsButtons = props => (
     >
       Pill Settings
     </SettingsButton>
-    <SettingsButton bgColor="PWH" color="BLK" to="/">
+    <SettingsButton
+      onClick={() => console.log("FUCK")}
+      bgColor="PWH"
+      color="BLK"
+      to="/"
+    >
       Log out of {props.username}
     </SettingsButton>
   </React.Fragment>

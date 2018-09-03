@@ -11,13 +11,15 @@ import pillSettingsReducer from "./store/reducers/pillSettingsReducer";
 import alarmSettingsReducer from "./store/reducers/alarmSettingsReducer";
 import navigationStateReducer from "./store/reducers/navigationStateReducer";
 import accountSettingsReducer from "./store/reducers/accountSettingsReducer";
+import authReducer from "./store/reducers/authReducer";
 
 const rootReducer = combineReducers({
   accountSettings: accountSettingsReducer,
   alarmSettings: alarmSettingsReducer,
   pillSettings: pillSettingsReducer,
   pill: pillReducer,
-  topNavigation: navigationStateReducer
+  topNavigation: navigationStateReducer,
+  auth: authReducer
 });
 
 const store = createStore(
@@ -34,4 +36,4 @@ const app = (
 );
 
 ReactDOM.render(app, document.getElementById("root"));
-//init store in another file 
+//init store in another file

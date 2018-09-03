@@ -12,7 +12,8 @@ const initialState = {
       touched: false,
       validation: {
         required: true,
-        valid: false
+        valid: false,
+        isNumeric: true
       }
     },
     amountOfPacks: {
@@ -25,7 +26,8 @@ const initialState = {
       touched: false,
       validation: {
         required: true,
-        valid: false
+        valid: false,
+        isNumeric: true
       }
     }
   },
