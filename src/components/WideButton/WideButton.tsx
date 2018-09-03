@@ -8,6 +8,7 @@ type Props = {
   bgColor: string;
   disabled?: boolean;
   backgroundColor?: string;
+  noBoxShadow?: boolean;
   children: React.ReactNode;
 };
 
@@ -19,7 +20,8 @@ const WideButton: React.SFC<Props> = ({
   height,
   bgColor,
   backgroundColor,
-  disabled
+  disabled,
+  noBoxShadow
 }) => {
   const styles = {
     button: {
@@ -27,7 +29,9 @@ const WideButton: React.SFC<Props> = ({
       height: height,
       borderRadius: "6px",
       marginTop: "18px",
-      boxShadow: "0 4px 14px 1px #d4dde558, 0 4px 6px -2px #8ea9c33f",
+      boxShadow: noBoxShadow
+        ? ""
+        : "0 4px 14px 1px #d4dde558, 0 4px 6px -2px #8ea9c33f",
       backgroundImage: bgColor,
       display: "flex",
       alignItems: "center",

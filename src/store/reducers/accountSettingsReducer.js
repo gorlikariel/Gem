@@ -38,7 +38,8 @@ const initialState = {
       touched: false,
       validation: {
         required: true,
-        valid: false
+        valid: false,
+        isEmail: true
       }
     },
     password: {
@@ -51,7 +52,9 @@ const initialState = {
       touched: false,
       validation: {
         required: true,
-        valid: false
+        valid: false,
+        minLength: 5,
+        maxLength: 15
       }
     }
   },

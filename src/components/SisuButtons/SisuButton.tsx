@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import * as theme from "../../styleguide/theme";
 type Props = {
   onClick?(e: React.MouseEvent<HTMLElement>): void;
-  variant?: string;
+  buttonType?: string;
   to?: string | null;
   children: React.ReactNode;
   width: string;
@@ -15,18 +15,23 @@ const SisuButton: React.SFC<Props> = ({
   onClick,
   children,
   to,
-  variant,
+  buttonType,
   width,
   disabled
 }) => {
-  let bgColor = theme.PG;
-  let color = theme.PWH;
-  let backgroundColor = "";
-  if (variant === "greyed") {
-    bgColor = theme.PWL;
-    color = theme.PWH;
+  let bgColor;
+  let color;
+  let backgroundColor;
+  if (buttonType === "greyed") {
     backgroundColor = theme.PCL;
+    bgColor = "";
+    color = theme.PWH;
+  } else {
+    bgColor = theme.PG;
+    color = theme.PWH;
+    backgroundColor = "white";
   }
+
   const wideButton = (
     <WideButton
       onClick={onClick}
@@ -35,11 +40,12 @@ const SisuButton: React.SFC<Props> = ({
       backgroundColor={backgroundColor}
       height="50px"
       disabled={disabled}
+      noBoxShadow={true}
     >
       <div style={{ display: "flex", alignItems: "center" }}>
         <Typography
           variant="display3"
-          color={variant === "greyed" ? "primary" : "inherit"}
+          color={buttonType === "greyed" ? "primary" : "inherit"}
           align="center"
         >
           {children}
@@ -71,7 +77,7 @@ const SisuButton: React.SFC<Props> = ({
 };
 
 SisuButton.defaultProps = {
-  variant: "purple",
+  buttonType: "purple",
   width: "87%"
 };
 

@@ -34,6 +34,10 @@ const checkValidity = (value, rules) => {
   if (rules.absoluteLength) {
     isValid = value.length == rules.absoluteLength && isValid;
   }
+  if (rules.isEmail) {
+    const pattern = /\S+@\S+\.\S+/;
+    return pattern.test(String(value).toLowerCase());
+  }
 
   return isValid;
 };

@@ -29,7 +29,7 @@ class SisuMain extends Component {
           Never miss a pill ever again.
         </Typography>
         <SisuButton to={"login"}>Login</SisuButton>
-        <SisuButton variant="greyed" to={"register"}>
+        <SisuButton buttonType="greyed" to={"register"}>
           Register
         </SisuButton>
       </div>

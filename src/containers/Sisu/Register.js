@@ -14,7 +14,7 @@ class Register extends Component {
   }
   state = {
     stepNum: 0,
-    isValid: false,
+    isFormValid: false,
     values: []
   };
   // ------------------------------------------------------
@@ -98,6 +98,9 @@ class Register extends Component {
       formElementsArray[this.state.stepNum].config.value;
     const isLastStep =
       this.state.stepNum === registerUtil.REGISTER_STEPS.length - 1;
+    const currentFieldName = formElementsArray[this.state.stepNum].id;
+    const isCurrentFieldValid =
+      initialState.form[currentFieldName].validation.valid;
     return (
       <div style={{ marginTop: 80 }}>
         <div style={{ marginBottom: "30px" }}>
@@ -126,7 +129,8 @@ class Register extends Component {
               : () => this.handleNext(currentFieldValue)
           }
           width="100%"
-          variant={!this.state.isValid ? "greyed" : null}
+          buttonType={!isCurrentFieldValid ? "greyed" : null}
+          disabled={!isCurrentFieldValid ? true : false}
         >
           {isLastStep ? "Finish" : "Next"}
         </SisuButton>
@@ -134,7 +138,7 @@ class Register extends Component {
     );
   }
 }
-
+// F I X : when 'next' button goes back to disabled, the text goes black, supposed to go back to greyed
 //-----------------------------------------R -- E -- D -- U -- X-------------
 
 const mapStateToProps = state => {

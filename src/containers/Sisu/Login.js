@@ -5,7 +5,6 @@ import * as actions from "../../store/actions/actionsIndex";
 import InputField from "../../components/InputField/InputField";
 import * as topNavConfig from "../../store/actions/topNavigationConfigs";
 import SisuButton from "../../components/SisuButtons/SisuButton";
-// import * as theme from "../../styleguide/theme";
 import { Link } from "react-router-dom";
 
 class Login extends Component {
@@ -76,7 +75,7 @@ class Login extends Component {
           disabled={isFormValid ? false : true}
           onClick={this.login}
           width="100%"
-          variant={isFormValid ? "purple" : "greyed"}
+          buttonType={isFormValid ? "purple" : "greyed"}
         >
           Login
         </SisuButton>
