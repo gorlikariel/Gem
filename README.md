@@ -1,4 +1,4 @@
-![Gem Icon](./src/Icons/GemIcon/gemLogo.png "Never miss your pill, ever again")
+![Gem Icon](./src/Icons/GemIcon/gemLogoWithText.png "Never miss your pill, ever again")
 
 A progressive web app used to remind and track birth control pill usage,
 because birth control is no joke.
