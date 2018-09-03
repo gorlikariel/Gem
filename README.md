@@ -1,6 +1,6 @@
 # Gem
 
-![Gem Icon](./gem.png "Never miss your pill, ever again")
+![Gem Icon](./src/Icons/GemIcon/GemIcon.png "Never miss your pill, ever again")
 
 A progressive web app used to remind and track birth control pill usage,
 because birth control is no joke.
@@ -22,7 +22,8 @@ to be one of many in the future.
 - [Material-ui](https://zeplin.io/) - Styleguide
 
 The project is still being built, and features are regularly added.
-Signup/login page is currently rendered [here]
+Signup/login page is currently rendered [here].
+
 For styling I used a mix of material-ui and my own code, and is
 written completely with css-in-js. no CSS files were used.
 Gem is supposed to feel like a native app, and I'm thinking
