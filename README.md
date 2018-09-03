@@ -19,7 +19,7 @@ to be one of many in the future.
 - [Redux](https://redux.js.org/) - State Management
 - [React Router](https://reacttraining.com/react-router/core/guides/philosophy) - Routing
 - [Material-ui](https://material-ui.com/) - Design system
-- [Material-ui](https://zeplin.io/) - Styleguide
+- [Zeplin](https://zeplin.io/) - Styleguide
 
 The project is still being built, and features are regularly added.
 Signup/login page is currently rendered [here].

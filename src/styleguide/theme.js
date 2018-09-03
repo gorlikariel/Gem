@@ -12,6 +12,7 @@ export const PWL = "#fafafa";
 export const G2 = "linear-gradient(to right, #66bbf7, #6696fb)";
 export const G3 = "linear-gradient(to right, #77b4e4, #4ce49e)";
 export const BLK = "black";
+//sisu buttons,
 const theme = createMuiTheme({
   palette: {
     primary: {
@@ -27,6 +28,20 @@ const theme = createMuiTheme({
       light: PWH
     }
   },
+  typography: {
+    fontFamily: [
+      "-apple-system",
+      "BlinkMacSystemFont",
+      '"Helvetica Neue"',
+      '"Segoe UI"',
+      "Arial",
+      "sans-serif",
+      '"Apple Color Emoji"',
+      '"Segoe UI Emoji"',
+      '"Segoe UI Symbol"',
+      "Roboto"
+    ].join(",")
+  },
   overrides: {
     MuiTypography: {
       display1: {
@@ -40,6 +55,7 @@ const theme = createMuiTheme({
       display3: {
         fontSize: "16px",
         fontWeight: 500,
+        fontFamily: ["-apple-system", " BlinkMacSystemFont", "roboto"],
         letterSpacing: "0.0300rem"
       },
       display4: {
