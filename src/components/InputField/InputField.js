@@ -1,7 +1,8 @@
 import * as React from "react";
 import * as theme from "../../styleguide/theme";
 import { withStyles } from "@material-ui/core/styles";
-import { TextField } from "@material-ui/core";
+import { TextField, InputAdornment } from "@material-ui/core";
+
 const C3 = theme.C3;
 const styles = theme => ({
   container: {
@@ -20,16 +21,12 @@ const styles = theme => ({
   }
 });
 
-// type Props = {
-//   // classes: Object;
-//   type: string;
-//   onChange : React.FormEvent;
-
-// };
-// const InputField: React.SFC<Props> = ({type: type, }) => {
 const InputField = props => {
   const { classes, type, onChange, ...otherProps } = props;
-
+  const isSnoozeField =
+    props.id === "snoozeEvery" ? (
+      <InputAdornment position="start">Min</InputAdornment>
+    ) : null;
   return (
     <div className={classes.container}>
       <TextField
@@ -42,7 +39,10 @@ const InputField = props => {
             focused: classes.cssFocused
           }
         }}
-        InputProps={{ classes: { underline: classes.cssUnderline } }}
+        InputProps={{
+          classs: { underline: classes.cssUnderline },
+          startAdornment: isSnoozeField
+        }}
         onChange={onChange}
         label={props.label}
         value={props.value}

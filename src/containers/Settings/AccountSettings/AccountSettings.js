@@ -7,9 +7,23 @@ import CircleLoader from "react-spinners/CircleLoader";
 import * as topNavConfig from "../../../store/actions/topNavigationConfigs";
 class AccountSettings extends Component {
   componentDidMount() {
-    this.props.onInitPage(topNavConfig.ACCOUNT_SETTINGS_TOP_NAVIGATION);
+    this.props.initNavbarConfig(
+      this.props.isFormValid
+        ? topNavConfig.ACCOUNT_SETTINGS_TOP_NAVIGATION_READY
+        : topNavConfig.ACCOUNT_SETTINGS_TOP_NAVIGATION
+    );
   }
-  state = { screenWidth: null };
+  componentDidUpdate(prevProps) {
+    if (prevProps.isFormValid !== this.props.isFormValid) {
+      this.props.initNavbarConfig(
+        this.props.isFormValid
+          ? topNavConfig.ACCOUNT_SETTINGS_TOP_NAVIGATION_READY
+          : topNavConfig.ACCOUNT_SETTINGS_TOP_NAVIGATION
+      );
+    }
+  }
+
+  state = { screenWidth: null, isFormValid: false };
 
   render() {
     const styles = {
@@ -42,6 +56,7 @@ class AccountSettings extends Component {
         ))}
       </form>
     );
+
     return (
       <div style={{ marginTop: 80 }}>
         {this.props.loading ? (
@@ -69,7 +84,8 @@ class AccountSettings extends Component {
 const mapStateToProps = state => {
   return {
     form: state.accountSettings.form,
-    loading: state.accountSettings.loading
+    loading: state.accountSettings.loading,
+    isFormValid: state.accountSettings.isFormValid
   };
 };
 
@@ -77,7 +93,7 @@ const mapDispatchToProps = dispatch => {
   return {
     onInputChangedHandler: (event, inputId) =>
       dispatch(actions.updateAccountSettings(event, inputId)),
-    onInitPage: navBarConfig =>
+    initNavbarConfig: navBarConfig =>
       dispatch(actions.setTopNavigationState(navBarConfig))
   };
 };

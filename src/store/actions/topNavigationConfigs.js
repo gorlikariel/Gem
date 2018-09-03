@@ -10,13 +10,28 @@ export const SETTINGS_TOP_NAVIGATION = {
   showSettingsIcon: false,
   title: "Settings"
 };
+
 export const ACCOUNT_SETTINGS_TOP_NAVIGATION = {
   showLeftArrow: true,
   showSubmit: false,
   showSettingsIcon: false,
   title: "Account Settings"
 };
+
+export const ACCOUNT_SETTINGS_TOP_NAVIGATION_READY = {
+  showLeftArrow: true,
+  showSubmit: true,
+  showSettingsIcon: false,
+  title: "Account Settings"
+};
+
 export const ALARM_SETTINGS_TOP_NAVIGATION = {
+  showLeftArrow: true,
+  showSubmit: false,
+  showSettingsIcon: false,
+  title: "Alarm Settings"
+};
+export const ALARM_SETTINGS_TOP_NAVIGATION_READY = {
   showLeftArrow: true,
   showSubmit: false,
   showSettingsIcon: false,

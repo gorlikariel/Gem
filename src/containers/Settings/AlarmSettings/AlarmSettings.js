@@ -7,14 +7,24 @@ import * as topNavConfig from "../../../store/actions/topNavigationConfigs";
 
 class AlarmSettings extends Component {
   componentDidMount() {
-    this.props.onInitPage(topNavConfig.ALARM_SETTINGS_TOP_NAVIGATION);
-
-    this.setState({ screenWidth: window.innerWidth + "px" });
+    this.props.initNavbarConfig(
+      this.props.isFormFilled
+        ? topNavConfig.ALARM_SETTINGS_TOP_NAVIGATION_READY
+        : topNavConfig.ALARM_SETTINGS_TOP_NAVIGATION
+    );
   }
-  state = { screenWidth: null };
+  componentDidUpdate(prevProps) {
+    // if (prevProps.isFormFilled !== this.props.isFormFilled) {
+    //   this.props.initNavbarConfig(
+    //     this.props.isFormFilled
+    //       ? topNavConfig.ALARM_SETTINGS_TOP_NAVIGATION_READY
+    //       : topNavConfig.ALARM_SETTINGS_TOP_NAVIGATION
+    //   );
+    // }
+    console.log(this.props);
+  }
 
   render() {
-    // console.log(this.props.match.params);
     const styles = {
       text: {
         width: "100%"
@@ -46,14 +56,14 @@ class AlarmSettings extends Component {
         <form noValidate autoComplete="off">
           {form}
         </form>
-        {/*this.state.screenWidth ? <hr width={this.state.screenWidth} /> : null*/}
       </div>
     );
   }
 }
 const mapStateToProps = state => {
   return {
-    form: state.alarmSettings.form
+    form: state.alarmSettings.form,
+    isFormFilled: state.alarmSettings.isFormFilled
   };
 };
 
@@ -61,7 +71,7 @@ const mapDispatchToProps = dispatch => {
   return {
     onInputChangedHandler: (event, inputId) =>
       dispatch(actions.updateAlarmSettings(event, inputId)),
-    onInitPage: navBarConfig =>
+    initNavbarConfig: navBarConfig =>
       dispatch(actions.setTopNavigationState(navBarConfig))
   };
 };

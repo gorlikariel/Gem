@@ -32,7 +32,7 @@ I wanted to make it easy to manage birth control pills, and to avoid situations 
 sure about whether she took the pill today or not, or how many pills are left in her
 pack when it's not on her right now.
 Forgetting the pill just sucks, and Gem does its best to keep you from forgetting,
-by sending you a push notification at the time you set it to, and trigger the alarm
+by sending you a push notification at the time you set it to, and triggering the alarm
 clock.
 
 ## License

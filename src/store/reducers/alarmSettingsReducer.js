@@ -18,19 +18,21 @@ const initialState = {
     snoozeEvery: {
       elementType: "input",
       elementConfig: {
-        type: "text",
+        type: "number",
         label: "Snooze every"
       },
       value: "",
       touched: false,
       validation: {
         required: true,
-        valid: false
+        valid: false,
+        isNumeric: true
       }
     }
   },
   initialized: false,
   isFormValid: false,
+  isFormFilled: false,
   loading: false,
   submitted: false,
   error: false
@@ -60,10 +62,11 @@ export default (state = initialState, action) => {
             ...state.form.snoozeEvery,
             elementConfig: { ...state.form.snoozeEvery.elementConfig },
             validation: { ...state.form.snoozeEvery.validation },
-            value: `${action.settings.snoozeevry} Minutes`
+            value: action.settings.snoozeevry
           }
         },
         loading: false,
+        isFormFilled: action.settings.snoozeevry && action.settings.pillhour,
         initialized: true
       };
     case actionTypes.SUBMIT_ALARM_SETTINGS:
