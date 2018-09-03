@@ -27,7 +27,9 @@ class Login extends Component {
     };
     const isFormValid =
       this.props.email.validation.valid && this.props.password.validation.valid;
-
+    console.log(
+      this.props.email.validation.valid && this.props.password.validation.valid
+    );
     const styles = {
       text: {
         width: "100%"

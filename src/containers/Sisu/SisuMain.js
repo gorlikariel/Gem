@@ -24,7 +24,7 @@ class SisuMain extends Component {
           <img width="60px" height="71" src={GemIcon} alt="logo" />
         </div>
         <GemText />
-        <div style={{ paddingBottom: "50px" }}>
+        <div style={{ paddingBottom: "50px", paddingTop: "12px" }}>
           <Typography align="center" variant="display3">
             Never miss a pill ever again.
           </Typography>

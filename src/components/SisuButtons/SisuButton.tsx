@@ -23,7 +23,7 @@ const SisuButton: React.SFC<Props> = ({
   let color;
   let backgroundColor;
   if (buttonType === "greyed") {
-    backgroundColor = theme.PCL;
+    backgroundColor = theme.C4;
     bgColor = "";
     color = theme.PWH;
   } else {
