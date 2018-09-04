@@ -26,6 +26,7 @@ class Register extends Component {
   };
   // ------------------------------------------------------
   handleNext = value => {
+    value.preventDefault();
     this.state.stepNum === 0
       ? this.props.onInitPage({
           showLeftArrow: true,

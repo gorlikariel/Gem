@@ -7,7 +7,7 @@ import * as topNavConfig from "../../store/actions/topNavigationConfigs";
 import theme from "../../styleguide/theme";
 import ConfirmationDialog from "../../components/ConfirmationDialog/ConfirmationDialog";
 import MainButton from "../../components/MainButton/MainButton";
-import { ButtonBase, Button } from "@material-ui/core";
+import { ButtonBase } from "@material-ui/core";
 // DO THIS : add transition to button after being clicked
 class MainPage extends Component {
   componentDidMount() {
@@ -63,7 +63,6 @@ class MainPage extends Component {
           onClose={this.onClose}
           message="Are you sure you want to undo?"
         />
-        <Button onClick={this.props.logout}>NNYYAH</Button>
       </div>
     );
   }
