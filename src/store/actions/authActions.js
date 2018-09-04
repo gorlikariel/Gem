@@ -21,11 +21,28 @@ export const authFailed = error => {
     error: error
   };
 };
-
-export const checkAuthTimeout = expiresIn => {
-  console.log(expiresIn * 1000);
-  return dispatch => {};
+export const dispatchLogout = () => {
+  return {
+    type: actionTypes.AUTH_LOGOUT
+  };
 };
+
+export const logout = () => {
+  localStorage.removeItem("token");
+  localStorage.removeItem("userId");
+  localStorage.removeItem("expirationDate");
+  return dispatch => {
+    dispatch(dispatchLogout());
+  };
+};
+
+// export const checkAuthTimeout = expiresIn => {
+//   return dispatch => {
+//     setTimeout(() => {
+//       logout();
+//     }, expiresIn);
+//   };
+// };
 
 export const auth = (email, password, isSignup) => {
   return dispatch => {
@@ -41,17 +58,46 @@ export const auth = (email, password, isSignup) => {
     console.log(url);
     async function tryAuth() {
       try {
-        const authResponse = await axios.post(url, authData);
-        console.log(authResponse);
-        dispatch(
-          authSuccess(authResponse.data.idToken, authResponse.data.localId)
-        );
-        dispatch(checkAuthTimeout(authResponse.data.expiresIn));
+        const response = await axios.post(url, authData);
+        console.log(response);
+        //saving user id, token and expiration time in localStorage
+        // ============================================================
+        localStorage.setItem("token", response.data.idToken);
+        localStorage.setItem("userId", response.data.localId);
+        const expirationDate = new Date(
+          new Date().getTime() + response.data.expiresIn * 1000
+        ).getTime();
+        console.log("expirationDate: " + expirationDate);
+        localStorage.setItem("expirationDate", expirationDate);
+        // ============================================================
+        dispatch(authSuccess(response.data.idToken, response.data.localId));
       } catch (e) {
-        console.error(e);
+        console.error(e.response.data.error.message);
         dispatch(authFailed(e.response.data.error));
       }
     }
     tryAuth();
+  };
+};
+export const logIn = (token, id, expiration) => {
+  const timeToExpire = (expiration - new Date().getTime()) * 1000;
+  console.log("timeToExpire: " + timeToExpire);
+  return dispatch => {
+    dispatch(authSuccess(token, id));
+  };
+};
+
+export const checkIfAuth = () => {
+  return dispatch => {
+    const token = localStorage.getItem("token");
+    if (!token) {
+      console.log("NO TOKEN, LOGGIN OUT");
+      // dispatch(logout());
+    } else {
+      const expirationDate = localStorage.getItem("expirationDate");
+      const userId = localStorage.getItem("userId");
+      console.log(expirationDate, " loggingin");
+      dispatch(logIn(token, userId, expirationDate));
+    }
   };
 };

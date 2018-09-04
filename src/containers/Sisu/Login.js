@@ -121,7 +121,7 @@ const mapStateToProps = state => {
     email: state.accountSettings.form.email,
     password: state.accountSettings.form.password,
     loading: state.auth.loading,
-    error: state.auth.error
+    error: state.auth.error,
   };
 };
 

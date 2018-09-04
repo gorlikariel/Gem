@@ -3,7 +3,8 @@ const initialState = {
   token: null,
   userId: null,
   error: null,
-  loading: false
+  loading: false,
+  initialized: false
 };
 
 export default (state = initialState, action) => {
@@ -20,13 +21,25 @@ export default (state = initialState, action) => {
         token: action.token,
         userId: action.userId,
         error: null,
-        loading: false
+        loading: false,
+        shouldRedirect: true
       };
+    case actionTypes.AUTH_LOGOUT:
+      return {
+        ...state,
+        error: false,
+        loading: false,
+        token: null,
+        userId: null,
+        shouldRedirect: true
+      };
+
     case actionTypes.AUTH_FAIL:
       return {
         ...state,
         error: action.error,
-        loading: false
+        loading: false,
+        shouldRedirect: true
       };
 
     default:

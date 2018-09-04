@@ -6,6 +6,10 @@ import WideButton from "../../components/WideButton/WideButton";
 import theme from "../../styleguide/theme";
 import SisuButton from "../../components/SisuButtons/SisuButton";
 import GemText from "../../Icons/GemIcon/GemText";
+import { connect } from "react-redux";
+import * as actions from "../../store/actions/actionsIndex";
+import * as topNavConfig from "../../store/actions/topNavigationConfigs";
+
 const styles = {
   root: {
     marginTop: "70px",
@@ -15,7 +19,11 @@ const styles = {
     justifyContent: "center"
   }
 };
+
 class SisuMain extends Component {
+  componentDidMount() {
+    this.props.onInitPage(topNavConfig.SISU_TOP_NAVIGATION);
+  }
   render() {
     const { root } = styles;
     return (
@@ -38,4 +46,12 @@ class SisuMain extends Component {
   }
 }
 
-export default SisuMain;
+const mapDispatchToProps = dispatch => {
+  return {
+    onInitPage: navBarConfig => {
+      dispatch(actions.setTopNavigationState(navBarConfig));
+    }
+  };
+};
+
+export default connect(null, mapDispatchToProps)(SisuMain);

@@ -10,7 +10,12 @@ class Settings extends React.Component {
     this.props.onInitPage(topNavConfig.SETTINGS_TOP_NAVIGATION);
   }
   render() {
-    const settingsButtons = <SettingsButtons username={this.props.username} />;
+    const settingsButtons = (
+      <SettingsButtons
+        logout={this.props.logout}
+        username={this.props.username}
+      />
+    );
     const loader = (
       <div
         style={{
@@ -45,7 +50,10 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     onInitPage: navBarConfig =>
-      dispatch(actions.setTopNavigationState(navBarConfig))
+      dispatch(actions.setTopNavigationState(navBarConfig)),
+    logout: () => {
+      dispatch(actions.logout());
+    }
   };
 };
 

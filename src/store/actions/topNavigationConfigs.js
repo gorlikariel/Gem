@@ -4,6 +4,12 @@ export const MAIN_PAGE_TOP_NAVIGATION = {
   showSettingsIcon: true,
   title: ""
 };
+export const SISU_TOP_NAVIGATION = {
+  showLeftArrow: false,
+  showSubmit: false,
+  showSettingsIcon: false,
+  title: ""
+};
 export const SETTINGS_TOP_NAVIGATION = {
   showLeftArrow: true,
   showSubmit: false,

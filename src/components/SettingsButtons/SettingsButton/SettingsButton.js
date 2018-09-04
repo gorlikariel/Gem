@@ -34,10 +34,11 @@ const SettingsButton = props => {
         onClick={props.onClick}
         bgColor={theme[bgColor]}
         color={theme[color]}
+        onClick={props.onClick}
       >
         {icons[icon]}
         <Typography
-          style={{ paddingLeft: to === "/" ? "54px" : "12px" }}
+          style={{ paddingLeft: to === "/" ? "55px" : "12px" }}
           variant="display3"
           color="inherit"
         >
