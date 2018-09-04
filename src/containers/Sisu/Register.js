@@ -14,7 +14,6 @@ class Register extends Component {
   }
   state = {
     stepNum: 0,
-    isFormValid: false,
     values: []
   };
   // ------------------------------------------------------
@@ -26,7 +25,6 @@ class Register extends Component {
   };
   // ------------------------------------------------------
   handleNext = value => {
-    value.preventDefault();
     this.state.stepNum === 0
       ? this.props.onInitPage({
           showLeftArrow: true,
@@ -44,10 +42,25 @@ class Register extends Component {
   // ------------------------------------------------------
   submitForm = event => {
     event.preventDefault();
-    this.props.onAuth(this.state.values[0], this.state.values[1], true);
+    this.setState(prevState => ({
+      values: prevState.values.concat(this.props.snoozeEvery.value)
+    }));
+    console.log(this.state.values);
+    this.props.onAuth(
+      this.state.values.concat(this.props.snoozeEvery.value),
+      true
+    );
   };
   render() {
-    const initialState = {
+    const errorMessage = this.props.error ? (
+      <div style={{ paddingTop: "10px", paddingBottom: "10px" }}>
+        <Typography variant="subheading" color="error" align="center">
+          {this.props.error.message}
+        </Typography>
+      </div>
+    ) : null;
+
+    const formFromProps = {
       form: {
         email: this.props.email,
         password: this.props.password,
@@ -56,12 +69,7 @@ class Register extends Component {
         amountOfPacks: this.props.amountOfPacks,
         pillHour: this.props.pillHour,
         snoozeEvery: this.props.snoozeEvery
-      },
-      initialized: false,
-      isFormValid: false,
-      loading: false,
-      submitted: false,
-      error: false
+      }
     };
 
     const styles = {
@@ -70,30 +78,35 @@ class Register extends Component {
       }
     };
     const formElementsArray = [];
-    for (let key in initialState.form) {
+    for (let key in formFromProps.form) {
       formElementsArray.push({
         id: key,
-        config: initialState.form[key]
+        config: formFromProps.form[key]
       });
     }
-    let form = formElementsArray.map(formElement => (
-      <InputField
-        id={formElement.id}
-        key={formElement.id}
-        label={formElement.config.elementConfig.label}
-        type={formElement.config.elementConfig.type}
-        style={styles[formElement.config.elementConfig.type]}
-        value={formElement.config.value}
-        margin="normal"
-        onChange={event =>
-          this.props.onInputChangedHandler(
-            event,
-            formElement.id,
-            registerUtil.REGISTER_STEPS[this.state.stepNum].action
-          )
-        }
-      />
-    ));
+    let form = formElementsArray.map((formElement, index) => {
+      console.log(registerUtil.REGISTER_STEPS[0].id);
+      return (
+        <InputField
+          autoFocus={index === this.state.stepNum}
+          focused={true}
+          id={formElement.id}
+          key={formElement.id}
+          label={formElement.config.elementConfig.label}
+          type={formElement.config.elementConfig.type}
+          style={styles[formElement.config.elementConfig.type]}
+          value={formElement.config.value}
+          margin="normal"
+          onChange={event =>
+            this.props.onInputChangedHandler(
+              event,
+              formElement.id,
+              registerUtil.REGISTER_STEPS[this.state.stepNum].action
+            )
+          }
+        />
+      );
+    });
     const currentTitle = registerUtil.REGISTER_STEPS[this.state.stepNum].title;
     const currentFieldValue =
       formElementsArray[this.state.stepNum].config.value;
@@ -101,14 +114,14 @@ class Register extends Component {
       this.state.stepNum === registerUtil.REGISTER_STEPS.length - 1;
     const currentFieldName = formElementsArray[this.state.stepNum].id;
     const isCurrentFieldValid =
-      initialState.form[currentFieldName].validation.valid;
+      formFromProps.form[currentFieldName].validation.valid;
     return (
       <div style={{ marginTop: 80 }}>
         <div style={{ marginBottom: "30px" }}>
           <form
-            noValidate
-            autoComplete="off"
-            onSubmit={() => this.submitForm()}
+            onSubmit={e => {
+              e.preventDefault();
+            }}
           >
             <div
               style={{
@@ -135,6 +148,7 @@ class Register extends Component {
         >
           {isLastStep ? "Finish" : "Next"}
         </SisuButton>
+        {errorMessage}
       </div>
     );
   }
@@ -160,8 +174,7 @@ const mapDispatchToProps = dispatch => {
       dispatch(actions[action](event, inputId)),
     onInitPage: navBarConfig =>
       dispatch(actions.setTopNavigationState(navBarConfig)),
-    onAuth: (email, password, isSignup) =>
-      dispatch(actions.auth(email, password, isSignup))
+    onAuth: (userData, isSignup) => dispatch(actions.auth(userData, isSignup))
   };
 };
 

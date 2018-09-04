@@ -17,6 +17,13 @@ const styles = {
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "center"
+  },
+  buttons: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center",
+    width: window.innerWidth + "px"
   }
 };
 
@@ -25,7 +32,7 @@ class SisuMain extends Component {
     this.props.onInitPage(topNavConfig.SISU_TOP_NAVIGATION);
   }
   render() {
-    const { root } = styles;
+    const { root, buttons } = styles;
     return (
       <div style={root}>
         <div style={{ margin: "20px" }}>
@@ -37,10 +44,12 @@ class SisuMain extends Component {
             Never miss a pill ever again.
           </Typography>
         </div>
-        <SisuButton to={"login"}>Login</SisuButton>
-        <SisuButton buttonType="greyed" to={"register"}>
-          Register
-        </SisuButton>
+        <div style={buttons}>
+          <SisuButton to={"login"}>Login</SisuButton>
+          <SisuButton buttonType="greyed" to={"register"}>
+            Register
+          </SisuButton>
+        </div>
       </div>
     );
   }

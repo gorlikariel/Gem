@@ -18,6 +18,7 @@ to be one of many in the future.
 - [React Router](https://reacttraining.com/react-router/core/guides/philosophy) - Routing
 - [Material-ui](https://material-ui.com/) - Design system
 - [Zeplin](https://zeplin.io/) - Styleguide
+- [Wakatime](https://wakatime.com/) - Programming Metrics and Tracking
 
 The project is still being built, and features are regularly added.
 Signup/login page is currently rendered [here].
@@ -47,3 +48,7 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 [itai lavie]: https://dribbble.com/itailavie
 [here]: https://bluemarble-a4f07.firebaseapp.com/sisu-main
+
+#### My Wakatime Chart
+
+![wakatime image](https://wakatime.com/share/@db9700e2-2c5d-4c96-a32f-9f7c186cc128/48856007-5c5e-47f9-a789-acf11f7e35fb.png)

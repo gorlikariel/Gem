@@ -1,5 +1,6 @@
 import * as actionTypes from "./actionTypes";
 import axios from "axios";
+import { MAP_FIELDS } from "../../util/registerPageUtil";
 
 export const authStart = () => {
   return {
@@ -44,12 +45,13 @@ export const logout = () => {
 //   };
 // };
 
-export const auth = (email, password, isSignup) => {
+export const auth = (userData, isSignup) => {
   return dispatch => {
+    console.log("amountofpacks: " + userData[MAP_FIELDS.amountOfPacks]);
     dispatch(authStart());
     const authData = {
-      email: email,
-      password: password,
+      email: "email",
+      password: "password",
       returnSecureToken: true
     };
     const url = `https://www.googleapis.com/identitytoolkit/v3/relyingparty/${

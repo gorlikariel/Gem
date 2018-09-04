@@ -1,13 +1,5 @@
 import * as actionTypes from "./actionTypes";
 
-import firebase from "../../firebase";
-const database = firebase.database();
-
-export const loading = () => {
-  return {
-    type: actionTypes.LOADING_PILL_BUTTON
-  };
-};
 export const pillTaken = () => {
   return {
     type: actionTypes.TAKE_PILL
@@ -49,14 +41,9 @@ export const initSuccess = isPillTaken => {
   };
 };
 
-export const initPillButton = () => {
+export const initPillButton = isTaken => {
+  console.log(isTaken);
   return dispatch => {
-    dispatch(loading());
-    database
-      .ref()
-      .child("dailyPill/taken")
-      .once("value")
-      .then(res => dispatch(initSuccess(res.val())))
-      .catch(err => console.log(err));
+    dispatch(initSuccess(isTaken));
   };
 };

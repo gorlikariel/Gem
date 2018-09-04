@@ -8,11 +8,18 @@ import theme from "../../styleguide/theme";
 import ConfirmationDialog from "../../components/ConfirmationDialog/ConfirmationDialog";
 import MainButton from "../../components/MainButton/MainButton";
 import { ButtonBase } from "@material-ui/core";
+import axios from "axios";
 // DO THIS : add transition to button after being clicked
 class MainPage extends Component {
   componentDidMount() {
     this.props.onInitPage(topNavConfig.MAIN_PAGE_TOP_NAVIGATION);
-    this.props.initialized ? null : this.props.loadSettings();
+    const id = localStorage.getItem("userId");
+    axios
+      .get(`https://bluemarble-a4f07.firebaseio.com/users/${id}.json`)
+      .then(res => {
+        this.props.initialized ? null : this.props.loadSettings(res.data);
+      })
+      .catch(e => console.log(e));
   }
   state = {
     open: false
@@ -25,13 +32,20 @@ class MainPage extends Component {
   };
 
   render() {
-    const { loading, taken, pillHour, onTakePill, onUndoPill } = this.props;
-    const mainButton = loading ? (
+    const {
+      loading,
+      initialized,
+      taken,
+      pillHour,
+      onTakePill,
+      onUndoPill
+    } = this.props;
+    const mainButton = initialized ? (
       <BounceLoader
         sizeUnit={"px"}
         size={264}
         color={theme.C3}
-        loading={loading}
+        loading={initialized}
       />
     ) : (
       <MainButton
@@ -78,7 +92,8 @@ const mapStateToProps = state => {
     initialized:
       state.accountSettings.initialized &&
       state.alarmSettings.initialized &&
-      state.pillSettings.initialized
+      state.pillSettings.initialized &&
+      state.pill.initalized
   };
 };
 
@@ -89,11 +104,11 @@ const mapDispatchToProps = dispatch => {
     onInitPage: navBarConfig => {
       dispatch(actions.setTopNavigationState(navBarConfig));
     },
-    loadSettings: () => {
-      dispatch(actions.initPillButton());
-      dispatch(actions.initAccountSettings());
-      dispatch(actions.initAlarmSettings());
-      dispatch(actions.initPillSettings());
+    loadSettings: userData => {
+      dispatch(actions.initPillButton(userData.dailyPill.taken));
+      dispatch(actions.initAccountSettings(userData.settings.account));
+      dispatch(actions.initAlarmSettings(userData.settings.alarm));
+      dispatch(actions.initPillSettings(userData.settings.pill));
     },
     logout: () => {
       dispatch(actions.logout());

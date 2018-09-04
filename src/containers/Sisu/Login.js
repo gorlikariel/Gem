@@ -24,14 +24,11 @@ class Login extends Component {
       </div>
     ) : null;
 
-    const initialState = {
+    const formFromProps = {
       form: {
         email: this.props.email,
         password: this.props.password
-      },
-      loading: false,
-      submitted: false,
-      error: false
+      }
     };
     const isFormValid =
       this.props.email.validation.valid && this.props.password.validation.valid;
@@ -41,10 +38,10 @@ class Login extends Component {
       }
     };
     const formElementsArray = [];
-    for (let key in initialState.form) {
+    for (let key in formFromProps.form) {
       formElementsArray.push({
         id: key,
-        config: initialState.form[key]
+        config: formFromProps.form[key]
       });
     }
     let form = formElementsArray.map(formElement => (
@@ -121,7 +118,7 @@ const mapStateToProps = state => {
     email: state.accountSettings.form.email,
     password: state.accountSettings.form.password,
     loading: state.auth.loading,
-    error: state.auth.error,
+    error: state.auth.error
   };
 };
 

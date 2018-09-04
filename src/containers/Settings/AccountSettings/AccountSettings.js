@@ -42,6 +42,7 @@ class AccountSettings extends Component {
       <form noValidate autoComplete="off">
         {formElementsArray.map(formElement => (
           <InputField
+            autoFocus={formElement.id === "email"}
             id={formElement.id}
             key={formElement.id}
             label={formElement.config.elementConfig.label}

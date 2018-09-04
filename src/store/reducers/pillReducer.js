@@ -4,7 +4,8 @@ import * as util from "../../util/firebaseUtil";
 const initialState = {
   taken: false,
   hourOfTaking: "",
-  loading: false
+  loading: false,
+  initialized: false
 };
 
 export default (state = initialState, action) => {
@@ -32,7 +33,7 @@ export default (state = initialState, action) => {
       return {
         ...state,
         taken: action.isPillTaken,
-        loading: false
+        initialized: true
       };
 
     default:

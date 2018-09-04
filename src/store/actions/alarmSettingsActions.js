@@ -1,7 +1,5 @@
 import * as actionTypes from "./actionTypes";
 import { newForm, formValidity } from "./formUtility";
-import firebase from "../../firebase";
-const database = firebase.database();
 
 export const formChanged = (form, isFormValid) => {
   return {
@@ -22,11 +20,6 @@ export const updateForm = (event, inputIdentifier) => {
     dispatch(formChanged(form, isFormValid));
   };
 };
-export const loading = () => {
-  return {
-    type: actionTypes.LOADING_ALARM_SETTINGS
-  };
-};
 export const alarmSettingsSubmitted = () => {
   return {
     type: actionTypes.SUBMIT_ALARM_SETTINGS
@@ -38,18 +31,9 @@ export const setAlarmSettings = alarmSettings => {
     settings: alarmSettings
   };
 };
-export const initAlarmSettings = () => {
+export const initAlarmSettings = settings => {
   return dispatch => {
-    dispatch(loading());
-    database
-      .ref()
-      .child("settings/alarm")
-      .once("value")
-      .then(res => {
-        const settings = { ...res.val() };
-        dispatch(setAlarmSettings(settings));
-        console.log(settings);
-      })
-      .catch(err => console.log(err));
+    console.log(settings);
+    dispatch(setAlarmSettings(settings));
   };
 };

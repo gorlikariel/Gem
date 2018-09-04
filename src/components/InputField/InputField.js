@@ -16,13 +16,15 @@ const styles = theme => ({
   cssFocused: {},
   cssUnderline: {
     "&:after": {
-      borderBottomColor: C3
+      borderBottomColor: C3,
+      color: C3
     }
   }
 });
 
 const InputField = props => {
-  const { classes, type, onChange, ...otherProps } = props;
+  const { classes, type, onChange, autoFocus, focused, ...otherProps } = props;
+  console.log(autoFocus);
   const isSnoozeField =
     props.id === "snoozeEvery" ? (
       <InputAdornment position="start">Min</InputAdornment>
@@ -31,6 +33,7 @@ const InputField = props => {
     <div className={classes.container}>
       <TextField
         {...otherProps}
+        autoFocus={autoFocus}
         type={type}
         style={{ width: "100%" }}
         InputLabelProps={{
@@ -41,7 +44,8 @@ const InputField = props => {
         }}
         InputProps={{
           classs: { underline: classes.cssUnderline },
-          startAdornment: isSnoozeField
+          startAdornment: isSnoozeField,
+          autoFocus: focused
         }}
         onChange={onChange}
         label={props.label}
