@@ -7,9 +7,12 @@ import * as topNavConfig from '../../store/actions/topNavigationConfigs';
 import { withRouter } from 'react-router';
 import SisuButton from '../../components/SisuButtons/SisuButton';
 import * as registerUtil from '../../util/registerPageUtil';
+import { MAP_FIELDS } from '../../util/registerPageUtil';
+
 class Register extends Component {
   componentDidMount() {
     this.props.onInitPage(topNavConfig.REGISTER_TOP_NAVIGATION_INITIAL);
+    console.log(this.props);
   }
   state = {
     stepNum: 0,
@@ -17,7 +20,7 @@ class Register extends Component {
   };
   // ------------------------------------------------------
   goBack = () => {
-    this.state.stepNum === 0 ? this.props.history.goBack() : null;
+    this.state.stepNum === 0 ? this.props.location.replace('/sisu-main') : null;
     this.setState(prevState => ({
       stepNum: prevState.stepNum + -1
     }));
@@ -33,10 +36,15 @@ class Register extends Component {
           backOnClick: () => this.goBack()
         })
       : null;
-    this.setState(prevState => ({
-      stepNum: prevState.stepNum + 1,
-      values: prevState.values.concat(value)
-    }));
+    this.setState(prevState => {
+      const newValues = [...prevState.values];
+      newValues[prevState.stepNum] = value;
+      console.log(newValues);
+      return {
+        stepNum: prevState.stepNum + 1,
+        values: newValues
+      };
+    });
   };
   // ------------------------------------------------------
   submitForm = event => {
@@ -116,6 +124,7 @@ class Register extends Component {
       <div style={{ marginTop: 80 }}>
         <div style={{ marginBottom: '30px' }}>
           <form
+            autoComplete="off"
             onSubmit={e => {
               e.preventDefault();
             }}

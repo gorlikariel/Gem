@@ -39,14 +39,6 @@ export const logout = () => {
   };
 };
 
-// export const checkAuthTimeout = expiresIn => {
-//   return dispatch => {
-//     setTimeout(() => {
-//       logout();
-//     }, expiresIn);
-//   };
-// };
-
 export const auth = (userDataArray, isSignup) => {
   const userObject = formatUserObject(userDataArray);
   return dispatch => {
@@ -60,31 +52,7 @@ export const auth = (userDataArray, isSignup) => {
     const url = `https://www.googleapis.com/identitytoolkit/v3/relyingparty/${
       isSignup ? 'signupNewUser' : 'verifyPassword'
     }?key=AIzaSyBq_VbcsnwxgnTS05jOWVeqMhgNI40J1rU`;
-    // axios
-    //   .post(url, authData)
-    //   .then(response => {
-    //     console.log(response);
-    //     localStorage.setItem('token', response.data.idToken);
-    //     localStorage.setItem('userId', response.data.localId);
-    //     const expirationDate = new Date(
-    //       new Date().getTime() + response.data.expiresIn * 1000
-    //     ).getTime();
-    //     console.log('expirationDate: ' + expirationDate);
-    //     localStorage.setItem('expirationDate', expirationDate);
-    //     dispatch(authSuccess(response.data.idToken, response.data.localId));
-    //   })
-    //   // .then(response => {
-    //   //   console.log(userObject);
-    //   //   const userId = localStorage.getItem('userId');
 
-    //   //   database()
-    //   //     .ref('users/' + userId)
-    //   //     .set(userObject);
-    //   // })
-    //   .catch(e => {
-    //     console.error(e.response.data.error.message);
-    //     dispatch(authFailed(e.response.data.error));
-    //   });
     async function tryAuth(userObject) {
       try {
         const response = await axios.post(url, authData);
