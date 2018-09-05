@@ -20,11 +20,16 @@ const styles = {
   },
   buttons: {
     display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
     justifyContent: "center",
-    width: window.innerWidth + "px"
-  }
+    alignItems: "center",
+    width: "100%",
+    flexDirection: "column"
+  },
+  subtitle: {
+    paddingBottom: "50px",
+    paddingTop: "12px"
+  },
+  gemLogo: { margin: "20px" }
 };
 
 class SisuMain extends Component {
@@ -32,21 +37,23 @@ class SisuMain extends Component {
     this.props.onInitPage(topNavConfig.SISU_TOP_NAVIGATION);
   }
   render() {
-    const { root, buttons } = styles;
+    const { root, buttons, subtitle, gemLogo } = styles;
     return (
       <div style={root}>
-        <div style={{ margin: "20px" }}>
+        <div style={gemLogo}>
           <img width="60px" height="71" src={GemIcon} alt="logo" />
         </div>
         <GemText />
-        <div style={{ paddingBottom: "50px", paddingTop: "12px" }}>
+        <div style={subtitle}>
           <Typography align="center" variant="display3">
             Never miss a pill ever again.
           </Typography>
         </div>
         <div style={buttons}>
-          <SisuButton to={"login"}>Login</SisuButton>
-          <SisuButton buttonType="greyed" to={"register"}>
+          <SisuButton width="100%" to={"login"}>
+            Login
+          </SisuButton>
+          <SisuButton width="100%" buttonType="greyed" to={"register"}>
             Register
           </SisuButton>
         </div>

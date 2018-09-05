@@ -1,13 +1,12 @@
-import React, { Component } from "react";
-import { TextField, Typography } from "@material-ui/core";
-import { connect } from "react-redux";
-import * as actions from "../../store/actions/actionsIndex";
-import InputField from "../../components/InputField/InputField";
-import * as topNavConfig from "../../store/actions/topNavigationConfigs";
-import { withRouter } from "react-router";
-import SisuButton from "../../components/SisuButtons/SisuButton";
-import * as registerUtil from "../../util/registerPageUtil";
-
+import React, { Component } from 'react';
+import { TextField, Typography } from '@material-ui/core';
+import { connect } from 'react-redux';
+import * as actions from '../../store/actions/actionsIndex';
+import InputField from '../../components/InputField/InputField';
+import * as topNavConfig from '../../store/actions/topNavigationConfigs';
+import { withRouter } from 'react-router';
+import SisuButton from '../../components/SisuButtons/SisuButton';
+import * as registerUtil from '../../util/registerPageUtil';
 class Register extends Component {
   componentDidMount() {
     this.props.onInitPage(topNavConfig.REGISTER_TOP_NAVIGATION_INITIAL);
@@ -30,7 +29,7 @@ class Register extends Component {
           showLeftArrow: true,
           showSubmit: false,
           showSettingsIcon: false,
-          title: "Register",
+          title: 'Register',
           backOnClick: () => this.goBack()
         })
       : null;
@@ -45,7 +44,6 @@ class Register extends Component {
     this.setState(prevState => ({
       values: prevState.values.concat(this.props.snoozeEvery.value)
     }));
-    console.log(this.state.values);
     this.props.onAuth(
       this.state.values.concat(this.props.snoozeEvery.value),
       true
@@ -53,7 +51,7 @@ class Register extends Component {
   };
   render() {
     const errorMessage = this.props.error ? (
-      <div style={{ paddingTop: "10px", paddingBottom: "10px" }}>
+      <div style={{ paddingTop: '10px', paddingBottom: '10px' }}>
         <Typography variant="subheading" color="error" align="center">
           {this.props.error.message}
         </Typography>
@@ -74,7 +72,7 @@ class Register extends Component {
 
     const styles = {
       text: {
-        width: "100%"
+        width: '100%'
       }
     };
     const formElementsArray = [];
@@ -85,7 +83,6 @@ class Register extends Component {
       });
     }
     let form = formElementsArray.map((formElement, index) => {
-      console.log(registerUtil.REGISTER_STEPS[0].id);
       return (
         <InputField
           autoFocus={index === this.state.stepNum}
@@ -117,7 +114,7 @@ class Register extends Component {
       formFromProps.form[currentFieldName].validation.valid;
     return (
       <div style={{ marginTop: 80 }}>
-        <div style={{ marginBottom: "30px" }}>
+        <div style={{ marginBottom: '30px' }}>
           <form
             onSubmit={e => {
               e.preventDefault();
@@ -125,8 +122,8 @@ class Register extends Component {
           >
             <div
               style={{
-                paddingTop: "20px",
-                height: "80px"
+                paddingTop: '20px',
+                height: '80px'
               }}
             >
               <Typography variant="display1" color="primary" align="left">
@@ -143,10 +140,10 @@ class Register extends Component {
               : () => this.handleNext(currentFieldValue)
           }
           width="100%"
-          buttonType={!isCurrentFieldValid ? "greyed" : null}
+          buttonType={!isCurrentFieldValid ? 'greyed' : null}
           disabled={!isCurrentFieldValid ? true : false}
         >
-          {isLastStep ? "Finish" : "Next"}
+          {isLastStep ? 'Finish' : 'Next'}
         </SisuButton>
         {errorMessage}
       </div>

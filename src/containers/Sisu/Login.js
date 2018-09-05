@@ -1,12 +1,33 @@
-import React, { Component } from "react";
-import { TextField, Typography } from "@material-ui/core";
-import { connect } from "react-redux";
-import * as actions from "../../store/actions/actionsIndex";
-import ClipLoader from "react-spinners/ClipLoader";
-import InputField from "../../components/InputField/InputField";
-import * as topNavConfig from "../../store/actions/topNavigationConfigs";
-import SisuButton from "../../components/SisuButtons/SisuButton";
-import { Link } from "react-router-dom";
+import React, { Component } from 'react';
+import { TextField, Typography } from '@material-ui/core';
+import { connect } from 'react-redux';
+import * as actions from '../../store/actions/actionsIndex';
+import ClipLoader from 'react-spinners/ClipLoader';
+import InputField from '../../components/InputField/InputField';
+import * as topNavConfig from '../../store/actions/topNavigationConfigs';
+import SisuButton from '../../components/SisuButtons/SisuButton';
+import { Link } from 'react-router-dom';
+
+const styles = {
+  root: {
+    marginTop: 80
+  },
+  layer: {
+    marginBottom: '30px'
+  },
+  error: {
+    paddingTop: '10px',
+    paddingBottom: '10px'
+  },
+  welcomeHeadline: {
+    paddingTop: '20px',
+    height: '80px'
+  },
+  registerRedirect: {
+    textDecoration: 'none',
+    color: '#7d9cfb'
+  }
+};
 
 class Login extends Component {
   componentDidMount() {
@@ -16,8 +37,10 @@ class Login extends Component {
     this.props.onAuth(this.props.email.value, this.props.password.value, false);
   };
   render() {
+    const { root, error, welcomeHeadline, registerRedirect, layer } = styles;
+
     const errorMessage = this.props.error ? (
-      <div style={{ paddingTop: "10px", paddingBottom: "10px" }}>
+      <div style={error}>
         <Typography variant="subheading" color="error" align="center">
           {this.props.error.message}
         </Typography>
@@ -32,11 +55,6 @@ class Login extends Component {
     };
     const isFormValid =
       this.props.email.validation.valid && this.props.password.validation.valid;
-    const styles = {
-      text: {
-        width: "100%"
-      }
-    };
     const formElementsArray = [];
     for (let key in formFromProps.form) {
       formElementsArray.push({
@@ -61,23 +79,18 @@ class Login extends Component {
     const loader = (
       <div>
         <ClipLoader
-          sizeUnit={"px"}
+          sizeUnit={'px'}
           size={25}
-          color={"inherit"}
+          color={'inherit'}
           loading={this.props.loading}
         />
       </div>
     );
     return (
-      <div style={{ marginTop: 80 }}>
-        <div style={{ marginBottom: "30px" }}>
+      <div style={root}>
+        <div style={layer}>
           <form noValidate autoComplete="off">
-            <div
-              style={{
-                paddingTop: "20px",
-                height: "80px"
-              }}
-            >
+            <div style={welcomeHeadline}>
               <Typography variant="display1" color="primary" align="left">
                 Welcome back!
               </Typography>
@@ -89,19 +102,16 @@ class Login extends Component {
           disabled={isFormValid ? false : true}
           onClick={this.login}
           width="100%"
-          buttonType={isFormValid ? "purple" : "greyed"}
+          buttonType={isFormValid ? 'purple' : 'greyed'}
         >
-          {this.props.loading ? loader : "Login"}
+          {this.props.loading ? loader : 'Login'}
         </SisuButton>
-        <div style={{ padding: "20px" }}>
+        <div style={error}>
           {errorMessage}
           <Typography variant="subheading" color="primary" align="center">
             New user?
-            <Link
-              style={{ textDecoration: "none", color: "#7d9cfb" }}
-              to="/register"
-            >
-              {" "}
+            <Link style={registerRedirect} to="/register">
+              {' '}
               Signup
             </Link>
           </Typography>
