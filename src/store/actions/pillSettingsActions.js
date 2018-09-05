@@ -1,5 +1,5 @@
-import * as actionTypes from "./actionTypes";
-import { newForm, formValidity } from "./formUtility";
+import * as actionTypes from './actionTypes';
+import { newForm, formValidity } from './formUtility';
 export const formChanged = (form, isFormValid) => {
   return {
     type: actionTypes.PILL_SETTINGS_CHANGED,
@@ -40,5 +40,10 @@ export const initPillSettings = settings => {
     //     dispatch(setPillSettings(settings));
     //   })
     //   .catch(err => console.log(err));
+  };
+};
+export const clearPillSettings = () => {
+  return {
+    type: actionTypes.CLEAR_PILL_SETTINGS
   };
 };

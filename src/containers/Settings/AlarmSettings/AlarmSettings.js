@@ -1,9 +1,9 @@
-import React, { Component } from "react";
-import { TextField } from "@material-ui/core";
-import { connect } from "react-redux";
-import InputField from "../../../components/InputField/InputField";
-import * as actions from "../../../store/actions/actionsIndex";
-import * as topNavConfig from "../../../store/actions/topNavigationConfigs";
+import React, { Component } from 'react';
+import { TextField } from '@material-ui/core';
+import { connect } from 'react-redux';
+import InputField from '../../../components/InputField/InputField';
+import * as actions from '../../../store/actions/actionsIndex';
+import * as topNavConfig from '../../../store/actions/topNavigationConfigs';
 
 class AlarmSettings extends Component {
   componentDidMount() {
@@ -13,21 +13,11 @@ class AlarmSettings extends Component {
         : topNavConfig.ALARM_SETTINGS_TOP_NAVIGATION
     );
   }
-  componentDidUpdate(prevProps) {
-    // if (prevProps.isFormFilled !== this.props.isFormFilled) {
-    //   this.props.initNavbarConfig(
-    //     this.props.isFormFilled
-    //       ? topNavConfig.ALARM_SETTINGS_TOP_NAVIGATION_READY
-    //       : topNavConfig.ALARM_SETTINGS_TOP_NAVIGATION
-    //   );
-    // }
-    console.log(this.props);
-  }
 
   render() {
     const styles = {
       text: {
-        width: "100%"
+        width: '100%'
       }
     };
     const formElementsArray = [];

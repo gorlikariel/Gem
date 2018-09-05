@@ -33,30 +33,38 @@ class App extends React.Component {
       <React.Fragment>
         <Switch>
           <Route exact path="/introduction" component={Introduction} />
-          <Route exact={true} path="/" component={MainPage} />
-          <Route exact={true} path="/settings" component={Settings} />
-          <Route
-            exact={true}
-            path="/account-settings"
-            component={AccountSettings}
-          />
-          <Route
-            exact={true}
-            path="/alarm-settings"
-            component={AlarmSettings}
-          />
-          <Route exact={true} path="/pill-settings" component={PillSettings} />
-          <Redirect to="/" />
+          <Layout>
+            <Route exact={true} path="/" component={MainPage} />
+            <Route exact={true} path="/settings" component={Settings} />
+            <Route
+              exact={true}
+              path="/account-settings"
+              component={AccountSettings}
+            />
+            <Route
+              exact={true}
+              path="/alarm-settings"
+              component={AlarmSettings}
+            />
+            <Route
+              exact={true}
+              path="/pill-settings"
+              component={PillSettings}
+            />
+            <Redirect to="/" />
+          </Layout>
         </Switch>
       </React.Fragment>
     ) : (
       <React.Fragment>
         <Switch>
           <Route exact path="/introduction" component={Introduction} />
-          <Route exact path="/sisu-main" component={SisuMain} />
-          <Route path="/register" component={Register} />
-          <Route path="/login" component={Login} />
-          <Redirect to="/sisu-main" />
+          <Layout>
+            <Route exact path="/sisu-main" component={SisuMain} />
+            <Route path="/register" component={Register} />
+            <Route path="/login" component={Login} />
+            <Redirect to="/sisu-main" />
+          </Layout>
         </Switch>
       </React.Fragment>
     );
@@ -64,7 +72,7 @@ class App extends React.Component {
     return (
       <MuiThemeProvider theme={theme}>
         <Route path="/" component={TopNavigation} />
-        <Layout>{routes}</Layout>
+        {routes}
         {isBottomNavbar}
       </MuiThemeProvider>
     );

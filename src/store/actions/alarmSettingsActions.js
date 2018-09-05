@@ -1,5 +1,5 @@
-import * as actionTypes from "./actionTypes";
-import { newForm, formValidity } from "./formUtility";
+import * as actionTypes from './actionTypes';
+import { newForm, formValidity } from './formUtility';
 
 export const formChanged = (form, isFormValid) => {
   return {
@@ -35,5 +35,10 @@ export const initAlarmSettings = settings => {
   return dispatch => {
     console.log(settings);
     dispatch(setAlarmSettings(settings));
+  };
+};
+export const clearAlarmSettings = () => {
+  return {
+    type: actionTypes.CLEAR_ALARM_SETTINGS
   };
 };

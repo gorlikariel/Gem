@@ -1,5 +1,5 @@
-import * as actionTypes from "./actionTypes";
-import { newForm, formValidity } from "./formUtility";
+import * as actionTypes from './actionTypes';
+import { newForm, formValidity } from './formUtility';
 export const formChanged = (form, isFormValid) => {
   return {
     type: actionTypes.ACCOUNT_SETTINGS_CHANGED,
@@ -34,5 +34,10 @@ export const initAccountSettings = settings => {
   console.log(settings);
   return dispatch => {
     dispatch(setAccountSettings(settings));
+  };
+};
+export const clearAccountSettings = () => {
+  return {
+    type: actionTypes.CLEAR_ACCOUNT_SETTINGS
   };
 };

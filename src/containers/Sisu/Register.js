@@ -14,13 +14,16 @@ class Register extends Component {
     this.props.onInitPage(topNavConfig.REGISTER_TOP_NAVIGATION_INITIAL);
     console.log(this.props);
   }
+  componentWillUnmount() {
+    this.props.clearForm();
+  }
   state = {
     stepNum: 0,
     values: []
   };
   // ------------------------------------------------------
   goBack = () => {
-    this.state.stepNum === 0 ? this.props.location.replace('/sisu-main') : null;
+    this.state.stepNum === 0 ? this.props.history.replace('/sisu-main') : null;
     this.setState(prevState => ({
       stepNum: prevState.stepNum + -1
     }));
@@ -149,8 +152,10 @@ class Register extends Component {
               : () => this.handleNext(currentFieldValue)
           }
           width="100%"
-          buttonType={!isCurrentFieldValid ? 'greyed' : null}
-          disabled={!isCurrentFieldValid ? true : false}
+          buttonType={
+            !isCurrentFieldValid || !currentFieldValue ? 'greyed' : null
+          }
+          disabled={!isCurrentFieldValid || !currentFieldValue ? true : false}
         >
           {isLastStep ? 'Finish' : 'Next'}
         </SisuButton>
@@ -170,7 +175,8 @@ const mapStateToProps = state => {
     pillsInPack: state.pillSettings.form.pillsInPack,
     amountOfPacks: state.pillSettings.form.amountOfPacks,
     pillHour: state.alarmSettings.form.pillHour,
-    snoozeEvery: state.alarmSettings.form.snoozeEvery
+    snoozeEvery: state.alarmSettings.form.snoozeEvery,
+    error: state.auth.error
   };
 };
 
@@ -180,7 +186,12 @@ const mapDispatchToProps = dispatch => {
       dispatch(actions[action](event, inputId)),
     onInitPage: navBarConfig =>
       dispatch(actions.setTopNavigationState(navBarConfig)),
-    onAuth: (userData, isSignup) => dispatch(actions.auth(userData, isSignup))
+    onAuth: (userData, isSignup) => dispatch(actions.auth(userData, isSignup)),
+    clearForm: () => {
+      dispatch(actions.clearAccountSettings());
+      dispatch(actions.clearAlarmSettings());
+      dispatch(actions.clearPillSettings());
+    }
   };
 };
 

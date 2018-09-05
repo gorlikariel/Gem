@@ -1,14 +1,14 @@
-import * as actionTypes from "../actions/actionTypes";
+import * as actionTypes from '../actions/actionTypes';
 
 const initialState = {
   form: {
     name: {
-      elementType: "input",
+      elementType: 'input',
       elementConfig: {
-        type: "text",
-        label: "Name"
+        type: 'text',
+        label: 'Name'
       },
-      value: "",
+      value: '',
       touched: false,
       validation: {
         required: true,
@@ -16,12 +16,12 @@ const initialState = {
       }
     },
     userName: {
-      elementType: "input",
+      elementType: 'input',
       elementConfig: {
-        type: "text",
-        label: "Username"
+        type: 'text',
+        label: 'Username'
       },
-      value: "",
+      value: '',
       touched: false,
       validation: {
         required: true,
@@ -29,12 +29,12 @@ const initialState = {
       }
     },
     email: {
-      elementType: "input",
+      elementType: 'input',
       elementConfig: {
-        type: "email",
-        label: "Email"
+        type: 'email',
+        label: 'Email'
       },
-      value: "",
+      value: '',
       touched: false,
       validation: {
         required: true,
@@ -43,12 +43,12 @@ const initialState = {
       }
     },
     password: {
-      elementType: "input",
+      elementType: 'input',
       elementConfig: {
-        type: "password",
-        label: "Password"
+        type: 'password',
+        label: 'Password'
       },
-      value: "",
+      value: '',
       touched: false,
       validation: {
         required: true,
@@ -110,6 +110,10 @@ export default (state = initialState, action) => {
       return {
         ...state,
         loading: true
+      };
+    case actionTypes.CLEAR_ACCOUNT_SETTINGS:
+      return {
+        ...initialState
       };
 
     default:

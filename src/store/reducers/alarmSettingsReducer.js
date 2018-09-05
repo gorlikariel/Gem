@@ -1,14 +1,14 @@
-import * as actionTypes from "../actions/actionTypes";
+import * as actionTypes from '../actions/actionTypes';
 
 const initialState = {
   form: {
     pillHour: {
-      elementType: "input",
+      elementType: 'input',
       elementConfig: {
-        type: "time",
-        label: "Pill hour"
+        type: 'time',
+        label: 'Pill hour'
       },
-      value: "",
+      value: '',
       touched: false,
       validation: {
         required: true,
@@ -16,12 +16,12 @@ const initialState = {
       }
     },
     snoozeEvery: {
-      elementType: "input",
+      elementType: 'input',
       elementConfig: {
-        type: "number",
-        label: "Snooze every"
+        type: 'number',
+        label: 'Snooze every'
       },
-      value: "",
+      value: '',
       touched: false,
       validation: {
         required: true,
@@ -78,6 +78,10 @@ export default (state = initialState, action) => {
       return {
         ...state,
         loading: true
+      };
+    case actionTypes.CLEAR_ALARM_SETTINGS:
+      return {
+        ...initialState
       };
 
     default:

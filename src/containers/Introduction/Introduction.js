@@ -14,15 +14,24 @@ import third from './Onboarding3.png';
 
 const tutorialSteps = [
   {
-    label: 'SHIT FUCK',
+    label: 'Never Miss a Pill',
+    paragraph: `Pre-Alarm and an Auto-Snooze\n
+features to make sure you don't forget\n
+to take your pills`,
     imgPath: first
   },
   {
-    label: 'SHIT ass',
+    label: 'Track Your Cycle',
+    paragraph: `Track the remaining quantity and\n
+keep up with monthly statistics`,
+
     imgPath: second
   },
   {
-    label: 'SHIT DICK',
+    label: 'Knowledge Base',
+    paragraph: `Have a question? not sure about\n
+something? find your answer on the\n
+FAQ section.`,
     imgPath: third
   }
 ];
@@ -32,18 +41,21 @@ const styles = theme => ({
     maxWidth: 400,
     flexGrow: 1,
     alignItems: 'center',
-    justifyContent: 'center',
-    flexDirection: 'column'
+    justifyContent: 'center'
+    // flexDirection: 'column'
   },
   img: {
     height: '100%',
     width: '100%',
     maxWidth: 400,
-    overflow: 'hidden',
-    width: '100%'
+    overflow: 'hidden'
   },
   mobileStepper: {
-    backgroundColor: 'inherit'
+    backgroundColor: 'white'
+  },
+  dots: {
+    color: 'red',
+    backgroundColor: 'blue'
   }
 });
 
@@ -83,14 +95,55 @@ class Introduction extends React.Component {
           enableMouseEvents
         >
           {tutorialSteps.map(step => (
-            <img
-              key={step.label}
-              className={classes.img}
-              src={step.imgPath}
-              alt={step.label}
-            />
+            <div key={step.paragraph} style={{ marginTop: '80px' }}>
+              <img
+                key={step.label}
+                className={classes.img}
+                src={step.imgPath}
+                alt={step.label}
+              />
+            </div>
           ))}
         </SwipeableViews>
+        {/*
+        <img
+          key={tutorialSteps[0].label}
+          className={classes.img}
+          src={tutorialSteps[0].imgPath}
+          alt={tutorialSteps[0].label}
+        />
+        */}
+        <SwipeableViews
+          axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
+          index={this.state.activeStep}
+          onChangeIndex={this.handleStepChange}
+          enableMouseEvents
+        >
+          {tutorialSteps.map(step => (
+            <div
+              key={step.imgPath}
+              style={{ marginTop: '30px', color: '#8ea9c3', whiteSpace: 'pre' }}
+            >
+              <Typography
+                key={step.label}
+                align="center"
+                color="primary"
+                variant="display4"
+              >
+                {step.label}
+              </Typography>
+              <Typography
+                key={step.paragraph}
+                align="center"
+                color="inherit"
+                variant="subheading"
+              >
+                {step.paragraph}
+              </Typography>
+            </div>
+          ))}
+        </SwipeableViews>
+
         <MobileStepper
           steps={maxSteps}
           position="bottom"
@@ -103,7 +156,6 @@ class Introduction extends React.Component {
               disabled={activeStep === maxSteps - 1}
             >
               Next
-              {theme.direction === 'rtl' ? <LeftArrow /> : <RightArrow />}
             </Button>
           }
           backButton={

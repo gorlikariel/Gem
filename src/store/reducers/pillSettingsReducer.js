@@ -1,14 +1,14 @@
-import * as actionTypes from "../actions/actionTypes";
+import * as actionTypes from '../actions/actionTypes';
 
 const initialState = {
   form: {
     pillsInPack: {
-      elementType: "input",
+      elementType: 'input',
       elementConfig: {
-        type: "number",
-        label: "Pills in pack"
+        type: 'number',
+        label: 'Pills in pack'
       },
-      value: "",
+      value: '',
       touched: false,
       validation: {
         required: true,
@@ -17,12 +17,12 @@ const initialState = {
       }
     },
     amountOfPacks: {
-      elementType: "input",
+      elementType: 'input',
       elementConfig: {
-        type: "number",
-        label: "Amount of packs"
+        type: 'number',
+        label: 'Amount of packs'
       },
-      value: "",
+      value: '',
       touched: false,
       validation: {
         required: true,
@@ -79,6 +79,10 @@ export default (state = initialState, action) => {
       return {
         ...state,
         loading: true
+      };
+    case actionTypes.CLEAR_PILL_SETTINGS:
+      return {
+        ...initialState
       };
 
     default:
