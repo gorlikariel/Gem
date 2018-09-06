@@ -105,14 +105,6 @@ class Introduction extends React.Component {
             </div>
           ))}
         </SwipeableViews>
-        {/*
-        <img
-          key={tutorialSteps[0].label}
-          className={classes.img}
-          src={tutorialSteps[0].imgPath}
-          alt={tutorialSteps[0].label}
-        />
-        */}
         <SwipeableViews
           axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
           index={this.state.activeStep}
@@ -152,10 +144,16 @@ class Introduction extends React.Component {
           nextButton={
             <Button
               size="small"
-              onClick={this.handleNext}
-              disabled={activeStep === maxSteps - 1}
+              onClick={
+                activeStep === maxSteps
+                  ? this.props.history.replace('/')
+                  : this.handleNext
+              }
+              disabled={activeStep === maxSteps}
             >
-              Next
+              <Typography color="primary" variant="display3">
+                {activeStep === maxSteps - 1 ? 'FINISH' : 'NEXT'}
+              </Typography>
             </Button>
           }
           backButton={
@@ -165,7 +163,12 @@ class Introduction extends React.Component {
               disabled={activeStep === 0}
             >
               {theme.direction === 'rtl' ? <RightArrow /> : <LeftArrow />}
-              Back
+              <Typography
+                color={activeStep === 0 ? 'inherit' : 'primary'}
+                variant="display3"
+              >
+                BACK
+              </Typography>
             </Button>
           }
         />

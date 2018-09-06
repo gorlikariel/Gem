@@ -52,6 +52,7 @@ class Register extends Component {
   // ------------------------------------------------------
   submitForm = event => {
     event.preventDefault();
+    event.stopPropagation();
     this.setState(prevState => ({
       values: prevState.values.concat(this.props.snoozeEvery.value)
     }));
@@ -59,6 +60,10 @@ class Register extends Component {
       this.state.values.concat(this.props.snoozeEvery.value),
       true
     );
+    if (!this.props.error) {
+      this.props.onInitPage(topNavConfig.SISU_TOP_NAVIGATION);
+      this.props.history.replace('/introduction');
+    }
   };
   render() {
     const errorMessage = this.props.error ? (
@@ -130,6 +135,7 @@ class Register extends Component {
             autoComplete="off"
             onSubmit={e => {
               e.preventDefault();
+              e.stopPropagation();
             }}
           >
             <div

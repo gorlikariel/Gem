@@ -18,11 +18,7 @@ import * as actions from './store/actions/actionsIndex';
 import Introduction from './containers/Introduction/Introduction';
 class App extends React.Component {
   componentDidMount() {
-    console.log('APP');
-    this.props.onTryAutoSignUp();
-  }
-  componentDidUpdate() {
-    this.props.isAuth ? console.log('logged in') : console.log('logged out');
+    console.log('APP MOUNTED');
   }
   render() {
     const isBottomNavbar = this.props.isAuth ? (
@@ -60,9 +56,9 @@ class App extends React.Component {
         <Switch>
           <Route exact path="/introduction" component={Introduction} />
           <Layout>
+            <Route exact path="/register" component={Register} />
+            <Route exact path="/login" component={Login} />
             <Route exact path="/sisu-main" component={SisuMain} />
-            <Route path="/register" component={Register} />
-            <Route path="/login" component={Login} />
             <Redirect to="/sisu-main" />
           </Layout>
         </Switch>
