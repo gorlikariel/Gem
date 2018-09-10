@@ -1,5 +1,9 @@
 import * as actionTypes from './actionTypes';
 import { newForm, formValidity } from './formUtility';
+import { formToKeyValuePairs } from '../actions/formUtility';
+import firebase from '../../firebase';
+const database = firebase.database();
+
 export const formChanged = (form, isFormValid) => {
   return {
     type: actionTypes.ACCOUNT_SETTINGS_CHANGED,
@@ -39,5 +43,18 @@ export const initAccountSettings = settings => {
 export const clearAccountSettings = () => {
   return {
     type: actionTypes.CLEAR_ACCOUNT_SETTINGS
+  };
+};
+
+export const tryUpadtingAccountSettings = () => {
+  return (dispatch, prevState) => {
+    const userId = localStorage.getItem('userId');
+    const form = prevState().accountSettings.form;
+    const settings = formToKeyValuePairs(form);
+    database
+      .ref(`users/${userId}/settings/account`)
+      .set(settings)
+      .then(res => dispatch(accountSettingsSubmitted()))
+      .catch(err => console.log(err));
   };
 };

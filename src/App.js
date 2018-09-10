@@ -1,3 +1,4 @@
+import Helmet from 'react-helmet';
 import * as React from 'react';
 import Layout from './containers/Layout/Layout';
 import { Route, Switch, withRouter, Redirect } from 'react-router-dom';
@@ -18,7 +19,7 @@ import * as actions from './store/actions/actionsIndex';
 import Introduction from './containers/Introduction/Introduction';
 class App extends React.Component {
   componentDidMount() {
-    console.log('APP MOUNTED');
+    this.props.onTryAutoSignUp();
   }
   render() {
     const isBottomNavbar = this.props.isAuth ? (
@@ -67,6 +68,8 @@ class App extends React.Component {
 
     return (
       <MuiThemeProvider theme={theme}>
+        <Helmet bodyAttributes={{ style: 'background-color : #fafafa' }} />
+
         <Route path="/" component={TopNavigation} />
         {routes}
         {isBottomNavbar}

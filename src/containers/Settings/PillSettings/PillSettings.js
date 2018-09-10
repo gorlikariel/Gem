@@ -1,19 +1,23 @@
-import React, { Component } from "react";
-import { TextField } from "@material-ui/core";
-import { connect } from "react-redux";
-import * as actions from "../../../store/actions/actionsIndex";
-import InputField from "../../../components/InputField/InputField";
-import * as topNavConfig from "../../../store/actions/topNavigationConfigs";
+import React, { Component } from 'react';
+import { TextField } from '@material-ui/core';
+import { connect } from 'react-redux';
+import * as actions from '../../../store/actions/actionsIndex';
+import InputField from '../../../components/InputField/InputField';
+import * as topNavConfig from '../../../store/actions/topNavigationConfigs';
 
 class PillSettings extends Component {
   componentDidMount() {
-    this.props.onInitPage(topNavConfig.PILL_SETTINGS_TOP_NAVIGATION);
+    this.props.initNavbarConfig(
+      topNavConfig.PILL_SETTINGS_TOP_NAVIGATION(
+        this.props.tryUpdatingPillSettings
+      )
+    );
   }
 
   render() {
     const styles = {
       text: {
-        width: "100%"
+        width: '100%'
       }
     };
     const formElementsArray = [];
@@ -57,8 +61,9 @@ const mapDispatchToProps = dispatch => {
   return {
     onInputChangedHandler: (event, inputId) =>
       dispatch(actions.updatePillSettings(event, inputId)),
-    onInitPage: navBarConfig =>
-      dispatch(actions.setTopNavigationState(navBarConfig))
+    initNavbarConfig: navBarConfig =>
+      dispatch(actions.setTopNavigationState(navBarConfig)),
+    tryUpdatingPillSettings: () => dispatch(actions.tryUpdatingPillSettings())
   };
 };
 

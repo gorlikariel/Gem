@@ -1,41 +1,42 @@
-import React from "react";
-import { withStyles } from "@material-ui/core/styles";
-import * as theme from "../../styleguide/theme";
-import { withRouter } from "react-router-dom";
-import QuestionMark from "../../Icons/QuestionMark/QuestionMark";
-import HomeIcon from "../../Icons/HomeIcon/HomeIcon";
-import StatisticsIcon from "../../Icons/StatisticsIcon/StatisticsIcon";
-import { BottomNavigation, BottomNavigationAction } from "@material-ui/core";
-
+import * as React from 'react';
+import { withStyles } from '@material-ui/core/styles';
+import { withRouter } from 'react-router-dom';
+import QuestionMark from '../../Icons/QuestionMark/QuestionMark';
+import HomeIcon from '../../Icons/HomeIcon/HomeIcon';
+import StatisticsIcon from '../../Icons/StatisticsIcon/StatisticsIcon';
+import { BottomNavigation, BottomNavigationAction } from '@material-ui/core';
+import { ClassNameMap } from '@material-ui/core/styles/withStyles';
 const HOME_BUTTON = 1;
-// TODO bottom nav isn't responsive (should stretch on wider screens) and there's a weird space in the left corner
+
 const styles = {
   root: {
-    marginRight: "20px",
-    width: "100%",
+    marginRight: '20px',
+    width: '100%',
     bottom: 0,
     right: 0,
     left: 0,
-    position: "fixed",
-    backgroundColor: "inherit"
+    position: 'fixed',
+    backgroundColor: 'inherit'
   }
 };
-
 class BottomNavbar extends React.Component {
   state = {
     value: HOME_BUTTON
   };
 
-  handleChange = (event, value) => {
-    this.setState({ value });
+  handleChange = event => {
+    const {
+      target: { value }
+    } = event;
+    this.setState({ event });
     switch (value) {
       case HOME_BUTTON:
         this.props.history.push({
-          pathname: "/",
+          pathname: '/',
           state: {
             showLeftArrow: false,
             showSubmit: false,
-            title: ""
+            title: ''
           }
         });
         break;

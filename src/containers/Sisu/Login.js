@@ -34,7 +34,11 @@ class Login extends Component {
     this.props.onInitPage(topNavConfig.LOGIN_TOP_NAVIGATION);
   }
   login = () => {
-    this.props.onAuth(this.props.email.value, this.props.password.value, false);
+    console.log(this.props.email.value);
+    this.props.onAuth(
+      [this.props.email.value, this.props.password.value],
+      false
+    );
   };
   render() {
     const { root, error, welcomeHeadline, registerRedirect, layer } = styles;

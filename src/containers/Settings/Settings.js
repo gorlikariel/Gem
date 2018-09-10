@@ -1,15 +1,18 @@
-import * as React from "react";
-import { connect } from "react-redux";
-import * as actions from "../../store/actions/actionsIndex";
-import ClipLoader from "react-spinners/ClipLoader";
-import * as topNavConfig from "../../store/actions/topNavigationConfigs";
-import SettingsButtons from "../../components/SettingsButtons/SettingsButtons";
+import * as React from 'react';
+import { connect } from 'react-redux';
+import * as actions from '../../store/actions/actionsIndex';
+import ClipLoader from 'react-spinners/ClipLoader';
+import * as topNavConfig from '../../store/actions/topNavigationConfigs';
+import SettingsButtons from '../../components/SettingsButtons/SettingsButtons';
 
 class Settings extends React.Component {
   componentDidMount() {
+    console.log('SETTINGS MOUNTED');
     this.props.onInitPage(topNavConfig.SETTINGS_TOP_NAVIGATION);
   }
   render() {
+    console.log('SETTINGS RENDERED');
+
     const settingsButtons = (
       <SettingsButtons
         logout={this.props.logout}
@@ -19,22 +22,22 @@ class Settings extends React.Component {
     const loader = (
       <div
         style={{
-          position: "absolute",
-          top: "50%",
-          left: "50%",
-          transform: "translate(-50%,-50%)"
+          position: 'absolute',
+          top: '50%',
+          left: '50%',
+          transform: 'translate(-50%,-50%)'
         }}
       >
         <ClipLoader
-          sizeUnit={"px"}
+          sizeUnit={'px'}
           size={50}
-          color={"#757177"}
+          color={'#757177'}
           loading={this.props.loading}
         />
       </div>
     );
     return (
-      <div id="this" style={{ marginTop: "118px", width: "100%" }}>
+      <div id="this" style={{ marginTop: '118px', width: '100%' }}>
         {this.props.loading ? loader : settingsButtons}
       </div>
     );
@@ -43,7 +46,7 @@ class Settings extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    username: state.accountSettings.form.userName.value
+    username: state.accountSettings.form.username.value
   };
 };
 

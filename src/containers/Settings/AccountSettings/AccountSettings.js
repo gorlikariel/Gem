@@ -1,34 +1,23 @@
-import React, { Component } from "react";
-import { TextField } from "@material-ui/core";
-import { connect } from "react-redux";
-import InputField from "../../../components/InputField/InputField";
-import * as actions from "../../../store/actions/actionsIndex";
-import CircleLoader from "react-spinners/CircleLoader";
-import * as topNavConfig from "../../../store/actions/topNavigationConfigs";
+import React, { Component } from 'react';
+import { TextField } from '@material-ui/core';
+import { connect } from 'react-redux';
+import InputField from '../../../components/InputField/InputField';
+import * as actions from '../../../store/actions/actionsIndex';
+import CircleLoader from 'react-spinners/CircleLoader';
+import * as topNavConfig from '../../../store/actions/topNavigationConfigs';
 class AccountSettings extends Component {
   componentDidMount() {
     this.props.initNavbarConfig(
-      this.props.isFormValid
-        ? topNavConfig.ACCOUNT_SETTINGS_TOP_NAVIGATION_READY
-        : topNavConfig.ACCOUNT_SETTINGS_TOP_NAVIGATION
+      topNavConfig.ACCOUNT_SETTINGS_TOP_NAVIGATION(
+        this.props.tryUpadtingAccountSettings
+      )
     );
   }
-  componentDidUpdate(prevProps) {
-    if (prevProps.isFormValid !== this.props.isFormValid) {
-      this.props.initNavbarConfig(
-        this.props.isFormValid
-          ? topNavConfig.ACCOUNT_SETTINGS_TOP_NAVIGATION_READY
-          : topNavConfig.ACCOUNT_SETTINGS_TOP_NAVIGATION
-      );
-    }
-  }
-
-  state = { screenWidth: null, isFormValid: false };
 
   render() {
     const styles = {
       text: {
-        width: "100%"
+        width: '100%'
       }
     };
     const formElementsArray = [];
@@ -42,7 +31,7 @@ class AccountSettings extends Component {
       <form noValidate autoComplete="off">
         {formElementsArray.map(formElement => (
           <InputField
-            autoFocus={formElement.id === "email"}
+            autoFocus={formElement.id === 'email'}
             id={formElement.id}
             key={formElement.id}
             label={formElement.config.elementConfig.label}
@@ -63,15 +52,15 @@ class AccountSettings extends Component {
         {this.props.loading ? (
           <div
             style={{
-              display: "flex",
-              justifyContent: "center",
-              marginTop: "100px"
+              display: 'flex',
+              justifyContent: 'center',
+              marginTop: '100px'
             }}
           >
             <CircleLoader
-              sizeUnit={"px"}
+              sizeUnit={'px'}
               size={50}
-              color={"#757177"}
+              color={'#757177'}
               loading={this.props.loading}
             />
           </div>
@@ -85,8 +74,7 @@ class AccountSettings extends Component {
 const mapStateToProps = state => {
   return {
     form: state.accountSettings.form,
-    loading: state.accountSettings.loading,
-    isFormValid: state.accountSettings.isFormValid
+    loading: state.accountSettings.loading
   };
 };
 
@@ -95,7 +83,9 @@ const mapDispatchToProps = dispatch => {
     onInputChangedHandler: (event, inputId) =>
       dispatch(actions.updateAccountSettings(event, inputId)),
     initNavbarConfig: navBarConfig =>
-      dispatch(actions.setTopNavigationState(navBarConfig))
+      dispatch(actions.setTopNavigationState(navBarConfig)),
+    tryUpadtingAccountSettings: () =>
+      dispatch(actions.tryUpadtingAccountSettings())
   };
 };
 

@@ -1,19 +1,20 @@
-import React, { Component } from "react";
-import BounceLoader from "react-spinners/BounceLoader";
-import * as actions from "../../store/actions/actionsIndex";
-import { connect } from "react-redux";
-import firebase from "../../firebase";
-import * as topNavConfig from "../../store/actions/topNavigationConfigs";
-import theme from "../../styleguide/theme";
-import ConfirmationDialog from "../../components/ConfirmationDialog/ConfirmationDialog";
-import MainButton from "../../components/MainButton/MainButton";
-import { ButtonBase } from "@material-ui/core";
-import axios from "axios";
+import React, { Component } from 'react';
+import BounceLoader from 'react-spinners/BounceLoader';
+import * as actions from '../../store/actions/actionsIndex';
+import { connect } from 'react-redux';
+import firebase from '../../firebase';
+import * as topNavConfig from '../../store/actions/topNavigationConfigs';
+import theme from '../../styleguide/theme';
+import ConfirmationDialog from '../../components/ConfirmationDialog/ConfirmationDialog';
+import MainButton from '../../components/MainButton/MainButton';
+import { ButtonBase } from '@material-ui/core';
+import axios from 'axios';
 // DO THIS : add transition to button after being clicked
 class MainPage extends Component {
   componentDidMount() {
+    console.log('MAINPAGE MOUNTED');
     this.props.onInitPage(topNavConfig.MAIN_PAGE_TOP_NAVIGATION);
-    const id = localStorage.getItem("userId");
+    const id = localStorage.getItem('userId');
     axios
       .get(`https://bluemarble-a4f07.firebaseio.com/users/${id}.json`)
       .then(res => {
@@ -42,7 +43,7 @@ class MainPage extends Component {
     } = this.props;
     const mainButton = initialized ? (
       <BounceLoader
-        sizeUnit={"px"}
+        sizeUnit={'px'}
         size={264}
         color={theme.C3}
         loading={initialized}
@@ -55,10 +56,10 @@ class MainPage extends Component {
     );
     const styles = {
       button: {
-        position: "absolute",
-        top: "50%",
-        left: "50%",
-        transform: "translate(-50%,-50%)"
+        position: 'absolute',
+        top: '50%',
+        left: '50%',
+        transform: 'translate(-50%,-50%)'
       }
     };
 
@@ -86,8 +87,8 @@ class MainPage extends Component {
 
 const mapStateToProps = state => {
   return {
-    loading: state.pill.loading,
-    pillHour: state.alarmSettings.form.pillHour.value,
+    loading: state.pill.loading || state.pillSettings.loading,
+    pillHour: state.alarmSettings.form.pillhour.value,
     taken: state.pill.taken,
     initialized:
       state.accountSettings.initialized &&

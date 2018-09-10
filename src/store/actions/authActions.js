@@ -48,7 +48,7 @@ export const auth = (userDataArray, isSignup) => {
       password: userDataArray[MAP_FIELDS.password],
       returnSecureToken: true
     };
-    console.log(authData);
+    console.log(userDataArray);
     const url = `https://www.googleapis.com/identitytoolkit/v3/relyingparty/${
       isSignup ? 'signupNewUser' : 'verifyPassword'
     }?key=AIzaSyBq_VbcsnwxgnTS05jOWVeqMhgNI40J1rU`;
@@ -63,11 +63,15 @@ export const auth = (userDataArray, isSignup) => {
           new Date().getTime() + expiresIn * 1000
         ).getTime();
         localStorage.setItem('expirationDate', expirationDate);
-        const postUserObject = (idToken, localId) => {
-          database.ref('users/' + localId).set(userObject);
+        if (isSignup) {
+          const postUserObject = (idToken, localId) => {
+            database.ref('users/' + localId).set(userObject);
+            dispatch(authSuccess(idToken, localId));
+          };
+          postUserObject(idToken, localId);
+        } else {
           dispatch(authSuccess(idToken, localId));
-        };
-        postUserObject(idToken, localId);
+        }
       } catch (e) {
         console.error(e.response.data.error.message);
         dispatch(authFailed(e.response.data.error));

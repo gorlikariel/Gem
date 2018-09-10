@@ -11,6 +11,7 @@ import RightArrow from '../../Icons/RightArrow/RightArrow';
 import first from './Onboarding1.png';
 import second from './Onboarding2.png';
 import third from './Onboarding3.png';
+import * as palette from '../../styleguide/theme';
 
 const tutorialSteps = [
   {
@@ -42,7 +43,6 @@ const styles = theme => ({
     flexGrow: 1,
     alignItems: 'center',
     justifyContent: 'center'
-    // flexDirection: 'column'
   },
   img: {
     height: '100%',
@@ -95,7 +95,7 @@ class Introduction extends React.Component {
           enableMouseEvents
         >
           {tutorialSteps.map(step => (
-            <div key={step.paragraph} style={{ marginTop: '80px' }}>
+            <div key={step.paragraph}>
               <img
                 key={step.label}
                 className={classes.img}
@@ -109,12 +109,17 @@ class Introduction extends React.Component {
           axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
           index={this.state.activeStep}
           onChangeIndex={this.handleStepChange}
+          resistance={true}
           enableMouseEvents
         >
           {tutorialSteps.map(step => (
             <div
               key={step.imgPath}
-              style={{ marginTop: '30px', color: '#8ea9c3', whiteSpace: 'pre' }}
+              style={{
+                color: '#8ea9c3',
+                whiteSpace: 'pre',
+                backgroundColor: palette.PWL
+              }}
             >
               <Typography
                 key={step.label}

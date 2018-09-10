@@ -1,4 +1,6 @@
-import * as actionTypes from "./actionTypes";
+import * as actionTypes from './actionTypes';
+import firebase from '../../firebase';
+const database = firebase.database();
 
 export const pillTaken = () => {
   return {
@@ -11,12 +13,17 @@ export const undoPill = () => {
     type: actionTypes.UNDO_PILL
   };
 };
-
+export const loading = () => {
+  return {
+    type: actionTypes.LOADING_PILL_BUTTON
+  };
+};
 export const tryTakingPill = () => {
+  const userId = localStorage.getItem('userId');
   return dispatch => {
     dispatch(loading());
     database
-      .ref("dailyPill/taken")
+      .ref(`users/${userId}/dailyPill/taken`)
       .set(true)
       .then(res => dispatch(pillTaken()))
       .catch(err => console.log(err));
@@ -24,10 +31,11 @@ export const tryTakingPill = () => {
 };
 
 export const tryUndoPill = () => {
+  const userId = localStorage.getItem('userId');
   return dispatch => {
     dispatch(loading());
     database
-      .ref("dailyPill/taken")
+      .ref(`users/${userId}/dailyPill/taken`)
       .set(false)
       .then(res => dispatch(undoPill()))
       .catch(err => console.log(err));

@@ -2,58 +2,48 @@ export const MAIN_PAGE_TOP_NAVIGATION = {
   showLeftArrow: false,
   showSubmit: false,
   showSettingsIcon: true,
-  title: ""
+  title: ''
 };
 export const SISU_TOP_NAVIGATION = {
   showLeftArrow: false,
   showSubmit: false,
   showSettingsIcon: false,
-  title: ""
+  title: ''
 };
 export const SETTINGS_TOP_NAVIGATION = {
   showLeftArrow: true,
   showSubmit: false,
   showSettingsIcon: false,
-  title: "Settings"
+  title: 'Settings'
 };
 
-export const ACCOUNT_SETTINGS_TOP_NAVIGATION = {
-  showLeftArrow: true,
-  showSubmit: false,
-  showSettingsIcon: false,
-  title: "Account Settings"
-};
-
-export const ACCOUNT_SETTINGS_TOP_NAVIGATION_READY = {
+export const ACCOUNT_SETTINGS_TOP_NAVIGATION = onSubmit => ({
   showLeftArrow: true,
   showSubmit: true,
   showSettingsIcon: false,
-  title: "Account Settings"
-};
+  title: 'Account Settings',
+  onSubmit: () => onSubmit()
+});
 
-export const ALARM_SETTINGS_TOP_NAVIGATION = {
+export const ALARM_SETTINGS_TOP_NAVIGATION = onSubmit => ({
   showLeftArrow: true,
-  showSubmit: false,
+  showSubmit: true,
   showSettingsIcon: false,
-  title: "Alarm Settings"
-};
-export const ALARM_SETTINGS_TOP_NAVIGATION_READY = {
+  title: 'Alarm Settings',
+  onSubmit: () => onSubmit()
+});
+export const PILL_SETTINGS_TOP_NAVIGATION = onSubmit => ({
   showLeftArrow: true,
-  showSubmit: false,
+  showSubmit: true,
   showSettingsIcon: false,
-  title: "Alarm Settings"
-};
-export const PILL_SETTINGS_TOP_NAVIGATION = {
-  showLeftArrow: true,
-  showSubmit: false,
-  showSettingsIcon: false,
-  title: "Pill Settings"
-};
+  title: 'Pill Settings',
+  onSubmit: () => onSubmit()
+});
 export const REGISTER_TOP_NAVIGATION = {
   showLeftArrow: true,
   showSubmit: false,
   showSettingsIcon: false,
-  title: "Register",
+  title: 'Register',
   backOnClick: () => {
     this.setState(prevState => ({
       stepNum: prevState.stepNum + -1
@@ -64,11 +54,11 @@ export const REGISTER_TOP_NAVIGATION_INITIAL = {
   showLeftArrow: true,
   showSubmit: false,
   showSettingsIcon: false,
-  title: "Register"
+  title: 'Register'
 };
 export const LOGIN_TOP_NAVIGATION = {
   showLeftArrow: true,
   showSubmit: false,
   showSettingsIcon: false,
-  title: "Log in"
+  title: 'Log in'
 };

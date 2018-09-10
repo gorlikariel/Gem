@@ -15,7 +15,7 @@ const initialState = {
         valid: false
       }
     },
-    userName: {
+    username: {
       elementType: 'input',
       elementConfig: {
         type: 'text',
@@ -85,10 +85,10 @@ export default (state = initialState, action) => {
             validation: { ...state.form.name.validation },
             value: action.settings.name
           },
-          userName: {
-            ...state.form.userName,
-            elementConfig: { ...state.form.userName.elementConfig },
-            validation: { ...state.form.userName.validation },
+          username: {
+            ...state.form.username,
+            elementConfig: { ...state.form.username.elementConfig },
+            validation: { ...state.form.username.validation },
             value: action.settings.username
           },
           email: {

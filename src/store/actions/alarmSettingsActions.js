@@ -1,5 +1,8 @@
 import * as actionTypes from './actionTypes';
 import { newForm, formValidity } from './formUtility';
+import firebase from '../../firebase';
+import { formToKeyValuePairs } from '../actions/formUtility';
+const database = firebase.database();
 
 export const formChanged = (form, isFormValid) => {
   return {
@@ -40,5 +43,17 @@ export const initAlarmSettings = settings => {
 export const clearAlarmSettings = () => {
   return {
     type: actionTypes.CLEAR_ALARM_SETTINGS
+  };
+};
+export const tryUpdatingAlarmSettings = () => {
+  return (dispatch, prevState) => {
+    const userId = localStorage.getItem('userId');
+    const form = prevState().alarmSettings.form;
+    const settings = formToKeyValuePairs(form);
+    database
+      .ref(`users/${userId}/settings/alarm`)
+      .set(settings)
+      .then(res => dispatch(alarmSettingsSubmitted()))
+      .catch(err => console.log(err));
   };
 };

@@ -1,9 +1,9 @@
-import * as actionTypes from "../actions/actionTypes";
-import * as util from "../../util/firebaseUtil";
+import * as actionTypes from '../actions/actionTypes';
+import * as util from '../../util/firebaseUtil';
 
 const initialState = {
   taken: false,
-  hourOfTaking: "",
+  hourOfTaking: '',
   loading: false,
   initialized: false
 };
@@ -21,7 +21,7 @@ export default (state = initialState, action) => {
       return {
         ...state,
         taken: false,
-        hourOfTaking: "",
+        hourOfTaking: '',
         loading: false
       };
     case actionTypes.LOADING_PILL_BUTTON:
@@ -33,7 +33,8 @@ export default (state = initialState, action) => {
       return {
         ...state,
         taken: action.isPillTaken,
-        initialized: true
+        initialized: true,
+        loading: false
       };
 
     default:

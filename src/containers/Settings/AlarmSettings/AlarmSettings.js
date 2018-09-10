@@ -8,9 +8,9 @@ import * as topNavConfig from '../../../store/actions/topNavigationConfigs';
 class AlarmSettings extends Component {
   componentDidMount() {
     this.props.initNavbarConfig(
-      this.props.isFormFilled
-        ? topNavConfig.ALARM_SETTINGS_TOP_NAVIGATION_READY
-        : topNavConfig.ALARM_SETTINGS_TOP_NAVIGATION
+      topNavConfig.ALARM_SETTINGS_TOP_NAVIGATION(
+        this.props.tryUpdatingAlarmSettings
+      )
     );
   }
 
@@ -62,7 +62,8 @@ const mapDispatchToProps = dispatch => {
     onInputChangedHandler: (event, inputId) =>
       dispatch(actions.updateAlarmSettings(event, inputId)),
     initNavbarConfig: navBarConfig =>
-      dispatch(actions.setTopNavigationState(navBarConfig))
+      dispatch(actions.setTopNavigationState(navBarConfig)),
+    tryUpdatingAlarmSettings: () => dispatch(actions.tryUpdatingAlarmSettings())
   };
 };
 

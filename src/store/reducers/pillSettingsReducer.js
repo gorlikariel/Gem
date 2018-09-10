@@ -2,7 +2,7 @@ import * as actionTypes from '../actions/actionTypes';
 
 const initialState = {
   form: {
-    pillsInPack: {
+    pillsinpack: {
       elementType: 'input',
       elementConfig: {
         type: 'number',
@@ -16,7 +16,7 @@ const initialState = {
         isNumeric: true
       }
     },
-    amountOfPacks: {
+    amountofpacks: {
       elementType: 'input',
       elementConfig: {
         type: 'number',
@@ -32,7 +32,7 @@ const initialState = {
     }
   },
   initialized: false,
-  notifyWhenPillsRunOut: false,
+  notifywhenpillsrunout: false,
   isFormValid: false,
   loading: false,
   submitted: false,
@@ -53,20 +53,20 @@ export default (state = initialState, action) => {
         ...state,
         form: {
           ...state.form,
-          pillsInPack: {
-            ...state.form.pillsInPack,
-            elementConfig: { ...state.form.pillsInPack.elementConfig },
-            validation: { ...state.form.pillsInPack.validation },
+          pillsinpack: {
+            ...state.form.pillsinpack,
+            elementConfig: { ...state.form.pillsinpack.elementConfig },
+            validation: { ...state.form.pillsinpack.validation },
             value: action.settings.pillsinpack
           },
-          amountOfPacks: {
-            ...state.form.amountOfPacks,
-            elementConfig: { ...state.form.amountOfPacks.elementConfig },
-            validation: { ...state.form.amountOfPacks.validation },
+          amountofpacks: {
+            ...state.form.amountofpacks,
+            elementConfig: { ...state.form.amountofpacks.elementConfig },
+            validation: { ...state.form.amountofpacks.validation },
             value: action.settings.amountofpacks
           }
         },
-        notifyWhenPillsRunOut: action.settings.notifymewhenpillsrunout,
+        notifywhenpillsrunout: action.settings.notifymewhenpillsrunout,
         loading: false,
         initialized: true
       };

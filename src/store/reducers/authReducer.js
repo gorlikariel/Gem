@@ -1,4 +1,4 @@
-import * as actionTypes from "../actions/actionTypes";
+import * as actionTypes from '../actions/actionTypes';
 const initialState = {
   token: null,
   userId: null,
@@ -21,8 +21,7 @@ export default (state = initialState, action) => {
         token: action.token,
         userId: action.userId,
         error: null,
-        loading: false,
-        shouldRedirect: true
+        loading: false
       };
     case actionTypes.AUTH_LOGOUT:
       return {
@@ -30,16 +29,14 @@ export default (state = initialState, action) => {
         error: false,
         loading: false,
         token: null,
-        userId: null,
-        shouldRedirect: true
+        userId: null
       };
 
     case actionTypes.AUTH_FAIL:
       return {
         ...state,
         error: action.error,
-        loading: false,
-        shouldRedirect: true
+        loading: false
       };
 
     default:

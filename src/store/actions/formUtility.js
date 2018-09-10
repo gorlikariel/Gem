@@ -19,7 +19,7 @@ export const newForm = (event, inputIdentifier, Form) => {
 const checkValidity = (value, rules) => {
   let isValid = true;
   if (rules.required) {
-    isValid = value.trim() !== "" && isValid;
+    isValid = value.trim() !== '' && isValid;
   }
   if (rules.minLength) {
     isValid = value.length >= rules.minLength && isValid;
@@ -47,4 +47,14 @@ export const formValidity = form => {
     }
   }
   return formIsValid;
+};
+
+export const formToKeyValuePairs = form => {
+  let newForm = { ...form };
+  for (const key in newForm) {
+    key === 'password'
+      ? delete newForm.password
+      : (newForm[key] = newForm[key].value);
+  }
+  return newForm;
 };

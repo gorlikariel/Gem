@@ -2,7 +2,7 @@ import * as actionTypes from '../actions/actionTypes';
 
 const initialState = {
   form: {
-    pillHour: {
+    pillhour: {
       elementType: 'input',
       elementConfig: {
         type: 'time',
@@ -15,7 +15,7 @@ const initialState = {
         valid: false
       }
     },
-    snoozeEvery: {
+    snoozeevery: {
       elementType: 'input',
       elementConfig: {
         type: 'number',
@@ -52,16 +52,16 @@ export default (state = initialState, action) => {
         ...state,
         form: {
           ...state.form,
-          pillHour: {
-            ...state.form.pillHour,
-            elementConfig: { ...state.form.pillHour.elementConfig },
-            validation: { ...state.form.pillHour.validation },
+          pillhour: {
+            ...state.form.pillhour,
+            elementConfig: { ...state.form.pillhour.elementConfig },
+            validation: { ...state.form.pillhour.validation },
             value: action.settings.pillhour
           },
-          snoozeEvery: {
-            ...state.form.snoozeEvery,
-            elementConfig: { ...state.form.snoozeEvery.elementConfig },
-            validation: { ...state.form.snoozeEvery.validation },
+          snoozeevery: {
+            ...state.form.snoozeevery,
+            elementConfig: { ...state.form.snoozeevery.elementConfig },
+            validation: { ...state.form.snoozeevery.validation },
             value: action.settings.snoozeevry
           }
         },

@@ -1,5 +1,9 @@
 import * as actionTypes from './actionTypes';
 import { newForm, formValidity } from './formUtility';
+import { formToKeyValuePairs } from '../actions/formUtility';
+import firebase from '../../firebase';
+const database = firebase.database();
+
 export const formChanged = (form, isFormValid) => {
   return {
     type: actionTypes.PILL_SETTINGS_CHANGED,
@@ -30,20 +34,22 @@ export const setPillSettings = pillSettings => {
 export const initPillSettings = settings => {
   return dispatch => {
     dispatch(setPillSettings(settings));
-    // dispatch(loading());
-    // database
-    //   .ref()
-    //   .child("settings/pill")
-    //   .once("value")
-    //   .then(res => {
-    //     const settings = { ...res.val() };
-    //     dispatch(setPillSettings(settings));
-    //   })
-    //   .catch(err => console.log(err));
   };
 };
 export const clearPillSettings = () => {
   return {
     type: actionTypes.CLEAR_PILL_SETTINGS
+  };
+};
+export const tryUpdatingPillSettings = () => {
+  return (dispatch, prevState) => {
+    const userId = localStorage.getItem('userId');
+    const form = prevState().pillSettings.form;
+    const settings = formToKeyValuePairs(form);
+    database
+      .ref(`users/${userId}/settings/pill`)
+      .set(settings)
+      .then(res => dispatch(pillSettingsSubmitted()))
+      .catch(err => console.log(err));
   };
 };

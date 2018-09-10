@@ -35,7 +35,33 @@ class MainButton extends Component {
         }
       }
     };
-    let { taken, hour, loading } = this.props;
+    const { taken, hour, loading } = this.props;
+    const textWhenPillNotTaken = (
+      <Typography
+        gutterBottom
+        color="inherit"
+        variant="subheading"
+        align="center"
+      >
+        {`${taken ? 'next pill' : ''} scheduled for ${!taken ? hour : ``}`}
+      </Typography>
+    );
+    const textWhenPillTaken = (
+      <React.Fragment>
+        <Typography
+          gutterBottom
+          color="inherit"
+          variant="subheading"
+          align="center"
+        >
+          {`${taken ? 'next pill' : ''} scheduled for ${!taken ? hour : ``}`}
+        </Typography>
+        <Typography color="inherit" variant="subheading" align="center">
+          {`${taken ? 'tommorow at' : ''} ${hour}`}
+        </Typography>
+      </React.Fragment>
+    );
+
     const mainButton = (
       <ButtonBase
         onClick={this.props.onClick}
@@ -49,10 +75,8 @@ class MainButton extends Component {
         <Typography color="inherit" variant="display4">
           {taken ? 'PILL TAKEN' : 'TAKE PILL'}
         </Typography>
-        <Typography color="inherit" variant="subheading" align="center">
-          {`${taken ? 'next pill' : ''} scheduled for `} {taken ? <br /> : null}
-          {`${taken ? 'tommorow at' : ''} ${hour}`}
-        </Typography>
+        {taken ? textWhenPillTaken : textWhenPillNotTaken}
+
         <Typography color="inherit" variant="display4">
           ⚡0
         </Typography>

@@ -1,17 +1,20 @@
 export {
   updateForm as updateAccountSettings,
   initAccountSettings,
-  clearAccountSettings
+  clearAccountSettings,
+  tryUpadtingAccountSettings
 } from './accountSettingsActions';
 export {
   updateForm as updateAlarmSettings,
   initAlarmSettings,
-  clearAlarmSettings
+  clearAlarmSettings,
+  tryUpdatingAlarmSettings
 } from './alarmSettingsActions';
 export {
   updateForm as updatePillSettings,
   initPillSettings,
-  clearPillSettings
+  clearPillSettings,
+  tryUpdatingPillSettings
 } from './pillSettingsActions';
 export { tryTakingPill, initPillButton, tryUndoPill } from './pillActions';
 export { setTopNavigationState } from './navigationStateActions';
