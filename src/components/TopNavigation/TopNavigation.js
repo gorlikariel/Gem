@@ -13,6 +13,7 @@ import { Link } from 'react-router-dom';
 import Checkmark from '../../Icons/Checkmark/Checkmark';
 import CogwheelIcon from '../../Icons/CogwheelIcon/CogwheelIcon';
 import LeftArrow from '../../Icons/LeftArrow/LeftArrow';
+import Toast from '../Toast/Toast';
 
 class TopNavigation extends Component {
   submitForm = () => {
@@ -38,7 +39,9 @@ class TopNavigation extends Component {
     );
     const submitButton = (
       <IconButton onClick={this.submitForm}>
-        <Checkmark />
+        <Toast>
+          <Checkmark />
+        </Toast>
       </IconButton>
     );
     const settingsIcon = (
