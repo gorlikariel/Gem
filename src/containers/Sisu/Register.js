@@ -54,10 +54,10 @@ class Register extends Component {
     event.preventDefault();
     event.stopPropagation();
     this.setState(prevState => ({
-      values: prevState.values.concat(this.props.snoozeEvery.value)
+      values: prevState.values.concat(this.props.snoozeevery.value)
     }));
     this.props.onAuth(
-      this.state.values.concat(this.props.snoozeEvery.value),
+      this.state.values.concat(this.props.snoozeevery.value),
       true
     );
     if (!this.props.error) {
@@ -79,10 +79,10 @@ class Register extends Component {
         email: this.props.email,
         password: this.props.password,
         name: this.props.name,
-        pillsInPack: this.props.pillsInPack,
-        amountOfPacks: this.props.amountOfPacks,
-        pillHour: this.props.pillHour,
-        snoozeEvery: this.props.snoozeEvery
+        pillsinpack: this.props.pillsinpack,
+        amountofpacks: this.props.amountofpacks,
+        pillhour: this.props.pillhour,
+        snoozeevery: this.props.snoozeevery
       }
     };
 
@@ -178,10 +178,10 @@ const mapStateToProps = state => {
     email: state.accountSettings.form.email,
     password: state.accountSettings.form.password,
     name: state.accountSettings.form.name,
-    pillsInPack: state.pillSettings.form.pillsInPack,
-    amountOfPacks: state.pillSettings.form.amountOfPacks,
-    pillHour: state.alarmSettings.form.pillHour,
-    snoozeEvery: state.alarmSettings.form.snoozeEvery,
+    pillsinpack: state.pillSettings.form.pillsinpack,
+    amountofpacks: state.pillSettings.form.amountofpacks,
+    pillhour: state.alarmSettings.form.pillhour,
+    snoozeevery: state.alarmSettings.form.snoozeevery,
     error: state.auth.error
   };
 };
