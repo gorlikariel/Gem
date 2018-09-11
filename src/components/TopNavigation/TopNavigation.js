@@ -54,8 +54,8 @@ class TopNavigation extends Component {
     const styles = {
       root: {
         backgroundColor: 'inherit',
-        boxShadow: '0 0 0 0',
-        marginTop: '25px'
+        boxShadow: '0 0 0 0'
+        // paddingTop: '25px'
       }
     };
     const topNavigationComponent = (

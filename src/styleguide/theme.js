@@ -84,7 +84,10 @@ const theme = createMuiTheme({
     MuiToolbar: {
       root: {
         paddingRight: '24px',
-        paddingLeft: '24px'
+        paddingLeft: '24px',
+        overflow: 'hidden',
+        backgroundColor: PWL,
+        height: '90px'
       }
     },
     MuiMobileStepper: {
