@@ -36,7 +36,6 @@ export const setAlarmSettings = alarmSettings => {
 };
 export const initAlarmSettings = settings => {
   return dispatch => {
-    console.log(settings);
     dispatch(setAlarmSettings(settings));
   };
 };

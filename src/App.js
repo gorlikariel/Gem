@@ -17,6 +17,7 @@ import BottomNavbar from './components/BottomNavbar/BottomNavbar';
 import { connect } from 'react-redux';
 import * as actions from './store/actions/actionsIndex';
 import Introduction from './containers/Introduction/Introduction';
+
 class App extends React.Component {
   componentDidMount() {
     this.props.onTryAutoSignUp();

@@ -1,3 +1,4 @@
 {
-    "editor.cursorBlinking": "expand"
+    "editor.cursorBlinking": "expand",
+    "git.ignoreLimitWarning": true
 }

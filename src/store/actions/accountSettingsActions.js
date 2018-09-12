@@ -35,7 +35,6 @@ export const setAccountSettings = accountSettings => {
   };
 };
 export const initAccountSettings = settings => {
-  console.log(settings);
   return dispatch => {
     dispatch(setAccountSettings(settings));
   };

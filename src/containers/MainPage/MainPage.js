@@ -12,7 +12,6 @@ import axios from 'axios';
 // DO THIS : add transition to button after being clicked
 class MainPage extends Component {
   componentDidMount() {
-    console.log('MAINPAGE MOUNTED');
     this.props.onInitPage(topNavConfig.MAIN_PAGE_TOP_NAVIGATION);
     const id = localStorage.getItem('userId');
     axios

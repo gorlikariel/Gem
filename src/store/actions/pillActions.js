@@ -50,7 +50,6 @@ export const initSuccess = isPillTaken => {
 };
 
 export const initPillButton = isTaken => {
-  console.log(isTaken);
   return dispatch => {
     dispatch(initSuccess(isTaken));
   };

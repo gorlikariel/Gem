@@ -110,5 +110,6 @@
   ],
   "lang": "english",
   "orientation": "portrait-primary",
-  "description": "Never miss your pill, ever again"
+  "description": "Never miss your pill, ever again",
+  "gcm_sender_id": "103953800507"
 }
