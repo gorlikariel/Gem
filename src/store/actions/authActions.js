@@ -99,3 +99,22 @@ export const checkIfAuth = () => {
     }
   };
 };
+
+export const triggerToastOpen = () => {
+  return {
+    type: actionTypes.NOTIFICATION_TOAST_OPEN
+  };
+};
+export const notificationToastClosed = () => {
+  return {
+    type: actionTypes.NOTIFICATION_TOAST_CLOSED
+  };
+};
+export const notificationToastOpen = () => {
+  return dispatch => {
+    dispatch(triggerToastOpen());
+    setTimeout(() => {
+      dispatch(notificationToastClosed());
+    }, 5000);
+  };
+};

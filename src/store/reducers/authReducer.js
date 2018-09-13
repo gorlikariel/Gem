@@ -4,7 +4,8 @@ const initialState = {
   userId: null,
   error: null,
   loading: false,
-  initialized: false
+  initialized: false,
+  toast: false
 };
 
 export default (state = initialState, action) => {
@@ -37,6 +38,16 @@ export default (state = initialState, action) => {
         ...state,
         error: action.error,
         loading: false
+      };
+    case actionTypes.NOTIFICATION_TOAST_OPEN:
+      return {
+        ...state,
+        toast: true
+      };
+    case actionTypes.NOTIFICATION_TOAST_CLOSED:
+      return {
+        ...state,
+        toast: false
       };
 
     default:

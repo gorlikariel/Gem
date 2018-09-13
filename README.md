@@ -1,4 +1,4 @@
-![Gem Icon](./src/Icons/GemIcon/gemLogoWithText.png "Never miss your pill, ever again")
+![Gem Icon](./src/Icons/GemIcon/gemLogoWithText.png 'Never miss your pill, ever again')
 
 A progressive web app used to remind and track birth control pill usage,
 because birth control is no joke.
@@ -17,11 +17,10 @@ to be one of many in the future.
 - [Redux](https://redux.js.org/) - State Management
 - [React Router](https://reacttraining.com/react-router/core/guides/philosophy) - Routing
 - [Material-ui](https://material-ui.com/) - Design system
-- [Zeplin](https://zeplin.io/) - Styleguide
+- [Zeplin](https://zeplin.io/) - Styleguide & Screens
 - [Wakatime](https://wakatime.com/) - Programming Metrics and Tracking
 
 The project is still being built, and features are regularly added.
-Signup/login page is currently rendered [here].
 
 For styling I used a mix of material-ui and my own code, and is
 written completely with css-in-js. no CSS files were used.
@@ -47,7 +46,6 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 - [Itai Lavie], who helped design the project
 
 [itai lavie]: https://dribbble.com/itailavie
-[here]: https://bluemarble-a4f07.firebaseapp.com/sisu-main
 
 #### My Wakatime Chart
 

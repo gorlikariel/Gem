@@ -18,4 +18,10 @@ export {
 } from './pillSettingsActions';
 export { tryTakingPill, initPillButton, tryUndoPill } from './pillActions';
 export { setTopNavigationState } from './navigationStateActions';
-export { auth, logout, checkIfAuth } from './authActions';
+export {
+  auth,
+  logout,
+  checkIfAuth,
+  notificationToastClosed,
+  notificationToastOpen
+} from './authActions';

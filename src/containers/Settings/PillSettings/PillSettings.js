@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
-import { TextField } from '@material-ui/core';
+import { TextField, Button } from '@material-ui/core';
 import { connect } from 'react-redux';
 import * as actions from '../../../store/actions/actionsIndex';
 import InputField from '../../../components/InputField/InputField';
 import * as topNavConfig from '../../../store/actions/topNavigationConfigs';
+import WideButton from '../../../components/WideButton/WideButton';
+import Axios from 'axios';
 
 class PillSettings extends Component {
   componentDidMount() {
@@ -46,7 +48,6 @@ class PillSettings extends Component {
         <form noValidate autoComplete="off">
           {form}
         </form>
-        {/*this.state.screenWidth ? <hr width={this.state.screenWidth} /> : null*/}
       </div>
     );
   }

@@ -27,7 +27,7 @@ const store = createStore(
   rootReducer,
   composeWithDevTools(applyMiddleware(reduxThunk))
 );
-
+export const dispatch = store.dispatch;
 const app = (
   <BrowserRouter>
     <Provider store={store}>

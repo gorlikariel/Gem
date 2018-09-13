@@ -1,18 +1,62 @@
 import React, { Component } from 'react';
-import { TextField } from '@material-ui/core';
 import { connect } from 'react-redux';
 import InputField from '../../../components/InputField/InputField';
 import * as actions from '../../../store/actions/actionsIndex';
 import CircleLoader from 'react-spinners/CircleLoader';
 import * as topNavConfig from '../../../store/actions/topNavigationConfigs';
+import axios from 'axios';
+import WideButton from '../../../components/WideButton/WideButton';
 class AccountSettings extends Component {
   componentDidMount() {
+    axios
+      .get(
+        `https://bluemarble-a4f07.firebaseio.com/users/${
+          this.props.userId
+        }/notifications/token.json`
+      )
+      .then(res => {
+        this.setState({ messageToken: res.data });
+        console.log(res);
+      })
+      .catch(err => console.log(err));
     this.props.initNavbarConfig(
       topNavConfig.ACCOUNT_SETTINGS_TOP_NAVIGATION(
         this.props.tryUpadtingAccountSettings
       )
     );
   }
+  state = {
+    messageToken: null
+  };
+
+  testMessage = () => {
+    var request = require('request');
+    var headers = {
+      Authorization:
+        'key=AAAA9CJ-1u0:APA91bEJ6m39q_NstcYsqc_Pk6o9ughLUUZ-rnRiAQHc-mhwlWqJ02yFeKqlbPHyzwf9Vcs-VC6LVHvGKWMXqmS2Nd__CRzyP0pYh9SJLsECsDLX9PSAlId2ypfe9d78lrVwAGovQcuvpaohpzfdCqRCVjnOB0jIKA',
+      'Content-Type': 'application/json'
+    };
+
+    // var dataString = `{"to":"${
+    //   this.state.messageToken
+    // }","priority":"high","notification":{"body": "FOO BAR BLA BLA"}}`;
+    var dataString = `{"to":"fkhAol3o-5Y:APA91bFlm8CWZpQlq7X8qL5X_Hn7TBQ9HcafHgAr-8YiGEynQVEeMUDlIIIojkjUIDuHCcf9UXQqntSLkjZdtq7Upl5PzHBYI_eF9YlNNNzf8Iahno6TyCv7KNxjSvJsD39PTFz5CXLu","priority":"high","notification":{"actions": [{ "action": "yes", "title": "Yes"},{ "action": "no", "title": "No"}],"vibrate": [200, 100, 200, 100, 200, 100, 400],"title":"It's time for your pill","icon":"https://raw.githubusercontent.com/gorlikariel/Gem/master/public/Images/be4291d8-dbc6-5e44-700d-3d8eb3707ada.webPlatform.png"}}`;
+
+    var options = {
+      url: 'https://fcm.googleapis.com/fcm/send',
+      method: 'POST',
+      headers: headers,
+      body: dataString
+    };
+
+    function callback(error, response, body) {
+      if (!error && response.statusCode == 200) {
+        console.log(body);
+      }
+    }
+
+    request(options, callback);
+  };
 
   render() {
     const styles = {
@@ -67,6 +111,7 @@ class AccountSettings extends Component {
         ) : (
           form
         )}
+        <WideButton onClick={this.testMessage}>Test Push</WideButton>
       </div>
     );
   }
@@ -74,7 +119,8 @@ class AccountSettings extends Component {
 const mapStateToProps = state => {
   return {
     form: state.accountSettings.form,
-    loading: state.accountSettings.loading
+    loading: state.accountSettings.loading,
+    userId: state.auth.userId
   };
 };
 

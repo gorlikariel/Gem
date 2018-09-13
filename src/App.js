@@ -17,7 +17,7 @@ import BottomNavbar from './components/BottomNavbar/BottomNavbar';
 import { connect } from 'react-redux';
 import * as actions from './store/actions/actionsIndex';
 import Introduction from './containers/Introduction/Introduction';
-
+import Toast from './components/Toast/Toast';
 class App extends React.Component {
   componentDidMount() {
     this.props.onTryAutoSignUp();
@@ -73,6 +73,7 @@ class App extends React.Component {
 
         <Route path="/" component={TopNavigation} />
         {routes}
+        <Toast message="It's time for your pill" />
         {isBottomNavbar}
       </MuiThemeProvider>
     );
