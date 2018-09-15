@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import BounceLoader from 'react-spinners/BounceLoader';
+import RotateLoader from 'react-spinners/RotateLoader';
 import * as actions from '../../store/actions/actionsIndex';
 import { connect } from 'react-redux';
 import firebase from '../../firebase';
@@ -7,7 +7,7 @@ import * as topNavConfig from '../../store/actions/topNavigationConfigs';
 import theme from '../../styleguide/theme';
 import ConfirmationDialog from '../../components/ConfirmationDialog/ConfirmationDialog';
 import MainButton from '../../components/MainButton/MainButton';
-import { ButtonBase } from '@material-ui/core';
+import { ButtonBase, Fade } from '@material-ui/core';
 import axios from 'axios';
 // DO THIS : add transition to button after being clicked
 class MainPage extends Component {
@@ -18,11 +18,13 @@ class MainPage extends Component {
       .get(`https://bluemarble-a4f07.firebaseio.com/users/${id}.json`)
       .then(res => {
         this.props.initialized ? null : this.props.loadSettings(res.data);
+        this.setState({ loading: false });
       })
       .catch(e => console.log(e));
   }
   state = {
-    open: false
+    open: false,
+    loading: true
   };
   openDialog = () => {
     this.state.open ? null : this.setState({ open: true });
@@ -40,19 +42,19 @@ class MainPage extends Component {
       onTakePill,
       onUndoPill
     } = this.props;
-    const mainButton = initialized ? (
-      <BounceLoader
-        sizeUnit={'px'}
-        size={264}
-        color={theme.C3}
-        loading={initialized}
-      />
-    ) : (
-      <MainButton
-        onClick={taken && !loading ? this.openDialog : onTakePill}
-        hour={pillHour}
-      />
-    );
+    console.log(loading || this.state.loading);
+    const mainButton =
+      loading | this.state.loading && !initialized ? (
+        <RotateLoader color={'#616467'} />
+      ) : (
+        // <Fade timeout={1000} in={!loading && !this.state.loading}>
+        <Fade timeout={1000} in={false}>
+          <MainButton
+            onClick={taken && !loading ? this.openDialog : onTakePill}
+            hour={pillHour}
+          />
+        </Fade>
+      );
     const styles = {
       button: {
         position: 'absolute',
@@ -89,11 +91,7 @@ const mapStateToProps = state => {
     loading: state.pill.loading || state.pillSettings.loading,
     pillHour: state.alarmSettings.form.pillhour.value,
     taken: state.pill.taken,
-    initialized:
-      state.accountSettings.initialized &&
-      state.alarmSettings.initialized &&
-      state.pillSettings.initialized &&
-      state.pill.initalized
+    initialized: state.pill.initialized
   };
 };
 

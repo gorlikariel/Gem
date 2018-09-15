@@ -4,30 +4,33 @@ import * as actions from '../../store/actions/actionsIndex';
 import ClipLoader from 'react-spinners/ClipLoader';
 import * as topNavConfig from '../../store/actions/topNavigationConfigs';
 import SettingsButtons from '../../components/SettingsButtons/SettingsButtons';
+import { Collapse } from '@material-ui/core';
 
 class Settings extends React.Component {
   componentDidMount() {
-    console.log('SETTINGS MOUNTED');
     this.props.onInitPage(topNavConfig.SETTINGS_TOP_NAVIGATION);
+    this.setState({ loadSettingsButtons: true });
   }
+  state = { loadSettingsButtons: null };
   render() {
-    console.log('SETTINGS RENDERED');
-
+    const styles = {
+      root: { marginTop: '118px', width: '100%' },
+      loader: {
+        position: 'absolute',
+        top: '50%',
+        left: '50%',
+        transform: 'translate(-50%,-50%)'
+      }
+    };
     const settingsButtons = (
       <SettingsButtons
         logout={this.props.logout}
         username={this.props.username}
+        checked={this.state.loadSettingsButtons}
       />
     );
     const loader = (
-      <div
-        style={{
-          position: 'absolute',
-          top: '50%',
-          left: '50%',
-          transform: 'translate(-50%,-50%)'
-        }}
-      >
+      <div style={styles.loader}>
         <ClipLoader
           sizeUnit={'px'}
           size={50}
@@ -37,7 +40,7 @@ class Settings extends React.Component {
       </div>
     );
     return (
-      <div id="this" style={{ marginTop: '118px', width: '100%' }}>
+      <div style={styles.root}>
         {this.props.loading ? loader : settingsButtons}
       </div>
     );

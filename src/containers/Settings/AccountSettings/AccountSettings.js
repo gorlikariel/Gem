@@ -6,6 +6,7 @@ import CircleLoader from 'react-spinners/CircleLoader';
 import * as topNavConfig from '../../../store/actions/topNavigationConfigs';
 import axios from 'axios';
 import WideButton from '../../../components/WideButton/WideButton';
+import { Collapse } from '@material-ui/core';
 class AccountSettings extends Component {
   componentDidMount() {
     axios
@@ -24,9 +25,11 @@ class AccountSettings extends Component {
         this.props.tryUpadtingAccountSettings
       )
     );
+    this.setState({ collapseFields: true });
   }
   state = {
-    messageToken: null
+    messageToken: null,
+    collapseFields: false
   };
 
   testMessage = () => {
@@ -60,8 +63,11 @@ class AccountSettings extends Component {
 
   render() {
     const styles = {
-      text: {
-        width: '100%'
+      root: { marginTop: 80 },
+      loader: {
+        display: 'flex',
+        justifyContent: 'center',
+        marginTop: '100px'
       }
     };
     const formElementsArray = [];
@@ -73,34 +79,34 @@ class AccountSettings extends Component {
     }
     let form = this.props.loading ? null : (
       <form noValidate autoComplete="off">
-        {formElementsArray.map(formElement => (
-          <InputField
-            autoFocus={formElement.id === 'email'}
-            id={formElement.id}
+        {formElementsArray.map((formElement, index) => (
+          <Collapse
             key={formElement.id}
-            label={formElement.config.elementConfig.label}
-            type={formElement.config.elementConfig.type}
-            style={styles[formElement.config.elementConfig.type]}
-            value={formElement.config.value}
-            margin="normal"
-            onChange={event =>
-              this.props.onInputChangedHandler(event, formElement.id)
-            }
-          />
+            in={this.state.collapseFields}
+            timeout={400 + index * 200}
+          >
+            <InputField
+              autoFocus={formElement.id === 'email'}
+              id={formElement.id}
+              key={formElement.id}
+              label={formElement.config.elementConfig.label}
+              type={formElement.config.elementConfig.type}
+              style={styles[formElement.config.elementConfig.type]}
+              value={formElement.config.value}
+              margin="normal"
+              onChange={event =>
+                this.props.onInputChangedHandler(event, formElement.id)
+              }
+            />
+          </Collapse>
         ))}
       </form>
     );
 
     return (
-      <div style={{ marginTop: 80 }}>
+      <div style={styles.root}>
         {this.props.loading ? (
-          <div
-            style={{
-              display: 'flex',
-              justifyContent: 'center',
-              marginTop: '100px'
-            }}
-          >
+          <div style={styles.loader}>
             <CircleLoader
               sizeUnit={'px'}
               size={50}

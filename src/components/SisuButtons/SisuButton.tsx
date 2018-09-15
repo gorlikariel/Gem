@@ -1,8 +1,8 @@
-import * as React from "react";
-import WideButton from "../WideButton/WideButton";
-import { Typography } from "@material-ui/core";
-import { Link } from "react-router-dom";
-import * as theme from "../../styleguide/theme";
+import * as React from 'react';
+import WideButton from '../WideButton/WideButton';
+import { Typography } from '@material-ui/core';
+import { Link } from 'react-router-dom';
+import * as theme from '../../styleguide/theme';
 type Props = {
   onClick?(e: React.MouseEvent<HTMLElement>): void;
   buttonType?: string;
@@ -22,16 +22,18 @@ const SisuButton: React.SFC<Props> = ({
   let bgColor;
   let color;
   let backgroundColor;
-  if (buttonType === "greyed") {
+  if (buttonType === 'greyed') {
     backgroundColor = theme.C4;
-    bgColor = "";
+    bgColor = '';
     color = theme.PWH;
   } else {
     bgColor = theme.PG;
     color = theme.PWH;
-    backgroundColor = "white";
+    backgroundColor = 'white';
   }
-
+  const styles = {
+    takenText: { display: 'flex', alignItems: 'center' }
+  };
   const wideButton = (
     <WideButton
       onClick={onClick}
@@ -42,10 +44,10 @@ const SisuButton: React.SFC<Props> = ({
       disabled={disabled}
       noBoxShadow={true}
     >
-      <div style={{ display: "flex", alignItems: "center" }}>
+      <div style={styles.takenText}>
         <Typography
           variant="display3"
-          color={buttonType === "greyed" ? "primary" : "inherit"}
+          color={buttonType === 'greyed' ? 'primary' : 'inherit'}
           align="center"
         >
           {children}
@@ -62,8 +64,8 @@ const SisuButton: React.SFC<Props> = ({
       {to ? (
         <Link
           style={{
-            textDecoration: "none",
-            color: "white"
+            textDecoration: 'none',
+            color: 'white'
           }}
           to={to}
         >
@@ -77,8 +79,8 @@ const SisuButton: React.SFC<Props> = ({
 };
 
 SisuButton.defaultProps = {
-  buttonType: "purple",
-  width: "87%"
+  buttonType: 'purple',
+  width: '87%'
 };
 
 export default SisuButton;

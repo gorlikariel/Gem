@@ -46,7 +46,6 @@ const InputField = props => {
           startAdornment: isSnoozeField,
           autoFocus: focused
         }}
-        inputProps={{onKeyPress:(e)=>{e.target.keyCode === 13 && e.preventDefault()}}}
         onChange={onChange}
         label={props.label}
         value={props.value}

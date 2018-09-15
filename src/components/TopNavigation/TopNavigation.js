@@ -55,19 +55,20 @@ class TopNavigation extends Component {
       root: {
         backgroundColor: 'inherit',
         boxShadow: '0 0 0 0'
-        // paddingTop: '25px'
-      }
+      },
+      title: { marginLeft: '5px' },
+      icons: { marginLeft: 'auto' }
     };
     const topNavigationComponent = (
       <AppBar position="fixed" style={styles.root}>
         <Toolbar disableGutters>
           {showLeftArrow ? leftArrow : null}
-          <div style={{ marginLeft: '5px' }}>
+          <div style={styles.title}>
             <Typography variant="title" color="primary">
               {title}
             </Typography>
           </div>
-          <div style={{ marginLeft: 'auto' }}>
+          <div style={styles.icons}>
             {showSubmit ? submitButton : null}
             {showSettingsIcon ? settingsIcon : null}
           </div>

@@ -26,12 +26,11 @@ class App extends React.Component {
     const isBottomNavbar = this.props.isAuth ? (
       <Route exact path="/" component={BottomNavbar} />
     ) : null;
-
+    // ---------Routes for logged in users
     const routes = this.props.isAuth ? (
       <React.Fragment>
-        <Switch>
-          <Route exact path="/introduction" component={Introduction} />
-          <Layout>
+        <Layout>
+          <Switch>
             <Route exact={true} path="/" component={MainPage} />
             <Route exact={true} path="/settings" component={Settings} />
             <Route
@@ -50,27 +49,28 @@ class App extends React.Component {
               component={PillSettings}
             />
             <Redirect to="/" />
-          </Layout>
-        </Switch>
+          </Switch>
+        </Layout>
       </React.Fragment>
     ) : (
+      // ---------Routes for users not logged in
+
       <React.Fragment>
-        <Switch>
+        <Layout>
           <Route exact path="/introduction" component={Introduction} />
-          <Layout>
+          <Switch>
             <Route exact path="/register" component={Register} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/sisu-main" component={SisuMain} />
             <Redirect to="/sisu-main" />
-          </Layout>
-        </Switch>
+          </Switch>
+        </Layout>
       </React.Fragment>
     );
 
     return (
       <MuiThemeProvider theme={theme}>
         <Helmet bodyAttributes={{ style: 'background-color : #fafafa' }} />
-
         <Route path="/" component={TopNavigation} />
         {routes}
         <Toast message="It's time for your pill" />
@@ -87,8 +87,7 @@ const mapDispatchToProps = dispatch => {
 
 const mapStateToProps = state => {
   return {
-    isAuth: state.auth.token !== null,
-    loading: state.auth.loading
+    isAuth: state.auth.token !== null
   };
 };
 

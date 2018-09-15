@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { TextField, Typography } from '@material-ui/core';
+import { TextField, Typography, Slide } from '@material-ui/core';
 import { connect } from 'react-redux';
 import * as actions from '../../store/actions/actionsIndex';
 import InputField from '../../components/InputField/InputField';
@@ -89,6 +89,12 @@ class Register extends Component {
     const styles = {
       text: {
         width: '100%'
+      },
+      wrapper: { marginTop: 80 },
+      titleWrapper: { marginBottom: '30px' },
+      title: {
+        paddingTop: '20px',
+        height: '80px'
       }
     };
     const formElementsArray = [];
@@ -100,24 +106,30 @@ class Register extends Component {
     }
     let form = formElementsArray.map((formElement, index) => {
       return (
-        <InputField
-          autoFocus={index === this.state.stepNum}
-          focused={true}
-          id={formElement.id}
+        <Slide
           key={formElement.id}
-          label={formElement.config.elementConfig.label}
-          type={formElement.config.elementConfig.type}
-          style={styles[formElement.config.elementConfig.type]}
-          value={formElement.config.value}
-          margin="normal"
-          onChange={event =>
-            this.props.onInputChangedHandler(
-              event,
-              formElement.id,
-              registerUtil.REGISTER_STEPS[this.state.stepNum].action
-            )
-          }
-        />
+          in={index === this.state.stepNum}
+          direction="left"
+        >
+          <InputField
+            autoFocus={index === this.state.stepNum}
+            focused={true}
+            id={formElement.id}
+            key={formElement.id}
+            label={formElement.config.elementConfig.label}
+            type={formElement.config.elementConfig.type}
+            style={styles[formElement.config.elementConfig.type]}
+            value={formElement.config.value}
+            margin="normal"
+            onChange={event =>
+              this.props.onInputChangedHandler(
+                event,
+                formElement.id,
+                registerUtil.REGISTER_STEPS[this.state.stepNum].action
+              )
+            }
+          />
+        </Slide>
       );
     });
     const currentTitle = registerUtil.REGISTER_STEPS[this.state.stepNum].title;
@@ -129,8 +141,8 @@ class Register extends Component {
     const isCurrentFieldValid =
       formFromProps.form[currentFieldName].validation.valid;
     return (
-      <div style={{ marginTop: 80 }}>
-        <div style={{ marginBottom: '30px' }}>
+      <div style={styles.wrapper}>
+        <div style={styles.titleWrapper}>
           <form
             autoComplete="off"
             onSubmit={e => {
@@ -138,12 +150,7 @@ class Register extends Component {
               e.stopPropagation();
             }}
           >
-            <div
-              style={{
-                paddingTop: '20px',
-                height: '80px'
-              }}
-            >
+            <div style={styles.title}>
               <Typography variant="display1" color="primary" align="left">
                 {currentTitle}
               </Typography>

@@ -4,6 +4,9 @@ import * as theme from '../../styleguide/theme';
 import { connect } from 'react-redux';
 
 class MainButton extends Component {
+  componentDidMount() {
+    console.log('MAIN BUTTON');
+  }
   render() {
     const styles = {
       button: {
@@ -76,7 +79,7 @@ class MainButton extends Component {
           {taken ? 'PILL TAKEN' : 'TAKE PILL'}
         </Typography>
         {taken ? textWhenPillTaken : textWhenPillNotTaken}
-
+        {/*lightning emoji represents streak, hard coded right now, will be changed */}
         <Typography color="inherit" variant="display4">
           ⚡0
         </Typography>

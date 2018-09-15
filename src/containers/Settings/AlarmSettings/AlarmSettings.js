@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { TextField } from '@material-ui/core';
+import { TextField, Collapse } from '@material-ui/core';
 import { connect } from 'react-redux';
 import InputField from '../../../components/InputField/InputField';
 import * as actions from '../../../store/actions/actionsIndex';
@@ -12,13 +12,12 @@ class AlarmSettings extends Component {
         this.props.tryUpdatingAlarmSettings
       )
     );
+    this.setState({ collapseFields: true });
   }
-
+  state = { collapseFields: false };
   render() {
     const styles = {
-      text: {
-        width: '100%'
-      }
+      root: { marginTop: 80 }
     };
     const formElementsArray = [];
     for (let key in this.props.form) {
@@ -27,22 +26,28 @@ class AlarmSettings extends Component {
         config: this.props.form[key]
       });
     }
-    let form = formElementsArray.map(formElement => (
-      <InputField
-        id={formElement.id}
+    let form = formElementsArray.map((formElement, index) => (
+      <Collapse
         key={formElement.id}
-        label={formElement.config.elementConfig.label}
-        type={formElement.config.elementConfig.type}
-        style={styles[formElement.config.elementConfig.type]}
-        value={formElement.config.value}
-        margin="normal"
-        onChange={event =>
-          this.props.onInputChangedHandler(event, formElement.id)
-        }
-      />
+        in={this.state.collapseFields}
+        timeout={400 + index * 200}
+      >
+        <InputField
+          id={formElement.id}
+          key={formElement.id}
+          label={formElement.config.elementConfig.label}
+          type={formElement.config.elementConfig.type}
+          style={styles[formElement.config.elementConfig.type]}
+          value={formElement.config.value}
+          margin="normal"
+          onChange={event =>
+            this.props.onInputChangedHandler(event, formElement.id)
+          }
+        />
+      </Collapse>
     ));
     return (
-      <div style={{ marginTop: 80 }}>
+      <div style={styles.root}>
         <form noValidate autoComplete="off">
           {form}
         </form>

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { TextField, Typography } from '@material-ui/core';
+import { TextField, Typography, Slide } from '@material-ui/core';
 import { connect } from 'react-redux';
 import * as actions from '../../store/actions/actionsIndex';
 import ClipLoader from 'react-spinners/ClipLoader';
@@ -32,7 +32,9 @@ const styles = {
 class Login extends Component {
   componentDidMount() {
     this.props.onInitPage(topNavConfig.LOGIN_TOP_NAVIGATION);
+    this.setState({ slideInFields: true });
   }
+  state = { slideInFields: false };
   login = () => {
     console.log(this.props.email.value);
     this.props.onAuth(
@@ -66,19 +68,26 @@ class Login extends Component {
         config: formFromProps.form[key]
       });
     }
-    let form = formElementsArray.map(formElement => (
-      <InputField
-        id={formElement.id}
+    let form = formElementsArray.map((formElement, index) => (
+      <Slide
         key={formElement.id}
-        label={formElement.config.elementConfig.label}
-        type={formElement.config.elementConfig.type}
-        style={styles[formElement.config.elementConfig.type]}
-        value={formElement.config.value}
-        margin="normal"
-        onChange={event =>
-          this.props.onInputChangedHandler(event, formElement.id)
-        }
-      />
+        in={this.state.slideInFields}
+        timeout={400 + index * 200}
+        direction="left"
+      >
+        <InputField
+          id={formElement.id}
+          key={formElement.id}
+          label={formElement.config.elementConfig.label}
+          type={formElement.config.elementConfig.type}
+          style={styles[formElement.config.elementConfig.type]}
+          value={formElement.config.value}
+          margin="normal"
+          onChange={event =>
+            this.props.onInputChangedHandler(event, formElement.id)
+          }
+        />
+      </Slide>
     ));
     const loader = (
       <div>
