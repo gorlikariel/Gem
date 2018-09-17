@@ -1,44 +1,52 @@
 import React from 'react';
 import SettingsButton from './SettingsButton/SettingsButton';
-import { Collapse } from '@material-ui/core';
-const SettingsButtons = props => (
-  <React.Fragment>
-    <Collapse in={props.checked}>
+import { Slide, Collapse } from '@material-ui/core';
+import * as palette from '../../styleguide/theme';
+const SettingsButtons = props => {
+  return (
+    <React.Fragment>
       <SettingsButton
+        in={props.checked}
         icon="accountIcon"
-        bgColor="G3"
-        color="PWH"
+        bgColor={palette.G3}
+        color={palette.PWH}
         to="/account-settings"
       >
         Account Settings
       </SettingsButton>
-    </Collapse>
-    <Collapse in={props.checked} timeout={400}>
       <SettingsButton
+        in={props.checked}
+        timeout={400}
         icon="alarmIcon"
-        bgColor="G2"
-        color="PWH"
+        bgColor={palette.G2}
+        color={palette.PWH}
         to="/alarm-settings"
       >
         Alarm Settings
       </SettingsButton>
-    </Collapse>
-    <Collapse in={props.checked} timeout={600}>
       <SettingsButton
+        in={props.checked}
+        timeout={600}
         icon="pillIcon"
-        bgColor="PG"
-        color="PWH"
+        bgColor={palette.PG}
+        color={palette.PWH}
         to="/pill-settings"
       >
         Pill Settings
       </SettingsButton>
-    </Collapse>
-    <Collapse in={props.checked} timeout={800}>
-      <SettingsButton onClick={props.logout} bgColor="PWH" color="BLK" to="/">
-        Log out of {props.username}
-      </SettingsButton>
-    </Collapse>
-  </React.Fragment>
-);
-
+      <div style={{ marginTop: '2px' }}>
+        <SettingsButton
+          in={props.checked}
+          timeout={800}
+          onClick={props.logout}
+          bgColor="linear-gradient(#fafafa, #fafafa), radial-gradient(circle at top left, #77b4e4, #a388fa)"
+          color={palette.BLK}
+          to="/"
+        >
+          Log out of {props.username}
+        </SettingsButton>
+      </div>
+    </React.Fragment>
+  );
+};
 export default SettingsButtons;

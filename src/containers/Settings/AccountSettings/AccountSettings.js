@@ -83,7 +83,7 @@ class AccountSettings extends Component {
           <Collapse
             key={formElement.id}
             in={this.state.collapseFields}
-            timeout={400 + index * 200}
+            timeout={400 + index * 100}
           >
             <InputField
               autoFocus={formElement.id === 'email'}

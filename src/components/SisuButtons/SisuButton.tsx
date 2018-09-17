@@ -10,6 +10,7 @@ type Props = {
   children: React.ReactNode;
   width: string;
   disabled?: boolean;
+  type?: string;
 };
 const SisuButton: React.SFC<Props> = ({
   onClick,
@@ -17,7 +18,8 @@ const SisuButton: React.SFC<Props> = ({
   to,
   buttonType,
   width,
-  disabled
+  disabled,
+  type
 }) => {
   let bgColor;
   let color;
@@ -43,6 +45,7 @@ const SisuButton: React.SFC<Props> = ({
       height="50px"
       disabled={disabled}
       noBoxShadow={true}
+      type={type}
     >
       <div style={styles.takenText}>
         <Typography
@@ -80,7 +83,8 @@ const SisuButton: React.SFC<Props> = ({
 
 SisuButton.defaultProps = {
   buttonType: 'purple',
-  width: '87%'
+  width: '87%',
+  type: 'button'
 };
 
 export default SisuButton;

@@ -106,33 +106,36 @@ class Register extends Component {
     }
     let form = formElementsArray.map((formElement, index) => {
       return (
-        <Slide
+        <InputField
+          autoFocus={index === this.state.stepNum}
+          id={formElement.id}
           key={formElement.id}
-          in={index === this.state.stepNum}
-          direction="left"
-        >
-          <InputField
-            autoFocus={index === this.state.stepNum}
-            focused={true}
-            id={formElement.id}
-            key={formElement.id}
-            label={formElement.config.elementConfig.label}
-            type={formElement.config.elementConfig.type}
-            style={styles[formElement.config.elementConfig.type]}
-            value={formElement.config.value}
-            margin="normal"
-            onChange={event =>
-              this.props.onInputChangedHandler(
-                event,
-                formElement.id,
-                registerUtil.REGISTER_STEPS[this.state.stepNum].action
-              )
-            }
-          />
-        </Slide>
+          label={formElement.config.elementConfig.label}
+          type={formElement.config.elementConfig.type}
+          style={styles[formElement.config.elementConfig.type]}
+          value={formElement.config.value}
+          margin="normal"
+          type={index === formElementsArray.length - 1 ? 'submit' : 'bt'}
+          onChange={event =>
+            this.props.onInputChangedHandler(
+              event,
+              formElement.id,
+              registerUtil.REGISTER_STEPS[this.state.stepNum].action
+            )
+          }
+        />
       );
     });
     const currentTitle = registerUtil.REGISTER_STEPS[this.state.stepNum].title;
+    const titles = registerUtil.REGISTER_STEPS.map((stepTitle, index) => {
+      return (
+        <div style={styles.title}>
+          <Typography variant="display1" color="primary" align="left">
+            {currentTitle}
+          </Typography>
+        </div>
+      );
+    });
     const currentFieldValue =
       formElementsArray[this.state.stepNum].config.value;
     const isLastStep =
@@ -141,39 +144,38 @@ class Register extends Component {
     const isCurrentFieldValid =
       formFromProps.form[currentFieldName].validation.valid;
     return (
-      <div style={styles.wrapper}>
-        <div style={styles.titleWrapper}>
-          <form
-            autoComplete="off"
-            onSubmit={e => {
-              e.preventDefault();
-              e.stopPropagation();
-            }}
+      <Slide in={true} direction="left">
+        <div style={styles.wrapper}>
+          <div style={styles.titleWrapper}>
+            <form
+              autoComplete="off"
+              onSubmit={e => {
+                e.preventDefault();
+                e.stopPropagation();
+              }}
+            >
+              {titles[this.state.stepNum]}
+              {form[this.state.stepNum]}
+            </form>
+          </div>
+          <SisuButton
+            type={isLastStep ? 'submit' : 'button'}
+            onClick={
+              isLastStep
+                ? this.submitForm
+                : () => this.handleNext(currentFieldValue)
+            }
+            width="100%"
+            buttonType={
+              !isCurrentFieldValid || !currentFieldValue ? 'greyed' : null
+            }
+            disabled={!isCurrentFieldValid || !currentFieldValue ? true : false}
           >
-            <div style={styles.title}>
-              <Typography variant="display1" color="primary" align="left">
-                {currentTitle}
-              </Typography>
-            </div>
-            {form[this.state.stepNum]}
-          </form>
+            {isLastStep ? 'Finish' : 'Next'}
+          </SisuButton>
+          {errorMessage}
         </div>
-        <SisuButton
-          onClick={
-            isLastStep
-              ? this.submitForm
-              : () => this.handleNext(currentFieldValue)
-          }
-          width="100%"
-          buttonType={
-            !isCurrentFieldValid || !currentFieldValue ? 'greyed' : null
-          }
-          disabled={!isCurrentFieldValid || !currentFieldValue ? true : false}
-        >
-          {isLastStep ? 'Finish' : 'Next'}
-        </SisuButton>
-        {errorMessage}
-      </div>
+      </Slide>
     );
   }
 }

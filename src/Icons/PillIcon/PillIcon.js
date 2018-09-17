@@ -1,15 +1,6 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { withStyles } from "@material-ui/core/styles";
-import SvgIcon from "@material-ui/core/SvgIcon";
-
-const styles = theme => ({
-  root: {
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "flex-end"
-  }
-});
+import React from 'react';
+import PropTypes from 'prop-types';
+import SvgIcon from '@material-ui/core/SvgIcon';
 
 function PillIocn(props) {
   return (
@@ -23,4 +14,4 @@ function PillIocn(props) {
   );
 }
 
-export default withStyles(styles)(PillIocn);
+export default PillIocn;

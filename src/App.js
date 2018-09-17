@@ -20,6 +20,7 @@ import Introduction from './containers/Introduction/Introduction';
 import Toast from './components/Toast/Toast';
 class App extends React.Component {
   componentDidMount() {
+    console.log(this.props.initialState);
     this.props.onTryAutoSignUp();
   }
   render() {
@@ -87,6 +88,7 @@ const mapDispatchToProps = dispatch => {
 
 const mapStateToProps = state => {
   return {
+    initialState: state,
     isAuth: state.auth.token !== null
   };
 };
