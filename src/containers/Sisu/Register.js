@@ -108,6 +108,7 @@ class Register extends Component {
       return (
         <InputField
           autoFocus={index === this.state.stepNum}
+          focused={true}
           id={formElement.id}
           key={formElement.id}
           label={formElement.config.elementConfig.label}
@@ -115,7 +116,6 @@ class Register extends Component {
           style={styles[formElement.config.elementConfig.type]}
           value={formElement.config.value}
           margin="normal"
-          type={index === formElementsArray.length - 1 ? 'submit' : 'bt'}
           onChange={event =>
             this.props.onInputChangedHandler(
               event,
