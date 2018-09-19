@@ -32,6 +32,7 @@ class App extends React.Component {
       <React.Fragment>
         <Layout>
           <Switch>
+            <Route exact path="/introduction" component={Introduction} />
             <Route exact={true} path="/" component={MainPage} />
             <Route exact={true} path="/settings" component={Settings} />
             <Route
@@ -58,8 +59,8 @@ class App extends React.Component {
 
       <React.Fragment>
         <Layout>
-          <Route exact path="/introduction" component={Introduction} />
           <Switch>
+            <Route exact path="/introduction" component={Introduction} />
             <Route exact path="/register" component={Register} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/sisu-main" component={SisuMain} />

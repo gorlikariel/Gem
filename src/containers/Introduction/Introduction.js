@@ -130,6 +130,7 @@ class Introduction extends React.Component {
                 {step.label}
               </Typography>
               <Typography
+                paragraph
                 key={step.paragraph}
                 align="center"
                 color="inherit"
