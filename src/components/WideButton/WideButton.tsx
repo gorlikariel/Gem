@@ -37,9 +37,6 @@ const WideButton: React.SFC<Props> = ({
       justifyContent: 'center',
       color: color,
       backgroundColor: backgroundColor,
-      border: 'double 2px transparent',
-      backgroundOrigin: 'border-box',
-      backgroundClip: ' content-box, border-box',
       boxShadow: noBoxShadow
         ? ''
         : '0 4px 14px 1px #d4dde558, 0 4px 6px -2px #8ea9c33f'

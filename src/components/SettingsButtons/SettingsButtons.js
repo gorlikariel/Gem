@@ -34,18 +34,16 @@ const SettingsButtons = props => {
       >
         Pill Settings
       </SettingsButton>
-      <div style={{ marginTop: '2px' }}>
-        <SettingsButton
-          in={props.checked}
-          timeout={800}
-          onClick={props.logout}
-          bgColor="linear-gradient(#fafafa, #fafafa), radial-gradient(circle at top left, #77b4e4, #a388fa)"
-          color={palette.BLK}
-          to="/"
-        >
-          Log out of {props.username}
-        </SettingsButton>
-      </div>
+      <SettingsButton
+        in={props.checked}
+        timeout={800}
+        onClick={props.logout}
+        bgColor={palette.PWH}
+        color={palette.BLK}
+        to="/"
+      >
+        Log out of {props.username}
+      </SettingsButton>
     </React.Fragment>
   );
 };

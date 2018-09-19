@@ -40,7 +40,6 @@ const SettingsButton = props => {
             bgColor={bgColor}
             color={color}
             onClick={props.onClick}
-            noBoxShadow
           >
             {icons[icon]}
             <Typography

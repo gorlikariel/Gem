@@ -12,7 +12,7 @@ to be one of many in the future.
 
 ## Built With
 
-- [TypeScript](https://www.typescriptlang.org/) - (still migrating and learning ts)
+- [TypeScript](https://www.typescriptlang.org/) - (Still learning)
 - [React](https://reactjs.org/) - The web framework used
 - [Redux](https://redux.js.org/) - State Management
 - [React Router](https://reacttraining.com/react-router/core/guides/philosophy) - Routing

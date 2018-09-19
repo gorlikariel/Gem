@@ -1,4 +1,3 @@
-// tslint:disable:no-console
 // In production, we register a service worker to serve assets from local cache.
 
 // This lets the app load faster on subsequent visits in production, and gives
@@ -8,6 +7,8 @@
 
 // To learn more about the benefits of this model, read https://goo.gl/KwvDNy.
 // This link also includes instructions on opting out of this behavior.
+import firebase from './firebase';
+const database = firebase.database();
 
 const isLocalhost = Boolean(
   window.location.hostname === 'localhost' ||
@@ -20,11 +21,17 @@ const isLocalhost = Boolean(
 );
 
 export default function register() {
+  async function fetchData() {
+    const data = await database.ref('users').once('value');
+    console.log(data.val());
+  }
+  fetchData();
+
   console.log('register');
   if (process.env.NODE_ENV === 'production' && 'serviceWorker' in navigator) {
     // The URL constructor is available in all browsers that support SW.
     const publicUrl = new URL(
-      process.env.PUBLIC_URL!,
+      process.env.PUBLIC_URL,
       window.location.toString()
     );
     if (publicUrl.origin !== window.location.origin) {
@@ -60,7 +67,7 @@ export default function register() {
   }
 }
 
-function registerValidSW(swUrl: string) {
+function registerValidSW(swUrl) {
   navigator.serviceWorker
     .register(swUrl)
     .then(registration => {
@@ -85,20 +92,37 @@ function registerValidSW(swUrl: string) {
           };
         }
       };
+      navigator.serviceWorker.ready.then(function(registration) {
+        swRegistration.periodicSync
+          .register({
+            tag: 'myFirstSync',
+            minPeriod: 3000,
+            powerState: 'avoid-draining',
+            networkState: 'avoid-cellular'
+          })
+          .then(
+            periodicSyncReg => {
+              console.log('sucess');
+            },
+            () => {
+              console.log('some error occured.');
+            }
+          );
+      });
     })
     .catch(error => {
       console.error('Error during service worker registration:', error);
     });
 }
 
-function checkValidServiceWorker(swUrl: string) {
+function checkValidServiceWorker(swUrl) {
   // Check if the service worker can be found. If it can't reload the page.
   fetch(swUrl)
     .then(response => {
       // Ensure service worker exists, and that we really are getting a JS file.
       if (
         response.status === 404 ||
-        response.headers.get('content-type')!.indexOf('javascript') === -1
+        response.headers.get('content-type').indexOf('javascript') === -1
       ) {
         // No service worker found. Probably a different app. Reload the page.
         navigator.serviceWorker.ready.then(registration => {
