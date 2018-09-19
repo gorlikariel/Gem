@@ -1,10 +1,10 @@
 import * as React from 'react';
 import * as theme from '../../styleguide/theme';
 import { withStyles } from '@material-ui/core/styles';
-import { TextField, InputAdornment } from '@material-ui/core';
+import { TextField, InputAdornment, WithStyles } from '@material-ui/core';
 
 const C3 = theme.C3;
-const styles = theme => ({
+const styles = {
   container: {
     width: '100%'
   },
@@ -20,12 +20,32 @@ const styles = theme => ({
       color: C3
     }
   }
-});
+};
 
-const InputField = props => {
-  const { classes, type, onChange, autoFocus, focused, ...otherProps } = props;
+interface InputFieldProps extends WithStyles<typeof styles> {
+  type: string;
+  onChange: React.ChangeEventHandler<any>;
+  autoFocus: boolean;
+  focused: boolean;
+  value: string;
+  label: string;
+  id: string;
+}
+
+const InputField: React.SFC<InputFieldProps> = props => {
+  const {
+    classes,
+    type,
+    onChange,
+    autoFocus,
+    focused,
+    value,
+    label,
+    id,
+    ...otherProps
+  } = props;
   const isSnoozeField =
-    props.id === 'snoozeEvery' ? (
+    id === 'snoozeEvery' ? (
       <InputAdornment position="start">Min</InputAdornment>
     ) : null;
   return (
@@ -42,13 +62,13 @@ const InputField = props => {
           }
         }}
         InputProps={{
-          classs: { underline: classes.cssUnderline },
+          classes: { underline: classes.cssUnderline },
           startAdornment: isSnoozeField,
           autoFocus: focused
         }}
         onChange={onChange}
-        label={props.label}
-        value={props.value}
+        label={label}
+        value={value}
       />
     </div>
   );

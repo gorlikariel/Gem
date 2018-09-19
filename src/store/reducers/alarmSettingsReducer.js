@@ -62,11 +62,11 @@ export default (state = initialState, action) => {
             ...state.form.snoozeevery,
             elementConfig: { ...state.form.snoozeevery.elementConfig },
             validation: { ...state.form.snoozeevery.validation },
-            value: action.settings.snoozeevry
+            value: action.settings.snoozeevery
           }
         },
         loading: false,
-        isFormFilled: action.settings.snoozeevry && action.settings.pillhour,
+        isFormFilled: action.settings.snoozeevery && action.settings.pillhour,
         initialized: true
       };
     case actionTypes.SUBMIT_ALARM_SETTINGS:
