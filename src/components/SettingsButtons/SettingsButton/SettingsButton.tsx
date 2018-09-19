@@ -1,14 +1,23 @@
-import React from 'react';
+import * as React from 'react';
 import { Link } from 'react-router-dom';
 import WideButton from '../../WideButton/WideButton';
 import { Typography, Collapse } from '@material-ui/core';
-import * as theme from '../../../styleguide/theme';
 import AccountIcon from '../../../Icons/AccountIcon/AccountIcon';
 import RightArrow from '../../../Icons/RightArrow/RightArrow';
 import PillIcon from '../../../Icons/PillIcon/PillIcon';
 import ClockIcon from '../../../Icons/ClockIcon/ClockIcon';
-const SettingsButton = props => {
-  const { bgColor, color, to, children, icon } = props;
+interface SettingsButtonProps {
+  bgColor: string;
+  color: string;
+  to: string;
+  icon?: string;
+  timeout?: number;
+  onClick?: React.EventHandler<any>;
+  in?: boolean;
+}
+
+const SettingsButton: React.SFC<SettingsButtonProps> = props => {
+  const { bgColor, color, to, children, icon, timeout, onClick } = props;
   const rightArrow = <RightArrow style={{ paddingRight: '12px' }} />;
   const styles = {
     buttonIcon: {
@@ -17,7 +26,8 @@ const SettingsButton = props => {
     logoutButton: {
       width: '24px',
       paddingLeft: '20px'
-    }
+    },
+    rightArrow: { marginLeft: 'auto' }
   };
   const icons = {
     accountIcon: <AccountIcon style={styles.buttonIcon} />,
@@ -26,7 +36,7 @@ const SettingsButton = props => {
   };
 
   return (
-    <Collapse in={props.in} timeout={props.timeout}>
+    <Collapse in={props.in} timeout={timeout}>
       <Link style={{ textDecoration: 'none' }} to={to}>
         <div
           style={{
@@ -35,13 +45,8 @@ const SettingsButton = props => {
             borderWidth: '10px'
           }}
         >
-          <WideButton
-            onClick={props.onClick}
-            bgColor={bgColor}
-            color={color}
-            onClick={props.onClick}
-          >
-            {icons[icon]}
+          <WideButton onClick={onClick} bgColor={bgColor} color={color}>
+            {icon ? icons[icon] : null}
             <Typography
               style={{ paddingLeft: to === '/' ? '55px' : '12px' }}
               variant="display3"
@@ -49,7 +54,7 @@ const SettingsButton = props => {
             >
               {children}
             </Typography>
-            <div style={{ marginLeft: 'auto' }}>
+            <div style={styles.rightArrow}>
               {to === '/' ? null : rightArrow}
             </div>
           </WideButton>

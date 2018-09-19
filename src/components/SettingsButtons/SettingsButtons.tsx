@@ -1,12 +1,19 @@
-import React from 'react';
+import * as React from 'react';
 import SettingsButton from './SettingsButton/SettingsButton';
-import { Slide, Collapse } from '@material-ui/core';
 import * as palette from '../../styleguide/theme';
-const SettingsButtons = props => {
+
+interface SettingsButtonsProps {
+  checked: boolean;
+  logout: any;
+  username: string;
+}
+
+const SettingsButtons: React.SFC<SettingsButtonsProps> = props => {
+  const { checked, logout, username } = props;
   return (
-    <React.Fragment>
+    <>
       <SettingsButton
-        in={props.checked}
+        in={checked}
         icon="accountIcon"
         bgColor={palette.G3}
         color={palette.PWH}
@@ -15,7 +22,7 @@ const SettingsButtons = props => {
         Account Settings
       </SettingsButton>
       <SettingsButton
-        in={props.checked}
+        in={checked}
         timeout={400}
         icon="alarmIcon"
         bgColor={palette.G2}
@@ -25,7 +32,7 @@ const SettingsButtons = props => {
         Alarm Settings
       </SettingsButton>
       <SettingsButton
-        in={props.checked}
+        in={checked}
         timeout={600}
         icon="pillIcon"
         bgColor={palette.PG}
@@ -35,16 +42,16 @@ const SettingsButtons = props => {
         Pill Settings
       </SettingsButton>
       <SettingsButton
-        in={props.checked}
+        in={checked}
         timeout={800}
-        onClick={props.logout}
+        onClick={logout}
         bgColor={palette.PWH}
         color={palette.BLK}
         to="/"
       >
-        Log out of {props.username}
+        Log out of {username}
       </SettingsButton>
-    </React.Fragment>
+    </>
   );
 };
 export default SettingsButtons;

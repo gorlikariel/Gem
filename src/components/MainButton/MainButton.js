@@ -1,12 +1,9 @@
-import React, { Component } from 'react';
+import * as React from 'react';
 import { ButtonBase, Typography } from '@material-ui/core';
 import * as theme from '../../styleguide/theme';
 import { connect } from 'react-redux';
 
-class MainButton extends Component {
-  componentDidMount() {
-    console.log('MAIN BUTTON');
-  }
+class MainButton extends React.Component {
   render() {
     const styles = {
       button: {
@@ -68,7 +65,6 @@ class MainButton extends Component {
     const mainButton = (
       <ButtonBase
         onClick={this.props.onClick}
-        id="child"
         style={Object.assign(
           {},
           styles.button,
