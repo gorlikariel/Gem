@@ -1,8 +1,7 @@
 import * as React from 'react';
-import { ButtonBase, Typography } from '@material-ui/core';
+import { ButtonBase, Typography, Fade } from '@material-ui/core';
 import * as theme from '../../styleguide/theme';
 import { connect } from 'react-redux';
-
 class MainButton extends React.Component {
   render() {
     const styles = {
@@ -63,23 +62,25 @@ class MainButton extends React.Component {
     );
 
     const mainButton = (
-      <ButtonBase
-        onClick={this.props.onClick}
-        style={Object.assign(
-          {},
-          styles.button,
-          styles.poop[taken ? 'taken' : 'notTaken']
-        )}
-      >
-        <Typography color="inherit" variant="display4">
-          {taken ? 'PILL TAKEN' : 'TAKE PILL'}
-        </Typography>
-        {taken ? textWhenPillTaken : textWhenPillNotTaken}
-        {/*lightning emoji represents streak, hard coded right now, will be changed */}
-        <Typography color="inherit" variant="display4">
-          ⚡0
-        </Typography>
-      </ButtonBase>
+      <Fade timeout={600} in={true}>
+        <ButtonBase
+          onClick={this.props.onClick}
+          style={Object.assign(
+            {},
+            styles.button,
+            styles.poop[taken ? 'taken' : 'notTaken']
+          )}
+        >
+          <Typography color="inherit" variant="display4">
+            {taken ? 'PILL TAKEN' : 'TAKE PILL'}
+          </Typography>
+          {taken ? textWhenPillTaken : textWhenPillNotTaken}
+          {/*lightning emoji represents streak, hard coded right now, will be changed */}
+          <Typography color="inherit" variant="display4">
+            ⚡0
+          </Typography>
+        </ButtonBase>
+      </Fade>
     );
     return loading ? null : mainButton;
   }

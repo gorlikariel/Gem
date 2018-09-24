@@ -144,7 +144,7 @@ class Register extends Component {
     const isCurrentFieldValid =
       formFromProps.form[currentFieldName].validation.valid;
     return (
-      <Slide in={true} direction="left">
+      <Slide in={true} direction="right">
         <div style={styles.wrapper}>
           <div style={styles.titleWrapper}>
             <form

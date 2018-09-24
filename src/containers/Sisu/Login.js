@@ -73,7 +73,7 @@ class Login extends Component {
         key={formElement.id}
         in={this.state.slideInFields}
         timeout={400 + index * 200}
-        direction="left"
+        direction="right"
       >
         <InputField
           id={formElement.id}

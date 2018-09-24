@@ -7,7 +7,7 @@ import * as topNavConfig from '../../store/actions/topNavigationConfigs';
 import theme from '../../styleguide/theme';
 import ConfirmationDialog from '../../components/ConfirmationDialog/ConfirmationDialog';
 import MainButton from '../../components/MainButton/MainButton';
-import { ButtonBase, Fade } from '@material-ui/core';
+import { ButtonBase } from '@material-ui/core';
 import axios from 'axios';
 // DO THIS : add transition to button after being clicked
 class MainPage extends Component {
@@ -47,13 +47,10 @@ class MainPage extends Component {
       loading | this.state.loading && !initialized ? (
         <RotateLoader color={'#616467'} />
       ) : (
-        // <Fade timeout={1000} in={!loading && !this.state.loading}>
-        <Fade timeout={1000} in={false}>
-          <MainButton
-            onClick={taken && !loading ? this.openDialog : onTakePill}
-            hour={pillHour}
-          />
-        </Fade>
+        <MainButton
+          onClick={taken && !loading ? this.openDialog : onTakePill}
+          hour={pillHour}
+        />
       );
     const styles = {
       button: {
