@@ -33,19 +33,18 @@ class AccountSettings extends Component {
   };
 
   testMessage = () => {
-    var request = require('request');
-    var headers = {
+    const notificationKey =
+      'fkhAol3o-5Y:APA91bFlm8CWZpQlq7X8qL5X_Hn7TBQ9HcafHgAr-8YiGEynQVEeMUDlIIIojkjUIDuHCcf9UXQqntSLkjZdtq7Upl5PzHBYI_eF9YlNNNzf8Iahno6TyCv7KNxjSvJsD39PTFz5CXLu';
+    const request = require('request');
+    const headers = {
       Authorization:
         'key=AAAA9CJ-1u0:APA91bEJ6m39q_NstcYsqc_Pk6o9ughLUUZ-rnRiAQHc-mhwlWqJ02yFeKqlbPHyzwf9Vcs-VC6LVHvGKWMXqmS2Nd__CRzyP0pYh9SJLsECsDLX9PSAlId2ypfe9d78lrVwAGovQcuvpaohpzfdCqRCVjnOB0jIKA',
       'Content-Type': 'application/json'
     };
 
-    // var dataString = `{"to":"${
-    //   this.state.messageToken
-    // }","priority":"high","notification":{"body": "FOO BAR BLA BLA"}}`;
-    var dataString = `{"to":"fkhAol3o-5Y:APA91bFlm8CWZpQlq7X8qL5X_Hn7TBQ9HcafHgAr-8YiGEynQVEeMUDlIIIojkjUIDuHCcf9UXQqntSLkjZdtq7Upl5PzHBYI_eF9YlNNNzf8Iahno6TyCv7KNxjSvJsD39PTFz5CXLu","priority":"high","notification":{"actions": [{ "action": "yes", "title": "Yes"},{ "action": "no", "title": "No"}],"vibrate": [200, 100, 200, 100, 200, 100, 400],"title":"It's time for your pill","icon":"https://raw.githubusercontent.com/gorlikariel/Gem/master/public/Images/be4291d8-dbc6-5e44-700d-3d8eb3707ada.webPlatform.png"}}`;
+    const dataString = `{"to":"${notificationKey}","priority":"high","notification":{"actions": [{ "action": "yes", "title": "Yes","icon":"https://raw.githubusercontent.com/gorlikariel/Gem/master/public/Images/be4291d8-dbc6-5e44-700d-3d8eb3707ada.webPlatform.png"},{ "action": "no", "title": "No","icon":"https://raw.githubusercontent.com/gorlikariel/Gem/master/public/Images/be4291d8-dbc6-5e44-700d-3d8eb3707ada.webPlatform.png"}],"vibrate": [200, 100, 200, 100, 200, 100, 400],"title":"It's time for your pill","icon":"https://raw.githubusercontent.com/gorlikariel/Gem/master/public/Images/be4291d8-dbc6-5e44-700d-3d8eb3707ada.webPlatform.png"}}`;
 
-    var options = {
+    const options = {
       url: 'https://fcm.googleapis.com/fcm/send',
       method: 'POST',
       headers: headers,

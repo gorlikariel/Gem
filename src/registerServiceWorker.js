@@ -93,7 +93,7 @@ function registerValidSW(swUrl) {
         }
       };
       navigator.serviceWorker.ready.then(function(registration) {
-        swRegistration.periodicSync
+        registration.periodicSync
           .register({
             tag: 'myFirstSync',
             minPeriod: 3000,

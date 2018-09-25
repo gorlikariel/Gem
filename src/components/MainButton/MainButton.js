@@ -1,12 +1,12 @@
 import * as React from 'react';
 import { ButtonBase, Typography, Fade } from '@material-ui/core';
-import * as theme from '../../styleguide/theme';
+import * as palette from '../../styleguide/theme';
 import { connect } from 'react-redux';
 class MainButton extends React.Component {
   render() {
     const styles = {
       button: {
-        color: theme.PWH,
+        color: palette.PWH,
         display: 'flex',
         flexDirection: 'column',
         alignText: 'center',

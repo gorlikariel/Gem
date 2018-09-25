@@ -8,7 +8,8 @@
 
 # production
 /build
-
+/functions
+/%RESOURCE_DIR%
 # misc
 .firebase
 .firebaserc
