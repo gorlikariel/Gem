@@ -29,7 +29,13 @@ const SettingsButton: React.SFC<SettingsButtonProps> = props => {
     },
     rightArrow: { marginLeft: 'auto' },
     buttonText: { paddingLeft: to === '/' ? '55px' : '12px' },
-    link: { textDecoration: 'none' }
+    link: { textDecoration: 'none' },
+    buttonSpacing: {
+      paddingTop: '10px',
+      paddingBottom: '10px',
+      paddingLeft: '5px',
+      paddingRight: '5px'
+    }
   };
   const icons = {
     accountIcon: <AccountIcon style={styles.buttonIcon} />,
@@ -39,19 +45,28 @@ const SettingsButton: React.SFC<SettingsButtonProps> = props => {
 
   return (
     <Collapse in={props.in} timeout={timeout}>
-      <Link style={styles.link} to={to}>
-        <WideButton onClick={onClick} bgColor={bgColor} color={color}>
-          {icon ? icons[icon] : null}
-          <Typography
-            style={styles.buttonText}
-            variant="display3"
-            color="inherit"
+      <div style={styles.buttonSpacing}>
+        <Link style={styles.link} to={to}>
+          <WideButton
+            onClick={onClick}
+            marginTop="0px"
+            bgColor={bgColor}
+            color={color}
           >
-            {children}
-          </Typography>
-          <div style={styles.rightArrow}>{to === '/' ? null : rightArrow}</div>
-        </WideButton>
-      </Link>
+            {icon ? icons[icon] : null}
+            <Typography
+              style={styles.buttonText}
+              variant="display3"
+              color="inherit"
+            >
+              {children}
+            </Typography>
+            <div style={styles.rightArrow}>
+              {to === '/' ? null : rightArrow}
+            </div>
+          </WideButton>
+        </Link>
+      </div>
     </Collapse>
   );
 };

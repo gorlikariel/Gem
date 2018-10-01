@@ -1,10 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import MobileStepper from '@material-ui/core/MobileStepper';
-import Paper from '@material-ui/core/Paper';
-import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
+import { Typography, MobileStepper, Button, Paper } from '@material-ui/core';
 import SwipeableViews from 'react-swipeable-views';
 import LeftArrow from '../../Icons/LeftArrow/LeftArrow';
 import RightArrow from '../../Icons/RightArrow/RightArrow';
@@ -57,6 +54,11 @@ const styles = theme => ({
   dots: {
     color: 'red',
     backgroundColor: 'blue'
+  },
+  tutorialStep: {
+    color: '#8ea9c3',
+    whiteSpace: 'pre',
+    backgroundColor: palette.PWL
   }
 });
 
@@ -118,14 +120,7 @@ class Introduction extends React.Component {
           enableMouseEvents
         >
           {tutorialSteps.map(step => (
-            <div
-              key={step.imgPath}
-              style={{
-                color: '#8ea9c3',
-                whiteSpace: 'pre',
-                backgroundColor: palette.PWL
-              }}
-            >
+            <div key={step.imgPath} style={styles.tutorialStep}>
               <Typography
                 key={step.label}
                 align="center"
