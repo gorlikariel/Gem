@@ -16,7 +16,7 @@ class AccountSettings extends Component {
         }/notifications/token.json`
       )
       .then(res => {
-        this.setState({ messageToken: res.data });
+        this.setState({ messageToken: res.data }); 
         console.log(res);
       })
       .catch(err => console.log(err));
@@ -31,24 +31,48 @@ class AccountSettings extends Component {
     messageToken: null,
     collapseFields: false
   };
-
   testMessage = () => {
     const notificationKey =
-      'fkhAol3o-5Y:APA91bFlm8CWZpQlq7X8qL5X_Hn7TBQ9HcafHgAr-8YiGEynQVEeMUDlIIIojkjUIDuHCcf9UXQqntSLkjZdtq7Upl5PzHBYI_eF9YlNNNzf8Iahno6TyCv7KNxjSvJsD39PTFz5CXLu';
+      'c5Un1IPiHkc:APA91bEfy2QmgM818Ksnm6WoDNi28Z-ilRTJttWQ4qu9JqjRb1_Mr1yUukQ9F2h063LdgiS3VAnHnWxQKYGl0MLZCoKjLGG_ji0pBCaDxY08KlcTHBSMdJN1dE8aYxxpUpSYuhkhrnhq';
     const request = require('request');
     const headers = {
       Authorization:
-        'key=AAAA9CJ-1u0:APA91bEJ6m39q_NstcYsqc_Pk6o9ughLUUZ-rnRiAQHc-mhwlWqJ02yFeKqlbPHyzwf9Vcs-VC6LVHvGKWMXqmS2Nd__CRzyP0pYh9SJLsECsDLX9PSAlId2ypfe9d78lrVwAGovQcuvpaohpzfdCqRCVjnOB0jIKA',
+        // 'key=AAAA9CJ-1u0:APA91bEJ6m39q_NstcYsqc_Pk6o9ughLUUZ-rnRiAQHc-mhwlWqJ02yFeKqlbPHyzwf9Vcs-VC6LVHvGKWMXqmS2Nd__CRzyP0pYh9SJLsECsDLX9PSAlId2ypfe9d78lrVwAGovQcuvpaohpzfdCqRCVjnOB0jIKA',
+        'Bearer ya29.c.ElojBglaRzIFs8BTocLBRP3XSVdPcnfsl1Wkq0hBnRKc6INRksV1F1MUb6CwJyT_B9grkTQ4GtxuencFL52lhL_fIT8lmSJhfAHFim6Z3U3wIirZf9VLkAQnMZw',
       'Content-Type': 'application/json'
     };
 
-    const dataString = `{"to":"${notificationKey}","priority":"high","notification":{"actions": [{ "action": "yes", "title": "Yes","icon":"https://raw.githubusercontent.com/gorlikariel/Gem/master/public/Images/be4291d8-dbc6-5e44-700d-3d8eb3707ada.webPlatform.png"},{ "action": "no", "title": "No","icon":"https://raw.githubusercontent.com/gorlikariel/Gem/master/public/Images/be4291d8-dbc6-5e44-700d-3d8eb3707ada.webPlatform.png"}],"vibrate": [200, 100, 200, 100, 200, 100, 400],"title":"It's time for your pill","icon":"https://raw.githubusercontent.com/gorlikariel/Gem/master/public/Images/be4291d8-dbc6-5e44-700d-3d8eb3707ada.webPlatform.png"}}`;
-
+    const messagePayload = {
+      message: {
+        webpush: {
+          notification: {
+            title: `It's time for your pill`,
+            icon:
+              'https://raw.githubusercontent.com/gorlikariel/Gem/master/public/Images/be4291d8-dbc6-5e44-700d-3d8eb3707ada.webPlatform.png',
+            data: {
+              notificationType: 'pillReminder',
+              photoId: '123456'
+            },
+            click_action: 'https://example.com/fish_photos',
+            actions: [
+              {
+                title: 'Take pill',
+                action: 'takePill',
+                icon:
+                  'https://raw.githubusercontent.com/gorlikariel/Gem/master/public/Images/5ccb6930-caaf-0d9a-5475-d8359cababe3.webPlatform.webPlatform.png'
+              }
+            ]
+          }
+        },
+        token: notificationKey
+      }
+    };
     const options = {
-      url: 'https://fcm.googleapis.com/fcm/send',
+      url:
+        'https://fcm.googleapis.com/v1/projects/bluemarble-a4f07/messages:send',
       method: 'POST',
       headers: headers,
-      body: dataString
+      body: JSON.stringify(messagePayload)
     };
 
     function callback(error, response, body) {

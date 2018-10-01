@@ -45,7 +45,7 @@ const InputField: React.SFC<InputFieldProps> = props => {
     ...otherProps
   } = props;
   const isSnoozeField =
-    id === 'snoozeEvery' ? (
+    id === 'snoozeevery' ? (
       <InputAdornment position="start">Min</InputAdornment>
     ) : null;
   return (

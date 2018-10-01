@@ -25,7 +25,7 @@ export default function register() {
     const data = await database.ref('users').once('value');
     console.log(data.val());
   }
-  fetchData();
+  // fetchData();
 
   console.log('register');
   if (process.env.NODE_ENV === 'production' && 'serviceWorker' in navigator) {

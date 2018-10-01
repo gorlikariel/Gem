@@ -20,6 +20,9 @@ import {
 } from './util/appComponents';
 import Layout from './containers/Layout/Layout';
 import Toast from './components/Toast/Toast';
+import firebase from './firebase';
+import { HOUR_STAMP, checkIfItsTimeForPill } from './util/firebaseUtil';
+const database = firebase.database();
 
 class App extends React.Component {
   componentDidMount() {

@@ -12,6 +12,7 @@ import first from './Onboarding1.png';
 import second from './Onboarding2.png';
 import third from './Onboarding3.png';
 import * as palette from '../../styleguide/theme';
+import { getAndStoreNotificationToken } from '../../firebase';
 
 const tutorialSteps = [
   {
@@ -81,9 +82,13 @@ class Introduction extends React.Component {
   };
 
   render() {
+    const finishOnboarding = () => {
+      getAndStoreNotificationToken();
+      this.props.history.replace('/');
+    };
+
     const { classes, theme } = this.props;
     const { activeStep } = this.state;
-
     const maxSteps = tutorialSteps.length;
 
     return (
@@ -151,9 +156,7 @@ class Introduction extends React.Component {
             <Button
               size="small"
               onClick={
-                activeStep === maxSteps
-                  ? this.props.history.replace('/')
-                  : this.handleNext
+                activeStep === maxSteps ? finishOnboarding() : this.handleNext
               }
               disabled={activeStep === maxSteps}
             >

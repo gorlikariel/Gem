@@ -49,7 +49,7 @@ export const formatUserObject = valuesArray => ({
     },
     alarm: {
       pillhour: valuesArray[MAP_FIELDS.pillHour],
-      snoozeevry: valuesArray[MAP_FIELDS.snoozeEvery]
+      snoozeevery: valuesArray[MAP_FIELDS.snoozeEvery]
     },
     pill: {
       amountofpacks: valuesArray[MAP_FIELDS.amountOfPacks],
