@@ -32,6 +32,11 @@ export default (state = initialState, action) => {
         token: null,
         userId: null
       };
+    case actionTypes.AUTH_LOADING:
+      return {
+        ...state,
+        loading: true
+      };
 
     case actionTypes.AUTH_FAIL:
       return {

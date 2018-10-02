@@ -39,7 +39,8 @@ export const MAP_FIELDS = {
 
 export const formatUserObject = valuesArray => ({
   dailyPill: {
-    taken: false
+    taken: false,
+    lasttimetaken: 'never'
   },
   settings: {
     account: {

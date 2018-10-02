@@ -42,7 +42,6 @@ class MainPage extends Component {
       onTakePill,
       onUndoPill
     } = this.props;
-    console.log(loading || this.state.loading);
     const mainButton =
       loading | this.state.loading && !initialized ? (
         <RotateLoader color={'#616467'} />

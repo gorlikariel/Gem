@@ -1,5 +1,6 @@
 import * as actionTypes from './actionTypes';
-import firebase from '../../firebase';
+import firebase, { getAndStoreNotificationToken } from '../../firebase';
+import { getHourStamp } from '../../util/firebaseUtil';
 const database = firebase.database();
 
 export const pillTaken = () => {
@@ -25,7 +26,12 @@ export const tryTakingPill = () => {
     database
       .ref(`users/${userId}/dailyPill/taken`)
       .set(true)
-      .then(res => dispatch(pillTaken()))
+      .then(res => {
+        dispatch(pillTaken());
+        database
+          .ref(`users/${userId}/dailyPill/lasttimetaken`)
+          .set(getHourStamp());
+      })
       .catch(err => console.log(err));
   };
 };
@@ -51,6 +57,7 @@ export const initSuccess = isPillTaken => {
 
 export const initPillButton = isTaken => {
   return dispatch => {
+    getAndStoreNotificationToken();
     dispatch(initSuccess(isTaken));
   };
 };

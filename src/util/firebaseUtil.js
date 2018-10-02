@@ -1,5 +1,10 @@
 const addZero = min => (min < 10 ? '0' + min : min);
 const d = new Date();
+export const getHourStamp = () => {
+  const date = new Date();
+  // date.setHours(date.getHours() + 3);
+  return addZero(date.getHours()) + ':' + addZero(date.getMinutes());
+};
 export const HOUR_STAMP = addZero(d.getHours()) + ':' + addZero(d.getMinutes());
 export const hourStampToMinutes = hourStamp => +hourStamp.slice(3);
 export const hourStampToHours = hourStamp => +hourStamp.slice(0, 2);

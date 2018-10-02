@@ -86,12 +86,18 @@ export const logIn = (token, id, expiration) => {
   };
 };
 
+export const loading = () => {
+  return {
+    type: actionTypes.AUTH_LOADING
+  };
+};
 export const checkIfAuth = () => {
   return dispatch => {
+    dispatch(loading());
     const token = localStorage.getItem('token');
     if (!token) {
       console.log('NO TOKEN, LOGGIN OUT');
-      // dispatch(logout());
+      dispatch(logout());
     } else {
       const expirationDate = localStorage.getItem('expirationDate');
       const userId = localStorage.getItem('userId');
