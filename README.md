@@ -19,6 +19,7 @@ to be one of many in the future.
 - [Material-ui](https://material-ui.com/) - Design system
 - [Zeplin](https://zeplin.io/) - Styleguide & Screens
 - [Wakatime](https://wakatime.com/) - Programming Metrics and Tracking
+- [Firebase](https://firebase.google.com/) - Development Platform
 
 The project is still being built, and features are regularly added.
 
