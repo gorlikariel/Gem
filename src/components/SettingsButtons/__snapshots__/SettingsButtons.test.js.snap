@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SettingsButtons Renders 4 settings buttons, the last one being the logout button which renders username based on props.username 1`] = `
+<Fragment>
+  <SettingsButton
+    bgImg="linear-gradient(to right, #77b4e4, #4ce49e)"
+    color="#ffffff"
+    icon="accountIcon"
+    in={true}
+    to="/account-settings"
+  >
+    Account Settings
+  </SettingsButton>
+  <SettingsButton
+    bgImg="linear-gradient(to right, #66bbf7, #6696fb)"
+    color="#ffffff"
+    icon="alarmIcon"
+    in={true}
+    timeout={400}
+    to="/alarm-settings"
+  >
+    Alarm Settings
+  </SettingsButton>
+  <SettingsButton
+    bgImg="linear-gradient(to right, #7c9dfb, #a388fa)"
+    color="#ffffff"
+    icon="pillIcon"
+    in={true}
+    timeout={600}
+    to="/pill-settings"
+  >
+    Pill Settings
+  </SettingsButton>
+  <SettingsButton
+    bgImg="#ffffff"
+    color="black"
+    in={true}
+    onClick={[Function]}
+    timeout={800}
+    to="/"
+  >
+    Log out of 
+    Test Username
+  </SettingsButton>
+</Fragment>
+`;

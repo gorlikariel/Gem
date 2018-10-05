@@ -1,16 +1,17 @@
 import * as React from 'react';
 import { ButtonBase } from '@material-ui/core';
+import { boxShadows } from '../../styleguide/theme';
 type Props = {
   onClick?(e: React.MouseEvent<HTMLElement>): void;
   color?: string;
   width?: string;
   height?: string;
-  bgColor: string;
   disabled?: boolean;
   type?: string;
   backgroundColor?: string;
   noBoxShadow?: boolean;
   marginTop?: string;
+  bgImg: string;
   children: React.ReactNode;
 };
 
@@ -20,7 +21,7 @@ const WideButton: React.SFC<Props> = ({
   children,
   width,
   height,
-  bgColor,
+  bgImg,
   backgroundColor,
   disabled,
   noBoxShadow,
@@ -33,15 +34,13 @@ const WideButton: React.SFC<Props> = ({
       height: height,
       borderRadius: '6px',
       marginTop: marginTop,
-      backgroundImage: bgColor,
+      backgroundImage: bgImg,
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
       color: color,
       backgroundColor: backgroundColor,
-      boxShadow: noBoxShadow
-        ? ''
-        : '0 4px 14px 1px #d4dde558, 0 4px 6px -2px #8ea9c33f'
+      boxShadow: noBoxShadow ? '' : boxShadows.wideButton
     } as React.CSSProperties
   };
 

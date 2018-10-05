@@ -42,6 +42,7 @@ export const formatUserObject = valuesArray => ({
     taken: false,
     lasttimetaken: 'never'
   },
+  notifications: { token: 'notSetYet' },
   settings: {
     account: {
       email: valuesArray[MAP_FIELDS.email],

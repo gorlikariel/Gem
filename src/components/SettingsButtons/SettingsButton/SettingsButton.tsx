@@ -7,7 +7,7 @@ import RightArrow from '../../../Icons/RightArrow/RightArrow';
 import PillIcon from '../../../Icons/PillIcon/PillIcon';
 import ClockIcon from '../../../Icons/ClockIcon/ClockIcon';
 interface SettingsButtonProps {
-  bgColor: string;
+  bgImg: string;
   color: string;
   to: string;
   icon?: string;
@@ -17,7 +17,7 @@ interface SettingsButtonProps {
 }
 
 const SettingsButton: React.SFC<SettingsButtonProps> = props => {
-  const { bgColor, color, to, children, icon, timeout, onClick } = props;
+  const { bgImg, color, to, children, icon, timeout, onClick } = props;
   const rightArrow = <RightArrow style={{ paddingRight: '12px' }} />;
   const styles = {
     buttonIcon: {
@@ -50,7 +50,7 @@ const SettingsButton: React.SFC<SettingsButtonProps> = props => {
           <WideButton
             onClick={onClick}
             marginTop="0px"
-            bgColor={bgColor}
+            bgImg={bgImg}
             color={color}
           >
             {icon ? icons[icon] : null}

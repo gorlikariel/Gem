@@ -21,15 +21,15 @@ const SisuButton: React.SFC<Props> = ({
   disabled,
   type
 }) => {
-  let bgColor;
+  let bgImg;
   let color;
   let backgroundColor;
   if (buttonType === 'greyed') {
     backgroundColor = theme.C4;
-    bgColor = '';
+    bgImg = '';
     color = theme.PWH;
   } else {
-    bgColor = theme.PG;
+    bgImg = theme.PG;
     color = theme.PWH;
     backgroundColor = 'white';
   }
@@ -39,7 +39,7 @@ const SisuButton: React.SFC<Props> = ({
   const wideButton = (
     <WideButton
       onClick={onClick}
-      bgColor={bgColor}
+      bgImg={bgImg}
       color={color}
       backgroundColor={backgroundColor}
       height="50px"

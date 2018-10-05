@@ -1,3 +1,5 @@
+import { getHourStamp } from 'src/util/firebaseUtil';
+
 importScripts('https://www.gstatic.com/firebasejs/5.4.1/firebase-app.js');
 importScripts('https://www.gstatic.com/firebasejs/5.4.1/firebase-messaging.js');
 importScripts('https://www.gstatic.com/firebasejs/5.4.1/firebase-database.js');
@@ -12,16 +14,19 @@ const config = {
 firebase.initializeApp(config);
 const messaging = firebase.messaging();
 const database = firebase.database();
+const setPillTaken = async userId => {
+  await database.ref(`users/${userId}/dailyPill/taken`).set(true);
+  await database
+    .ref(`users/${userId}/dailyPill/lasttimetaken`)
+    .set(getHourStamp());
+};
 
-self.addEventListener('notificationclick', async event => {
-  if (event.action === 'takePill') {
-    await database.ref(`users/${userId}/dailyPill/taken`).set(true);
-  }
-
+self.addEventListener('notificationclick', event => {
+  setPillTaken(event.notification.data.userId);
   event.notification.close();
 });
 
-messaging.setBackgroundMessageHandler(function(payload) {
+messaging.setBackgroundMessageHandler(payload => {
   console.log(
     '[firebase-messaging-sw.js] Received background message ',
     payload

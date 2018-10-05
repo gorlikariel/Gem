@@ -15,7 +15,7 @@ const SettingsButtons: React.SFC<SettingsButtonsProps> = props => {
       <SettingsButton
         in={checked}
         icon="accountIcon"
-        bgColor={palette.G3}
+        bgImg={palette.G3}
         color={palette.PWH}
         to="/account-settings"
       >
@@ -25,7 +25,7 @@ const SettingsButtons: React.SFC<SettingsButtonsProps> = props => {
         in={checked}
         timeout={400}
         icon="alarmIcon"
-        bgColor={palette.G2}
+        bgImg={palette.G2}
         color={palette.PWH}
         to="/alarm-settings"
       >
@@ -35,7 +35,7 @@ const SettingsButtons: React.SFC<SettingsButtonsProps> = props => {
         in={checked}
         timeout={600}
         icon="pillIcon"
-        bgColor={palette.PG}
+        bgImg={palette.PG}
         color={palette.PWH}
         to="/pill-settings"
       >
@@ -45,7 +45,7 @@ const SettingsButtons: React.SFC<SettingsButtonsProps> = props => {
         in={checked}
         timeout={800}
         onClick={logout}
-        bgColor={palette.PWH}
+        bgImg={palette.PWH}
         color={palette.BLK}
         to="/"
       >

@@ -12,6 +12,9 @@ export const PWL = '#fafafa';
 export const G2 = 'linear-gradient(to right, #66bbf7, #6696fb)';
 export const G3 = 'linear-gradient(to right, #77b4e4, #4ce49e)';
 export const BLK = 'black';
+export const boxShadows = {
+  wideButton: '0 4px 14px 1px #d4dde558, 0 4px 6px -2px #8ea9c33f'
+};
 //sisu buttons,
 const theme = createMuiTheme({
   palette: {

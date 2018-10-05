@@ -22,7 +22,7 @@ exports[`Settings button should render text as expected 1`] = `
       to="someWhere"
     >
       <WideButton
-        bgColor="red"
+        bgImg="red"
         color="red"
         height="64px"
         marginTop="0px"
