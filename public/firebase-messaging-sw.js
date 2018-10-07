@@ -1,5 +1,4 @@
-import { getHourStamp } from 'src/util/firebaseUtil';
-
+importScripts('src/util/firebaseUtil.js');
 importScripts('https://www.gstatic.com/firebasejs/5.4.1/firebase-app.js');
 importScripts('https://www.gstatic.com/firebasejs/5.4.1/firebase-messaging.js');
 importScripts('https://www.gstatic.com/firebasejs/5.4.1/firebase-database.js');

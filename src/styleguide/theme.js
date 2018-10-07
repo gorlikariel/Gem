@@ -73,7 +73,7 @@ const theme = createMuiTheme({
         fontWeight: 300,
         letterSpacing: '0.2px',
         fontFamily: ['-apple-system', ' BlinkMacSystemFont', 'roboto'],
-        lineHeight: '0.8em'
+        lineHeight: '1.5em'
       }
     },
     MuiBottomNavigationAction: {

@@ -20,6 +20,8 @@ to be one of many in the future.
 - [Zeplin](https://zeplin.io/) - Styleguide & Screens
 - [Wakatime](https://wakatime.com/) - Programming Metrics and Tracking
 - [Firebase](https://firebase.google.com/) - Development Platform
+- [Jest](https://jestjs.io/) - Javascript and React Testing
+- [Enzyme](https://airbnb.io/enzyme/) - Javascript and React Testing
 
 The project is still being built, and features are regularly added.
 
