@@ -7,7 +7,7 @@ import toJson from 'enzyme-to-json';
 import SettingsButton from './SettingsButton/SettingsButton';
 Enzyme.configure({ adapter: new Adapter() });
 describe('SettingsButtons', () => {
-  it('Renders 4 settings buttons, the last one being the logout button which renders username based on props.username', () => {
+  it('should render 4 settings buttons, the last one being the logout button which renders username based on props.username', () => {
     const username = 'Test Username';
     const settingsButtons = shallow(
       <SettingsButtons checked={true} logout={() => null} username={username} />

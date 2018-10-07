@@ -5,7 +5,7 @@ import Adapter from 'enzyme-adapter-react-16';
 import Enzyme from 'enzyme';
 import toJson from 'enzyme-to-json';
 Enzyme.configure({ adapter: new Adapter() });
-test('Settings button should render text as expected', () => {
+test('settings button should render text as expected', () => {
   const settingsButton = shallow(
     <SettingsButton to="someWhere" bgImg="red" color="red">
       Test Text
