@@ -13,7 +13,10 @@ export const G2 = 'linear-gradient(to right, #66bbf7, #6696fb)';
 export const G3 = 'linear-gradient(to right, #77b4e4, #4ce49e)';
 export const BLK = 'black';
 export const boxShadows = {
-  wideButton: '0 4px 14px 1px #d4dde558, 0 4px 6px -2px #8ea9c33f'
+  wideButton: '0 4px 14px 1px #d4dde558, 0 4px 6px -2px #8ea9c33f',
+  pillButtonNotTaken:
+    '0 10px 10px 0 #0000000c, 0 15px 15px 0 #00000019, 0 8px 8px 0 #0000000d, 0 0 10px 5px #0000000c',
+  pillButtonTaken: ' inset 0 -4px 10px 0 #0000001d'
 };
 //sisu buttons,
 const theme = createMuiTheme({

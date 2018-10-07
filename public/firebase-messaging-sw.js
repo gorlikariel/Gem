@@ -1,7 +1,11 @@
-importScripts('src/util/firebaseUtil.js');
 importScripts('https://www.gstatic.com/firebasejs/5.4.1/firebase-app.js');
 importScripts('https://www.gstatic.com/firebasejs/5.4.1/firebase-messaging.js');
 importScripts('https://www.gstatic.com/firebasejs/5.4.1/firebase-database.js');
+const getHourStamp = () => {
+  const date = new Date();
+  return addZero(date.getHours()) + ':' + addZero(date.getMinutes());
+};
+
 const config = {
   apiKey: 'AIzaSyBq_VbcsnwxgnTS05jOWVeqMhgNI40J1rU',
   authDomain: 'bluemarble-a4f07.firebaseapp.com',

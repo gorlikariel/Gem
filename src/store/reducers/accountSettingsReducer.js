@@ -53,7 +53,7 @@ const initialState = {
       validation: {
         required: true,
         valid: false,
-        minLength: 5,
+        minLength: 6,
         maxLength: 15
       }
     }

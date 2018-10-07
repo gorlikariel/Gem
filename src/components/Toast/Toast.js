@@ -27,7 +27,7 @@ class Toast extends React.Component {
         })}
       >
         <Snackbar
-          autoHideDuration={3000}
+          autoHideDuration={6000}
           anchorOrigin={{ vertical, horizontal }}
           open={this.props.children ? open : this.props.open}
           onClose={this.handleClose}

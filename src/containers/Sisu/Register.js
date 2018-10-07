@@ -169,7 +169,7 @@ class Register extends Component {
             buttonType={
               !isCurrentFieldValid || !currentFieldValue ? 'greyed' : null
             }
-            disabled={!isCurrentFieldValid || !currentFieldValue ? true : false}
+            disabled={!isCurrentFieldValid | !currentFieldValue ? true : false}
           >
             {isLastStep ? 'Finish' : 'Next'}
           </SisuButton>

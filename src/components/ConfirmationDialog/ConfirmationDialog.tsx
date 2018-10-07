@@ -31,10 +31,19 @@ class ConfirmationDialog extends React.Component<ConfirmationDialogProps> {
         >
           <DialogTitle>{message}</DialogTitle>
           <DialogActions>
-            <Button onClick={this.handleClose} color="primary">
+            <Button
+              id="disagreeDialog"
+              onClick={this.handleClose}
+              color="primary"
+            >
               Disagree
             </Button>
-            <Button onClick={this.handleAgree} color="primary" autoFocus={true}>
+            <Button
+              id="agreeDialog"
+              onClick={this.handleAgree}
+              color="primary"
+              autoFocus={true}
+            >
               Agree
             </Button>
           </DialogActions>

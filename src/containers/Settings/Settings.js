@@ -8,6 +8,7 @@ import { Collapse } from '@material-ui/core';
 
 class Settings extends React.Component {
   componentDidMount() {
+    this.props.onInitPage(topNavConfig.SETTINGS_TOP_NAVIGATION);
     this.setState({ loadSettingsButtons: true });
   }
   state = { loadSettingsButtons: null };

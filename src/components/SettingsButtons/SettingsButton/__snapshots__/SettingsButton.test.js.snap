@@ -61,3 +61,65 @@ exports[`Settings button should render text as expected 1`] = `
   </div>
 </WithStyles(Collapse)>
 `;
+
+exports[`settings button should render text as expected 1`] = `
+<WithStyles(Collapse)>
+  <div
+    style={
+      Object {
+        "paddingBottom": "10px",
+        "paddingLeft": "5px",
+        "paddingRight": "5px",
+        "paddingTop": "10px",
+      }
+    }
+  >
+    <Link
+      replace={false}
+      style={
+        Object {
+          "textDecoration": "none",
+        }
+      }
+      to="someWhere"
+    >
+      <WideButton
+        bgImg="red"
+        color="red"
+        height="64px"
+        marginTop="0px"
+        noBoxShadow={false}
+        type="button"
+        width="100%"
+      >
+        <WithStyles(Typography)
+          color="inherit"
+          style={
+            Object {
+              "paddingLeft": "12px",
+            }
+          }
+          variant="display3"
+        >
+          Test Text
+        </WithStyles(Typography)>
+        <div
+          style={
+            Object {
+              "marginLeft": "auto",
+            }
+          }
+        >
+          <WithStyles(LeftArrow)
+            style={
+              Object {
+                "paddingRight": "12px",
+              }
+            }
+          />
+        </div>
+      </WideButton>
+    </Link>
+  </div>
+</WithStyles(Collapse)>
+`;

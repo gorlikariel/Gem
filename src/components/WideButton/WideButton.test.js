@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow, EnzymeAdapter, configure, mount } from 'enzyme';
+import { EnzymeAdapter, configure, mount } from 'enzyme';
 import WideButton from './WideButton';
 import Adapter from 'enzyme-adapter-react-16';
 import Enzyme from 'enzyme';

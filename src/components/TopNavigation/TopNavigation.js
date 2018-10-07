@@ -39,7 +39,7 @@ class TopNavigation extends Component {
     );
     const submitButton = (
       <IconButton onClick={this.submitForm}>
-        <Toast message="Settings successfully updated">
+        <Toast message="Settings successfully updated!">
           <Checkmark />
         </Toast>
       </IconButton>

@@ -5,7 +5,6 @@ import * as actions from '../../../store/actions/actionsIndex';
 import CircleLoader from 'react-spinners/CircleLoader';
 import * as topNavConfig from '../../../store/actions/topNavigationConfigs';
 import axios from 'axios';
-import WideButton from '../../../components/WideButton/WideButton';
 import { Collapse } from '@material-ui/core';
 class AccountSettings extends Component {
   componentDidMount() {
@@ -16,7 +15,7 @@ class AccountSettings extends Component {
         }/notifications/token.json`
       )
       .then(res => {
-        this.setState({ messageToken: res.data }); 
+        this.setState({ messageToken: res.data });
         console.log(res);
       })
       .catch(err => console.log(err));
@@ -140,7 +139,6 @@ class AccountSettings extends Component {
         ) : (
           form
         )}
-        <WideButton onClick={this.testMessage}>Test Push</WideButton>
       </div>
     );
   }
