@@ -18,7 +18,6 @@ export const boxShadows = {
     '0 10px 10px 0 #0000000c, 0 15px 15px 0 #00000019, 0 8px 8px 0 #0000000d, 0 0 10px 5px #0000000c',
   pillButtonTaken: ' inset 0 -4px 10px 0 #0000001d'
 };
-//sisu buttons,
 const theme = createMuiTheme({
   palette: {
     primary: {
@@ -50,6 +49,9 @@ const theme = createMuiTheme({
   },
   overrides: {
     MuiTypography: {
+      root: {
+        userSelect: 'none'
+      },
       display1: {
         fontWeight: 'normal',
         fontSize: '1.875rem',
@@ -106,7 +108,21 @@ const theme = createMuiTheme({
       dotActive: {
         backgroundColor: C3
       }
-    }
+    },
+    MuiButton: {
+      text: {
+        userSelect: 'none'
+      }
+    },
+    MuiIconButton: {
+      root: {
+        userSelect: 'none'
+      }
+    },
+    MuiButtonBase: {
+      root: { userSelect: 'none' }
+    },
+    MuiTouchRipple: { root: { userSelect: 'none' } }
   }
 });
 export default theme;

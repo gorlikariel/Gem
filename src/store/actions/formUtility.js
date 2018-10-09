@@ -31,7 +31,7 @@ const checkValidity = (value, rules) => {
     isValid = value.length == rules.absoluteLength && isValid;
   }
   if (rules.isEmail) {
-    const pattern = /\S+@\S+\.\S+/;
+    const pattern = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return pattern.test(String(value).toLowerCase());
   }
 

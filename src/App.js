@@ -23,6 +23,24 @@ import Toast from './components/Toast/Toast';
 
 class App extends React.Component {
   componentDidMount() {
+    const hourStampToMinutes = hourStamp => +hourStamp.slice(3);
+    const hourStampToHours = hourStamp => +hourStamp.slice(0, 2);
+
+    const haveTwelveHoursPastSincePill = (currentTime, lastTimeTaken) => {
+      const currentHour = hourStampToHours(currentTime);
+      const pillHour = hourStampToHours(lastTimeTaken);
+      if (pillHour <= 12) {
+        return currentHour - 12 >= pillHour;
+      }
+      if (pillHour > 12) {
+        return currentHour <= 12
+          ? currentHour + 12 >= pillHour
+          : pillHour > currentHour;
+      }
+      return false;
+    };
+    console.log(haveTwelveHoursPastSincePill('09:50', '21:03'));
+
     this.props.onTryAutoSignUp();
   }
   render() {

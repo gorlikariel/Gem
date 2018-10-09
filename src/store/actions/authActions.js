@@ -29,6 +29,11 @@ export const dispatchLogout = () => {
     type: actionTypes.AUTH_LOGOUT
   };
 };
+export const clearAuthError = () => {
+  return {
+    type: actionTypes.AUTH_CLEAR_ERROR
+  };
+};
 
 export const logout = () => {
   localStorage.removeItem('token');
@@ -72,8 +77,7 @@ export const auth = (userDataArray, isSignup) => {
           dispatch(authSuccess(idToken, localId));
         }
       } catch (e) {
-        console.error(e.response.data.error.message);
-        dispatch(authFailed(e.response.data.error));
+        dispatch(authFailed(e.response.data.error.message));
       }
     }
     tryAuth(userObject);

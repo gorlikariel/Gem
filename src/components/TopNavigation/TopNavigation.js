@@ -1,11 +1,5 @@
 import React, { Component } from 'react';
-import {
-  AppBar,
-  IconButton,
-  withStyles,
-  Typography,
-  Toolbar
-} from '@material-ui/core';
+import { AppBar, IconButton, Typography, Toolbar } from '@material-ui/core';
 import theme from '../../styleguide/theme';
 import { connect } from 'react-redux';
 import * as actions from '../../store/actions/actionsIndex';
@@ -15,7 +9,10 @@ import CogwheelIcon from '../../Icons/CogwheelIcon/CogwheelIcon';
 import LeftArrow from '../../Icons/LeftArrow/LeftArrow';
 import Toast from '../Toast/Toast';
 
-class TopNavigation extends Component {
+export class TopNavigation extends Component {
+  componentDidMount() {
+    console.log(this.props);
+  }
   submitForm = () => {
     this.props.onSubmit();
   };
@@ -88,7 +85,7 @@ const mapStateToProps = state => {
     showSubmit: state.topNavigation.showSubmit,
     showSettingsIcon: state.topNavigation.showSettingsIcon,
     backOnClick: state.topNavigation.backOnClick,
-    onSubmit: state.topNavigation.onSubmit
+    onSubmit: state.topNavigation.onSubmit2
   };
 };
 

@@ -7,8 +7,6 @@
 
 // To learn more about the benefits of this model, read https://goo.gl/KwvDNy.
 // This link also includes instructions on opting out of this behavior.
-import firebase from './firebase';
-const database = firebase.database();
 
 const isLocalhost = Boolean(
   window.location.hostname === 'localhost' ||
@@ -21,12 +19,6 @@ const isLocalhost = Boolean(
 );
 
 export default function register() {
-  async function fetchData() {
-    const data = await database.ref('users').once('value');
-    console.log(data.val());
-  }
-  // fetchData();
-
   console.log('register');
   if (process.env.NODE_ENV === 'production' && 'serviceWorker' in navigator) {
     // The URL constructor is available in all browsers that support SW.

@@ -23,5 +23,6 @@ export {
   logout,
   checkIfAuth,
   notificationToastClosed,
-  notificationToastOpen
+  notificationToastOpen,
+  clearAuthError
 } from './authActions';

@@ -6,7 +6,7 @@ import * as topNavConfig from '../../store/actions/topNavigationConfigs';
 import SettingsButtons from '../../components/SettingsButtons/SettingsButtons';
 import { Collapse } from '@material-ui/core';
 
-class Settings extends React.Component {
+export class Settings extends React.Component {
   componentDidMount() {
     this.props.onInitPage(topNavConfig.SETTINGS_TOP_NAVIGATION);
     this.setState({ loadSettingsButtons: true });

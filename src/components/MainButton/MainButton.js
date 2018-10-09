@@ -36,23 +36,13 @@ export class MainButton extends React.Component {
     };
     const { taken, hour, loading } = this.props;
     const textWhenPillNotTaken = (
-      <Typography
-        gutterBottom
-        color="inherit"
-        variant="subheading"
-        align="center"
-      >
+      <Typography color="inherit" variant="subheading" align="center">
         {`${taken ? 'next pill' : ''} scheduled for ${!taken ? hour : ``}`}
       </Typography>
     );
     const textWhenPillTaken = (
       <React.Fragment>
-        <Typography
-          gutterBottom
-          color="inherit"
-          variant="subheading"
-          align="center"
-        >
+        <Typography color="inherit" variant="subheading" align="center">
           {`${taken ? 'next pill' : ''} scheduled for ${!taken ? hour : ``}`}
         </Typography>
         <Typography color="inherit" variant="subheading" align="center">

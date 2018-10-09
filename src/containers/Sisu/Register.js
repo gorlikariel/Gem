@@ -69,7 +69,7 @@ class Register extends Component {
     const errorMessage = this.props.error ? (
       <div style={{ paddingTop: '10px', paddingBottom: '10px' }}>
         <Typography variant="subheading" color="error" align="center">
-          {this.props.error.message}
+          {this.props.error}
         </Typography>
       </div>
     ) : null;
@@ -206,6 +206,7 @@ const mapDispatchToProps = dispatch => {
       dispatch(actions.clearAccountSettings());
       dispatch(actions.clearAlarmSettings());
       dispatch(actions.clearPillSettings());
+      dispatch(actions.clearAuthError());
     }
   };
 };

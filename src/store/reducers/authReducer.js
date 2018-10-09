@@ -54,6 +54,11 @@ export default (state = initialState, action) => {
         ...state,
         toast: false
       };
+    case actionTypes.AUTH_CLEAR_ERROR:
+      return {
+        ...state,
+        error: null
+      };
 
     default:
       return state;

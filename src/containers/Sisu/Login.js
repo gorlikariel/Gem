@@ -34,33 +34,41 @@ class Login extends Component {
     this.props.onInitPage(topNavConfig.LOGIN_TOP_NAVIGATION);
     this.setState({ slideInFields: true });
   }
+  componentWillUnmount() {
+    this.props.clearAuthError();
+  }
   state = { slideInFields: false };
   login = () => {
-    console.log(this.props.email.value);
     this.props.onAuth(
       [this.props.email.value, this.props.password.value],
       false
     );
   };
   render() {
+    const {
+      error: firebaseError,
+      email,
+      password,
+      loading,
+      onInputChangedHandler
+    } = this.props;
     const { root, error, welcomeHeadline, registerRedirect, layer } = styles;
-
-    const errorMessage = this.props.error ? (
+    error ? console.log('Firebase Error : ' + firebaseError) : null;
+    const errorMessage = firebaseError ? (
       <div style={error}>
         <Typography variant="subheading" color="error" align="center">
-          {this.props.error.message}
+          {firebaseError}
         </Typography>
       </div>
     ) : null;
 
     const formFromProps = {
       form: {
-        email: this.props.email,
-        password: this.props.password
+        email: email,
+        password: password
       }
     };
-    const isFormValid =
-      this.props.email.validation.valid && this.props.password.validation.valid;
+    const isFormValid = email.validation.valid && password.validation.valid;
     const formElementsArray = [];
     for (let key in formFromProps.form) {
       formElementsArray.push({
@@ -83,9 +91,7 @@ class Login extends Component {
           style={styles[formElement.config.elementConfig.type]}
           value={formElement.config.value}
           margin="normal"
-          onChange={event =>
-            this.props.onInputChangedHandler(event, formElement.id)
-          }
+          onChange={event => onInputChangedHandler(event, formElement.id)}
         />
       </Slide>
     ));
@@ -95,7 +101,7 @@ class Login extends Component {
           sizeUnit={'px'}
           size={25}
           color={'inherit'}
-          loading={this.props.loading}
+          loading={loading}
         />
       </div>
     );
@@ -117,7 +123,7 @@ class Login extends Component {
           width="100%"
           buttonType={isFormValid ? 'purple' : 'greyed'}
         >
-          {this.props.loading ? loader : 'Login'}
+          {loading ? loader : 'Login'}
         </SisuButton>
         <div style={error}>
           {errorMessage}
@@ -152,7 +158,8 @@ const mapDispatchToProps = dispatch => {
     onInitPage: navBarConfig =>
       dispatch(actions.setTopNavigationState(navBarConfig)),
     onAuth: (email, password, isSignup) =>
-      dispatch(actions.auth(email, password, isSignup))
+      dispatch(actions.auth(email, password, isSignup)),
+    clearAuthError: () => dispatch(actions.clearAuthError())
   };
 };
 
