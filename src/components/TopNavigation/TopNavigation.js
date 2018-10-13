@@ -10,9 +10,6 @@ import LeftArrow from '../../Icons/LeftArrow/LeftArrow';
 import Toast from '../Toast/Toast';
 
 export class TopNavigation extends Component {
-  componentDidMount() {
-    console.log(this.props);
-  }
   submitForm = () => {
     this.props.onSubmit();
   };
@@ -85,7 +82,7 @@ const mapStateToProps = state => {
     showSubmit: state.topNavigation.showSubmit,
     showSettingsIcon: state.topNavigation.showSettingsIcon,
     backOnClick: state.topNavigation.backOnClick,
-    onSubmit: state.topNavigation.onSubmit2
+    onSubmit: state.topNavigation.onSubmit
   };
 };
 

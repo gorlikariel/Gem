@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { TextField, Typography, Slide } from '@material-ui/core';
+import { TextField, Typography, Slide, Collapse } from '@material-ui/core';
 import { connect } from 'react-redux';
 import * as actions from '../../store/actions/actionsIndex';
 import InputField from '../../components/InputField/InputField';
@@ -66,26 +66,17 @@ class Register extends Component {
     }
   };
   render() {
-    const errorMessage = this.props.error ? (
-      <div style={{ paddingTop: '10px', paddingBottom: '10px' }}>
-        <Typography variant="subheading" color="error" align="center">
-          {this.props.error}
-        </Typography>
-      </div>
-    ) : null;
-
-    const formFromProps = {
-      form: {
-        email: this.props.email,
-        password: this.props.password,
-        name: this.props.name,
-        pillsinpack: this.props.pillsinpack,
-        amountofpacks: this.props.amountofpacks,
-        pillhour: this.props.pillhour,
-        snoozeevery: this.props.snoozeevery
-      }
-    };
-
+    const {
+      error: firebaseError,
+      email,
+      password,
+      name,
+      pillsinpack,
+      amountofpacks,
+      pillhour,
+      snoozeevery,
+      onInputChangedHandler
+    } = this.props;
     const styles = {
       text: {
         width: '100%'
@@ -95,8 +86,32 @@ class Register extends Component {
       title: {
         paddingTop: '20px',
         height: '80px'
+      },
+      error: { paddingTop: '10px', paddingBottom: '10px' }
+    };
+
+    const errorMessage = (
+      <Collapse in={firebaseError} timeout={300}>
+        <div style={styles.error}>
+          <Typography variant="subheading" color="error" align="center">
+            {firebaseError}
+          </Typography>
+        </div>
+      </Collapse>
+    );
+
+    const formFromProps = {
+      form: {
+        email: email,
+        password: password,
+        name: name,
+        pillsinpack: pillsinpack,
+        amountofpacks: amountofpacks,
+        pillhour: pillhour,
+        snoozeevery: snoozeevery
       }
     };
+
     const formElementsArray = [];
     for (let key in formFromProps.form) {
       formElementsArray.push({
@@ -117,7 +132,7 @@ class Register extends Component {
           value={formElement.config.value}
           margin="normal"
           onChange={event =>
-            this.props.onInputChangedHandler(
+            onInputChangedHandler(
               event,
               formElement.id,
               registerUtil.REGISTER_STEPS[this.state.stepNum].action

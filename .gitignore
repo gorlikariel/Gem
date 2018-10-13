@@ -8,7 +8,12 @@
 
 # production
 /build
-/functions
+/functions/src/functionsUtil.ts
+/functions/etc
+/functions/lib
+/functions/node_modules
+/functions/firebase-debug.log
+
 /%RESOURCE_DIR%
 # misc
 .firebase

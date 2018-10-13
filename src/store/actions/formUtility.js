@@ -49,6 +49,9 @@ export const formValidity = form => {
   return formIsValid;
 };
 
+export const formatErrorMessage = message =>
+  message.toLowerCase().replace(/_/g, ' ');
+
 export const formToKeyValuePairs = form => {
   let newForm = { ...form };
   for (const key in newForm) {

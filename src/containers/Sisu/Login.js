@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { TextField, Typography, Slide } from '@material-ui/core';
+import { TextField, Typography, Slide, Collapse } from '@material-ui/core';
 import { connect } from 'react-redux';
 import * as actions from '../../store/actions/actionsIndex';
 import ClipLoader from 'react-spinners/ClipLoader';
@@ -54,14 +54,15 @@ class Login extends Component {
     } = this.props;
     const { root, error, welcomeHeadline, registerRedirect, layer } = styles;
     error ? console.log('Firebase Error : ' + firebaseError) : null;
-    const errorMessage = firebaseError ? (
-      <div style={error}>
-        <Typography variant="subheading" color="error" align="center">
-          {firebaseError}
-        </Typography>
-      </div>
-    ) : null;
-
+    const errorMessage = (
+      <Collapse in={firebaseError} timeout={300}>
+        <div style={error}>
+          <Typography variant="subheading" color="error" align="center">
+            {firebaseError}
+          </Typography>
+        </div>
+      </Collapse>
+    );
     const formFromProps = {
       form: {
         email: email,

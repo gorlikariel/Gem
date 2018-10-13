@@ -2,6 +2,7 @@ import * as actionTypes from './actionTypes';
 import axios from 'axios';
 import firebase from '../../firebase';
 import { formatUserObject, MAP_FIELDS } from '../../util/registerPageUtil';
+import { formatErrorMessage } from './formUtility';
 const database = firebase.database();
 
 export const authStart = () => {
@@ -77,7 +78,7 @@ export const auth = (userDataArray, isSignup) => {
           dispatch(authSuccess(idToken, localId));
         }
       } catch (e) {
-        dispatch(authFailed(e.response.data.error.message));
+        dispatch(authFailed(formatErrorMessage(e.response.data.error.message)));
       }
     }
     tryAuth(userObject);
