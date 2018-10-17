@@ -1,3 +1,4 @@
+import React from 'react';
 export const MAIN_PAGE_TOP_NAVIGATION = {
   showLeftArrow: false,
   showSubmit: false,
@@ -61,4 +62,10 @@ export const LOGIN_TOP_NAVIGATION = {
   showSubmit: false,
   showSettingsIcon: false,
   title: 'Log in'
+};
+export const QUESTIONS_TOP_NAVIGATION = {
+  showLeftArrow: false,
+  showSubmit: false,
+  showSettingsIcon: false,
+  title: `Frequently Asked Questions`
 };

@@ -39,3 +39,6 @@ export const asyncIntroduction = asyncComponent(() => {
 export const asyncToast = asyncComponent(() => {
   return import('../components/Toast/Toast');
 });
+export const asyncQuestions = asyncComponent(() => {
+  return import('../containers/Questions/QuestionsPage/QuestionsPage');
+});

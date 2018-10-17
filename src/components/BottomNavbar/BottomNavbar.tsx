@@ -5,8 +5,8 @@ import QuestionMark from '../../Icons/QuestionMark/QuestionMark';
 import HomeIcon from '../../Icons/HomeIcon/HomeIcon';
 import StatisticsIcon from '../../Icons/StatisticsIcon/StatisticsIcon';
 import { BottomNavigation, BottomNavigationAction } from '@material-ui/core';
-export const HOME_BUTTON = '1';
-
+export const HOME_BUTTON = 1;
+export const QUESTIONS = 2;
 export interface BottomNavbarProps extends RouteComponentProps<any> {
   classes: {
     root: string;
@@ -14,7 +14,7 @@ export interface BottomNavbarProps extends RouteComponentProps<any> {
 }
 
 interface State {
-  readonly value: string;
+  readonly value: number;
 }
 const BottomNavbarWithStyles = withStyles({
   root: {
@@ -29,12 +29,12 @@ const BottomNavbarWithStyles = withStyles({
 })(
   class BottomNavbar extends React.Component<BottomNavbarProps, State> {
     state = {
-      value: HOME_BUTTON
+      value: +HOME_BUTTON
     };
 
     handleChange = (
       event: React.ChangeEvent<HTMLInputElement>,
-      value: string
+      value: number
     ) => {
       this.setState({ value: value });
       switch (value) {
@@ -48,12 +48,15 @@ const BottomNavbarWithStyles = withStyles({
             }
           });
           break;
+        case QUESTIONS:
+          this.props.history.push({
+            pathname: '/questions'
+          });
+          break;
 
         default:
           break;
       }
-      console.log(event);
-      console.log(value);
     };
     render() {
       const { classes } = this.props;
@@ -61,7 +64,7 @@ const BottomNavbarWithStyles = withStyles({
 
       return (
         <BottomNavigation
-          value={~~value}
+          value={value}
           onChange={this.handleChange}
           className={classes.root}
         >

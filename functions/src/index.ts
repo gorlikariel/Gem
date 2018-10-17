@@ -1,3 +1,4 @@
+// import * as moment from 'moment-timezone';
 import * as functions from 'firebase-functions';
 import * as admin from 'firebase-admin';
 import axios from 'axios';
@@ -24,17 +25,17 @@ const getAccessToken = () => {
     });
   });
 };
-// const hourStampToMinutes = (hourStamp: any) => +hourStamp.slice(3);
+const hourStampToMinutes = (hourStamp: any) => +hourStamp.slice(3);
 const hourStampToHours = (hourStamp: any) => +hourStamp.slice(0, 2);
-// const checkIfItsTimeForPill = (currentTime: any, pillTime: any) => {
-//   const currentHour = hourStampToHours(currentTime);
-//   const currentMinutes = hourStampToMinutes(currentTime);
-//   const pillHour = hourStampToHours(pillTime);
-//   const pillMinutes = hourStampToMinutes(pillTime);
-//   const shouldTakePill =
-//     currentHour === pillHour && currentMinutes === pillMinutes;
-//   return shouldTakePill;
-// };
+const checkIfItsTimeForPill = (currentTime: any, pillTime: any) => {
+  const currentHour = hourStampToHours(currentTime);
+  const currentMinutes = hourStampToMinutes(currentTime);
+  const pillHour = hourStampToHours(pillTime);
+  const pillMinutes = hourStampToMinutes(pillTime);
+  const shouldTakePill =
+    currentHour === pillHour && currentMinutes === pillMinutes;
+  return shouldTakePill;
+};
 const haveTwelveHoursPastSincePill = (currentTime: any, lastTimeTaken: any) => {
   const currentHour = hourStampToHours(currentTime);
   const pillHour = hourStampToHours(lastTimeTaken);
@@ -119,15 +120,15 @@ export const sendAndManageNotifications = functions.https.onRequest(
       const usersThatNeedToBeNotified = [];
       const privateKey = await getAccessToken();
       for (const user in users) {
-        // const userPillTime = users[user].settings.alarm.pillhour;
+        const userPillTime = users[user].settings.alarm.pillhour;
         const notificationToken = users[user].notifications.token;
-        // const isItTimeForPill = checkIfItsTimeForPill(
-        //   currentTime,
-        //   userPillTime
-        // );
+        const isItTimeForPill = checkIfItsTimeForPill(
+          currentTime,
+          userPillTime
+        );
         const hasUserTakenPillToday = users[user].dailyPill.taken;
         const lastTimeTaken = users[user].dailyPill.lasttimetaken;
-        if (users[user].settings.account.username === 'TestBoy') {
+        if (isItTimeForPill && !hasUserTakenPillToday) {
           usersThatNeedToBeNotified.push({
             notificationToken: notificationToken,
             userId: user

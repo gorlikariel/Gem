@@ -16,7 +16,8 @@ import {
   asyncLogin,
   asyncSisuMain,
   asyncTopNavigation,
-  asyncBottomNavbar
+  asyncBottomNavbar,
+  asyncQuestions
 } from './util/appComponents';
 import Layout from './containers/Layout/Layout';
 import Toast from './components/Toast/Toast';
@@ -29,7 +30,9 @@ class App extends React.Component {
   }
   render() {
     const isBottomNavbar = this.props.isAuth ? (
-      <Route exact path="/" component={asyncBottomNavbar} />
+      <React.Fragment>
+        <Route exact path="/(|questions|statistics)/" component={asyncBottomNavbar} />
+      </React.Fragment> 
     ) : null;
     // ---------Routes for logged in users
     const routes = this.props.isAuth ? (
@@ -38,6 +41,7 @@ class App extends React.Component {
           <Route exact path="/introduction" component={asyncIntroduction} />
           <Layout>
             <Route exact={true} path="/" component={asyncMainPage} />
+            <Route exact={true} path="/questions" component={asyncQuestions} />
             <Route exact={true} path="/settings" component={asyncSettings} />
             <Route
               exact={true}
