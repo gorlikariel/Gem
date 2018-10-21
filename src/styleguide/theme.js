@@ -34,6 +34,7 @@ const theme = createMuiTheme({
     }
   },
   typography: {
+    useNextVariants: true,
     fontFamily: [
       '-apple-system',
       'BlinkMacSystemFont',
@@ -52,7 +53,7 @@ const theme = createMuiTheme({
       root: {
         userSelect: 'none'
       },
-      display1: {
+      h4: {
         fontWeight: 'normal',
         fontSize: '1.875rem',
         letterSpacing: '1px',
@@ -60,20 +61,20 @@ const theme = createMuiTheme({
         color: C1,
         lineHeight: 1.13
       },
-      display3: {
+      h2: {
         fontSize: '16px',
         fontWeight: 500,
         fontFamily: ['-apple-system', ' BlinkMacSystemFont', 'roboto'],
         letterSpacing: '0.0300rem'
       },
-      display4: {
+      h1: {
         fontSize: '23px',
         fontWeight: '600',
         letterSpacing: '1.6px',
         fontFamily: ['-apple-system', ' BlinkMacSystemFont', 'roboto'],
         lineHeight: '2em'
       },
-      subheading: {
+      subtitle1: {
         fontSize: '15px',
         fontWeight: 300,
         letterSpacing: '0.2px',
