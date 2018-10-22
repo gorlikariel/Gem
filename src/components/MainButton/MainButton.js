@@ -36,16 +36,16 @@ export class MainButton extends React.Component {
     };
     const { taken, hour, loading } = this.props;
     const textWhenPillNotTaken = (
-      <Typography color="inherit" variant="subheading" align="center">
+      <Typography color="inherit" variant="subtitle1" align="center">
         {`${taken ? 'next pill' : ''} scheduled for ${!taken ? hour : ``}`}
       </Typography>
     );
     const textWhenPillTaken = (
       <React.Fragment>
-        <Typography color="inherit" variant="subheading" align="center">
+        <Typography color="inherit" variant="subtitle1" align="center">
           {`${taken ? 'next pill' : ''} scheduled for ${!taken ? hour : ``}`}
         </Typography>
-        <Typography color="inherit" variant="subheading" align="center">
+        <Typography color="inherit" variant="subtitle1" align="center">
           {`${taken ? 'tommorow at' : ''} ${hour}`}
         </Typography>
       </React.Fragment>
@@ -61,12 +61,12 @@ export class MainButton extends React.Component {
             styles.isTaken[taken ? 'taken' : 'notTaken']
           )}
         >
-          <Typography color="inherit" variant="display4" id="is-pill-taken">
+          <Typography color="inherit" variant="h1" id="is-pill-taken">
             {taken ? 'PILL TAKEN' : 'TAKE PILL'}
           </Typography>
           {taken ? textWhenPillTaken : textWhenPillNotTaken}
           {/*lightning emoji represents streak, hard coded right now, will be changed */}
-          <Typography color="inherit" variant="display4">
+          <Typography color="inherit" variant="h1">
             ⚡0
           </Typography>
         </ButtonBase>

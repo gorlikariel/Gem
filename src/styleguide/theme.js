@@ -74,6 +74,16 @@ const theme = createMuiTheme({
         fontFamily: ['-apple-system', ' BlinkMacSystemFont', 'roboto'],
         lineHeight: '2em'
       },
+      h6:{
+        fonSize: '24px',
+        fontWeight: 'bold',
+        fontStyle: 'normal',
+        fontStretch: 'normal',
+        lineHeight: 1.21,
+        letterSpacing: '0.3px',
+        fontFamily: ['-apple-system', ' BlinkMacSystemFont', 'roboto'],
+
+      },
       subtitle1: {
         fontSize: '15px',
         fontWeight: 300,

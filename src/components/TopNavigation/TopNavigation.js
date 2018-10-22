@@ -58,7 +58,7 @@ export class TopNavigation extends Component {
         <Toolbar disableGutters>
           {showLeftArrow ? leftArrow : null}
           <div style={styles.title}>
-            <Typography variant="title" color="primary">
+            <Typography variant="h6" color="primary">
               {title}
             </Typography>
           </div>
