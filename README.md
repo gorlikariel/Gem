@@ -3,13 +3,6 @@
 A progressive web app used to remind and track birth control pill usage,
 because birth control is no joke.
 
-## Introduction
-
-I started teaching myself React about 6 months ago,
-and Gem is my first project.
-I love every second of writing it, and I hope it
-to be one of many in the future.
-
 ## Built With
 
 - [TypeScript](https://www.typescriptlang.org/) - (Still learning)
