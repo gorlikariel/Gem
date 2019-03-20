@@ -5,7 +5,7 @@ because birth control is no joke.
 
 ## Built With
 
-- [TypeScript](https://www.typescriptlang.org/) - (Still learning)
+- [TypeScript](https://www.typescriptlang.org/)
 - [React](https://reactjs.org/) - The web framework used
 - [Redux](https://redux.js.org/) - State Management
 - [React Router](https://reacttraining.com/react-router/core/guides/philosophy) - Routing
